@@ -1,13 +1,13 @@
 <template>
     <div class="main">
         <div class="content">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" class="banner">
-            <h2 class="activity_title">中国のファッション誌「可楽生活」に、上位1名の所属ユニットメンバー全員が特集ページに登場する！是非奮ってご参加ください！</h2>
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity-halloween.jpg" class="banner">
+            <h2 class="activity_title">ハロウィンを盛り上げよう！期間中上位のアイドルは起動画面・次のイベントバナーに掲載など豪華な特典が盛りだくさん！さらに、ファンにも、ハロウィン限定ギフトと推しメンの直筆メッセージカードを用意！</h2>
             <div class="idol-ranking" v-if="ranking.length > 0">
                 <div class="ranking-two">
                     <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><img :src="ranking[0].avatar?ranking[0].avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'"></p><p class="idolName-content"><span>{{ranking[0].nickname?ranking[0].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].popularity?ranking[0].popularity:0).toLocaleString()}}</i></span></p></div>
                     <div class="ranking-idol" v-if="ranking.length > 1"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><img :src="ranking[1].avatar?ranking[1].avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'"></p><p class="idolName-content"><span>{{ranking[1].nickname?ranking[1].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[1].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
-                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><img :src="ranking[2].avatar?ranking[2].avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'"></p><p class="idolName-content"><span>{{ranking[2].nickname?ranking[2].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].popularity?ranking[2].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><img :src="ranking[2].avatar?ranking[2].avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'"></p><p class="idolName-content"><span>{{ranking[2].nickname?ranking[2].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
                 </div>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
             </div>
@@ -70,18 +70,6 @@
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
             <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
         </div>
-        <!-- <div class="bullet_box" v-show="boxShow">
-            <div class="bullet_box_content" :class="{'bullet_box_show':boxShow}">
-                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/box.png" class="box_bg">
-                <div class="box_content">
-                    <img src="/img/icon_cancel_2.png" class="close" @click="boxShow = false">
-                    <img src="/img/icon_groupy_120.png" class="groupy">
-                    <p class="tips">请下载Groupy查看更多内容</p>
-                    <span class="tips2">前往下载</span>
-                    <a :href="hrefs" class="appstore"><img src="/img/btn_appstore.png"></a>
-                </div>
-            </div>
-        </div> -->
     </div>
 </template>
 <script>
@@ -223,7 +211,7 @@
                     version: "1.0.0",
                     action: val,
                     result: "success",
-                    idolId: getParams('idol_id')
+                    idolId: getParams('idolId')
                 }
                 http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
@@ -240,7 +228,7 @@
             }
         },
         created() {
-            if(getParams('isFans') == 1 || !getParams('isFans')) {
+            if(getParams('isFans') == 1 || !getParams('idolId')) {
                 this.getRanking();
                 this.getVideoList();
             }else {

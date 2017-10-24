@@ -32,5 +32,6 @@ module.exports = {
         shows: './src/view/shows', // 示例项目，利用个人blog提供公共api进行测试
         activity: './src/view/activity', // 示例项目，利用个人blog提供公共api进行测试
         activity_recharge: './src/view/activity_recharge', // 示例项目，利用个人blog提供公共api进行测
+        activity_halloween: './src/view/activity_halloween', // 示例项目，利用个人blog提供公共api进行测
     },
 };
