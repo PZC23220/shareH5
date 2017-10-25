@@ -3,7 +3,7 @@
         <div class="header">
             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
+            <a @click="p_log('Top_Banner_Download_Click')" target="_blank" :href="hrefs">インストール</a>
         </div>
         <div class="content">
             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" style="width: 100%;" v-if="video.activityId == 3">
@@ -23,18 +23,18 @@
                 <div class="video_bg"></div>
                 <div class="vip_download">
                     <p>会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう</p>
-                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
+                    <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
                 </div>
             </div>
             <div class="public_show"v-show="publicShow">
                 <p><span style="color: #00B4BB;margin-right: 5px;" v-if="video.activityTag">#{{video.activityTag}}#</span>{{video.title}}</p>
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
-                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" class="download">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="default_page" v-show="pageNone">
                 <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
                 <p v-show="pageNone2">まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
-                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="more_video">
                 <h3>おすすめ</h3>

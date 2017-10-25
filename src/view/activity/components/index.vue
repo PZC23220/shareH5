@@ -223,7 +223,7 @@
                     version: "1.0.0",
                     action: val,
                     result: "success",
-                    idolId: getParams('idol_id')
+                    activityId: getParams('activityId')
                 }
                 http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
@@ -247,7 +247,7 @@
                 this.getActivityInfo();
             }
             
-            // this.p_log('idol_shareActivity_h5_open');
+            this.p_log('idol_shareActivity_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
