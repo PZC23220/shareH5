@@ -161,15 +161,15 @@
                         if(res.data.idol) {
                             self.idolShow = true;
                             self.idol = res.data.idol;
-                            $('.htmlTilte').html(res.data.idol.nickname);
-                            $('.metaTitle').attr('content',res.data.idol.nickname);
+                            // $('.htmlTilte').html(res.data.idol.nickname);
+                            // $('.metaTitle').attr('content',res.data.idol.nickname);
                         }
                         if(res.data.video) {
                             if(res.data.video.active == 1) {
                                 self.pageNone = false;
                                 self.pageNone2 = false;
-                                $('.metaDesc').attr('content',res.data.video.title);
-                                $('.metaImg').attr('content',res.data.video.thumbnail);
+                                // $('.metaDesc').attr('content',res.data.video.title);
+                                // $('.metaImg').attr('content',res.data.video.thumbnail);
                                 if(res.data.video.publicType == 1) {
                                     self.vipShow = true;
                                     self.publicShow = false;

@@ -275,10 +275,10 @@
                     console.log(res);
                     if(res.data.idol) {
                         self.idol = res.data.idol;
-                        $('.htmlTilte').html(res.data.idol.nickname);
-                        $('.metaTitle').attr('content',res.data.idol.nickname);
-                        $('.metaDesc').attr('content',res.data.idol.introduce);
-                        $('.metaImg').attr('content',res.data.idol.avatar);
+                        // $('.htmlTilte').html(res.data.idol.nickname);
+                        // $('.metaTitle').attr('content',res.data.idol.nickname);
+                        // $('.metaDesc').attr('content',res.data.idol.introduce);
+                        // $('.metaImg').attr('content',res.data.idol.avatar);
                     }
                     if(res.data.hotList) {
                         self.hotList = res.data.hotList;

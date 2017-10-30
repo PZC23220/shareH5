@@ -228,13 +228,12 @@
                         showsId: getParams('showsId')
                     }
                 }).then(function(res){
-                    console.log(res.data);
                     if(res.data) {
                         self.showsInfo = res.data;
-                        $('.htmlTilte').html(res.data.title);
-                        $('.metaTitle').attr('content',res.data.title);
-                        $('.metaDesc').attr('content',res.data.introduce);
-                        $('.metaImg').attr('content',self.changeURL(res.data.imgs)[0]);
+                        // $('.htmlTilte').html(res.data.title);
+                        // $('.metaTitle').attr('content',res.data.title);
+                        // $('.metaDesc').attr('content',res.data.introduce);
+                        // $('.metaImg').attr('content',self.changeURL(res.data.imgs)[0]);
                         if(res.data.fansList){
                             self.fansList = res.data.fansList;
                         }

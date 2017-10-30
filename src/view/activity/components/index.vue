@@ -165,7 +165,7 @@
             },
             getActivityInfo() {
                 var self = this;
-                http.get('/video/shareActivityVideos',{
+                http.get('http://share.groupy.vip/japi/video/shareActivityVideos',{
                     params: {
                         idolId: getParams('idolId'),
                         activityId: getParams('activityId')
@@ -184,7 +184,7 @@
             },
             getRanking() {
                 var self = this;
-                http.get('/video/activityIdols',{
+                http.get('http://share.groupy.vip/japi/video/activityIdols',{
                     params: {
                         activityId: getParams('activityId'),
                         rows: 10
@@ -199,7 +199,7 @@
             },
             getVideoList() {
                 var self = this;
-                http.get('/video/activityVideos',{
+                http.get('http://share.groupy.vip/japi/video/activityVideos',{
                     params: {
                         activityId: getParams('activityId'),
                         rows: 10
