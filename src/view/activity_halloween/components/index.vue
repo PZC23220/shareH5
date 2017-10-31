@@ -3,18 +3,18 @@
         <div class="content">
             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity-halloween.jpg" class="banner">
             <h2 class="activity_title">ハロウィンを盛り上げよう！期間中上位のアイドルは起動画面・次のイベントバナーに掲載など豪華な特典が盛りだくさん！さらに、ファンにも、ハロウィン限定ギフトと推しメンの直筆メッセージカードを用意！</h2>
-            <div class="idol-ranking" v-if="ranking.length > 0">
+            <div class="idol-ranking" v-if="!idol.idol_id">
                 <div class="ranking-two">
-                    <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><img :src="ranking[0].avatar?ranking[0].avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'"></p><p class="idolName-content"><span>{{ranking[0].nickname?ranking[0].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].popularity?ranking[0].popularity:0).toLocaleString()}}</i></span></p></div>
-                    <div class="ranking-idol" v-if="ranking.length > 1"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><img :src="ranking[1].avatar?ranking[1].avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'"></p><p class="idolName-content"><span>{{ranking[1].nickname?ranking[1].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[1].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
-                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_3.png"><img :src="ranking[2].avatar?ranking[2].avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'"></p><p class="idolName-content"><span>{{ranking[2].nickname?ranking[2].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><img v-lazy="ranking[0].avatar"></p><p class="idolName-content"><span>{{ranking[0].nickname?ranking[0].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].popularity?ranking[0].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 1"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><img v-lazy="ranking[1].avatar"></p><p class="idolName-content"><span>{{ranking[1].nickname?ranking[1].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[1].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_3.png"><img v-lazy="ranking[2].avatar"></p><p class="idolName-content"><span>{{ranking[2].nickname?ranking[2].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
                 </div>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
             </div>
-            <div class="idol-ranking" v-if="ranking.length <= 0">
+            <div class="idol-ranking" v-if="idol.idol_id">
                 <div class="ranking-one">
                    <div class="img_content">
-                        <img v-lazy="idol.avatar?idol.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" class="avatar">
+                        <img v-lazy="idol.avatar" class="avatar">
                         <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_1.png" class="ranking_pic">
                         <span class="idol_level">NO.{{idol.ranking?idol.ranking:'-'}}</span>
                     </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="video_desc_content">
                         <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.giftCount}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.popularity}}</span><div><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
-                        <p class="video_text">{{hot.title}}</p>
+                        <p class="video_text"><span style="color: #00B4BB" v-if="hot.activityTag">#{{hot.activityTag}}#</span>{{hot.title}}</p>
                         <ul class="comment_list" style="background: #fff;">
                             <div class="comment_total"><span><i>コメント{{hot.postList.length}}件すべてを表示</i></span></div>
                             <li v-for="comment in hot.postList" style="border: none;padding: 0 12px 3px;">
@@ -228,8 +228,8 @@
             }
         },
         created() {
+            this.getRanking();
             if(getParams('isFans') == 1 || !getParams('idolId')) {
-                this.getRanking();
                 this.getVideoList();
             }else {
                 this.getActivityInfo();
