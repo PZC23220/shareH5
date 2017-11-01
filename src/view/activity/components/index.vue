@@ -160,7 +160,7 @@
                 return playerOptions;
             },
             formatTime(key) {
-                let timer = new Date(key - 1*60*60*1000);
+                let timer = new Date(key);
                 return timer.Format('MM.dd') + '  '+ timer.Format('hh:mm');
             },
             getActivityInfo() {
