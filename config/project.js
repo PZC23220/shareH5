@@ -27,11 +27,12 @@ module.exports = {
         // 项目列表
         // 组织格式 ： 项目名 => 以项目根目录为基准的index.vue路径
         // 其在webpack中的对应格式为：[name](生成的js名) => [main.js所在路径]
-        video: './src/view/video', // 示例项目，新建页面可以直接复制该项目的代码
-        idol: './src/view/idol', // 示例项目，利用个人blog提供公共api进行测试
-        shows: './src/view/shows', // 示例项目，利用个人blog提供公共api进行测试
-        activity: './src/view/activity', // 示例项目，利用个人blog提供公共api进行测试
-        activity_recharge: './src/view/activity_recharge', // 示例项目，利用个人blog提供公共api进行测
-        activity_halloween: './src/view/activity_halloween', // 示例项目，利用个人blog提供公共api进行测
+        video: './src/view/video', 
+        idol: './src/view/idol', 
+        shows: './src/view/shows', 
+        activity: './src/view/activity', 
+        activity_recharge: './src/view/activity_recharge', 
+        activity_halloween: './src/view/activity_halloween', 
+        activity_books: './src/view/activity_books', 
     },
 };

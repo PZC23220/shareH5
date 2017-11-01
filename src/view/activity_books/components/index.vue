@@ -1,9 +1,9 @@
 <template>
     <div class="main">
         <div class="content">
-            <img v-if="isOver" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity-halloween-over.jpg" class="banner">
-            <img v-else src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity-halloween.jpg" class="banner">
-            <h2 class="activity_title">ハロウィンを盛り上げよう！期間中上位のアイドルは起動画面・次のイベントバナーに掲載など豪華な特典が盛りだくさん！さらに、ファンにも、ハロウィン限定ギフトと推しメンの直筆メッセージカードを用意！</h2>
+            <img v-if="isOver" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity-books-over.png" class="banner">
+            <img v-else src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity-books.jpg" class="banner">
+            <h2 class="activity_title">読書の秋に盛り上げよう！期間中上位のアイドルは起動画面に掲載など豪華な特典が盛りだくさん！さらに、ファンにも、推しメンからオススメの書籍と直筆メッセージカードをプレゼント！</h2>
             <div class="idol-ranking" v-if="!idol.idol_id">
                 <div class="ranking-two">
                     <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><img v-lazy="ranking[0].avatar"></p><p class="idolName-content"><span>{{ranking[0].nickname?ranking[0].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].popularity?ranking[0].popularity:0).toLocaleString()}}</i></span></p></div>
