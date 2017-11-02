@@ -236,7 +236,7 @@
         },
         created() {
             this.getRanking();
-            if(getParams('isFans') == 1 || !getParams('idolId')) {
+            if(getParams('isFans') == 1 || !getParams('idolId') || getParams('idolId') == 'undefined') {
                 this.getVideoList();
             }else {
                 this.getActivityInfo();
