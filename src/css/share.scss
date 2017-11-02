@@ -41,11 +41,11 @@
 	padding-bottom: 20px;
 	box-sizing: border-box;
 }
-@media screen and (max-width: 499px) {
-    .content {
-        height: calc(100vh - 124px);
-    }
-}
+// @media screen and (max-width: 499px) {
+//     .content {
+//         height: calc(100vh - 124px);
+//     }
+// }
 @media screen and (min-width: 500px) {
 	.header, .footer, .reservation {
 		left: 50% !important;
