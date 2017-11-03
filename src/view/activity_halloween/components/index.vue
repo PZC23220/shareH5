@@ -6,16 +6,16 @@
             <h2 class="activity_title">ハロウィンを盛り上げよう！期間中上位のアイドルは起動画面・次のイベントバナーに掲載など豪華な特典が盛りだくさん！さらに、ファンにも、ハロウィン限定ギフトと推しメンの直筆メッセージカードを用意！</h2>
             <div class="idol-ranking" v-if="!idol.idol_id">
                 <div class="ranking-two">
-                    <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><img v-lazy="ranking[0].avatar"></p><p class="idolName-content"><span>{{ranking[0].nickname?ranking[0].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].popularity?ranking[0].popularity:0).toLocaleString()}}</i></span></p></div>
-                    <div class="ranking-idol" v-if="ranking.length > 1"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><img v-lazy="ranking[1].avatar"></p><p class="idolName-content"><span>{{ranking[1].nickname?ranking[1].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[1].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
-                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_3.png"><img v-lazy="ranking[2].avatar"></p><p class="idolName-content"><span>{{ranking[2].nickname?ranking[2].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><span><img v-lazy="ranking[0].avatar"></span></p><p class="idolName-content"><span>{{ranking[0].nickname?ranking[0].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].popularity?ranking[0].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 1"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><span><img v-lazy="ranking[1].avatar"></span></p><p class="idolName-content"><span>{{ranking[1].nickname?ranking[1].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[1].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/ranking_3.png"><span><img v-lazy="ranking[2].avatar"></span></p><p class="idolName-content"><span>{{ranking[2].nickname?ranking[2].nickname:'...'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
                 </div>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
             </div>
             <div class="idol-ranking" v-if="idol.idol_id">
                 <div class="ranking-one">
                    <div class="img_content">
-                        <img v-lazy="idol.avatar" class="avatar">
+                        <span class="avatar"><img v-lazy="idol.avatar"></span>
                         <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_1.png" class="ranking_pic">
                         <span class="idol_level">NO.{{idol.ranking?idol.ranking:'-'}}</span>
                     </div>
@@ -31,7 +31,7 @@
             <div class="share_content">
                 <div class="video_content" v-for="(hot,key) in videos" v-if="key < 10">
                     <div class="userinfo con_left" :class="{'left_show':idolShow}" v-if="hot.idol">
-                        <img :src="hot.idol.avatar?hot.idol.avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="">
+                        <span><img v-lazy="hot.idol.avatar" alt=""></span>
                         <div class="video_desc">
                             <h3>{{hot.idol.nickname?hot.idol.nickname:'...'}}</h3>
                             <p>{{formatTime(hot.publishTime)}}</p>

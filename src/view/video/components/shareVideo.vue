@@ -8,7 +8,7 @@
         <div class="content">
             <img :src="video.activity.img" style="width: 100%;" v-if="video.activity">
             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                <img :src="idol.avatar?idol.avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="">
+                <span><img :src="idol.avatar?idol.avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                 <div class="video_desc">
                     <h3>{{idol.nickname?idol.nickname:'Groupy'}}</h3>
                     <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす'}}</p>
@@ -165,6 +165,7 @@
                             // $('.metaTitle').attr('content',res.data.idol.nickname);
                         }
                         if(res.data.video) {
+                            self.video = res.data.video;
                             if(res.data.video.active == 1) {
                                 self.pageNone = false;
                                 self.pageNone2 = false;
@@ -177,7 +178,6 @@
                                     self.vipShow = false;
                                     self.publicShow = true;
                                     self.playerOptions.poster = res.data.video.thumbnail;
-                                    self.video = res.data.video;
                                     let videoItem = res.data.video.videoItemList;
                                     let videoitem = {
                                         hd: '',

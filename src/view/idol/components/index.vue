@@ -10,7 +10,7 @@
                 <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png);'"></div>
                 <div class="idol_desc_content">
                     <div>
-                        <img v-lazy="idol.avatar" class="avatar">
+                        <span class="avatar"><img v-lazy="idol.avatar"></span>
                         <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><a class="cursor" :href="hrefs" target="_blank"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/icon_join.png"><i>入会</i></a></div>
                         <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
                         <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす。'}}</p>
@@ -30,7 +30,7 @@
                     <swiper-slide id="swiper1">
                         <div class="video_content" v-for="(hot,key) in hotList" v-if="key < 5">
                             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                                <img :src="idol.avatar?idol.avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="">
+                                <span><img v-lazy="idol.avatar" alt=""></span>
                                 <div class="video_desc">
                                     <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
                                     <p>{{formatTime(hot.data.publishTime)}}</p>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="video_desc_content">
                                 <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
-                                <p class="video_text">{{hot.data.title}}</p>
+                                <p class="video_text"><span style="color: #00B4BB" v-if="hot.data.activity">#{{hot.data.activity.tag}}#</span>{{hot.data.title}}</p>
                                 <ul class="comment_list" style="background: #fff;">
                                     <div class="comment_total"><span><i>コメント{{hot.data.postList.length}}件すべてを表示</i></span></div>
                                     <li v-for="comment in hot.data.postList" style="border: none;padding: 0 12px 3px;">
@@ -404,6 +404,11 @@
                 left: 12px;
                 top: 50px;
                 margin: 0;
+                overflow: hidden;
+                img {
+                    width: 90px;
+                    min-height: 90px;
+                }
             }
             .idol_name {
                 font-size: 18px;

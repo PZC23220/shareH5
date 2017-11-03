@@ -56,12 +56,17 @@
 .userinfo {
 	padding: 12px 12px 5px;
 	overflow: hidden;
-	>img {
+	>span {
 		width: 60px;
 		height: 60px;
 		border-radius: 50%;
 		float: left;
 		margin-right: 8px;
+		overflow: hidden;
+		img {
+			width: 60px;
+			min-height: 60px;
+		}
 	}
 	.video_desc {
 		width: calc(100vw - 102px);

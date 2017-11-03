@@ -12,11 +12,16 @@
                 margin: 0 auto;
                 position: relative;
                 text-align: center;
-                img.avatar {
+                .avatar {
                     width: 90px;
                     height: 90px;
+                    display: inline-block;
                     border: 2px solid #f8a50d;
                     float: none;
+                    img {
+                        width: 90px;
+                        min-height: 90px;
+                    }
                 }
                 img.ranking_pic {
                     width: 103.5px;
@@ -120,14 +125,20 @@
         margin: 0 auto 10px;
         display: block;
         // vertical-align: middle;
-        img:last-child {
+        >span {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             box-sizing: border-box;
+            display: inline-block;
             border: 1px solid #FC4083;
+            overflow: hidden;
+            img {
+                width: 50px;
+                min-height: 50px;
+            }
         }
-        img:first-child {
+        >img {
             position: absolute;
             bottom: 0;
             right: 0;
@@ -185,15 +196,19 @@
         overflow: hidden;
         border-top: 8px solid #eee;
         margin-top: 12px;
-        .userinfo >img {
+        .userinfo >span {
             width: 40px;
             height: 40px;
+            img {
+                width : 40px;
+                min-height: 40px;
+            }
         }
-        .video_desc p {
-            font-size: 10px;
-            -webkit-transform: scale(0.8);
-            margin-left: -28px;
-        }
+        // .video_desc p {
+        //     font-size: 10px;
+        //     -webkit-transform: scale(0.8);
+        //     margin-left: -28px;
+        // }
     }
     .public_show {
         position: relative;
