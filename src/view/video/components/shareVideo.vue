@@ -1,14 +1,14 @@
 <template>
     <div class="main">
         <div class="header">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
             <a @click="p_log('Top_Banner_Download_Click')" target="_blank" :href="hrefs">インストール</a>
         </div>
         <div class="content">
             <img :src="video.activity.img" style="width: 100%;" v-if="video.activity">
             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                <span><img :src="idol.avatar?idol.avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                <span><img :src="idol.avatar?idol.avatar: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                 <div class="video_desc">
                     <h3>{{idol.nickname?idol.nickname:'Groupy'}}</h3>
                     <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす'}}</p>
@@ -18,7 +18,7 @@
                 <p><span style="color: #00B4BB" v-if="video.activity">#{{video.activity.tag}}#</span>{{video.title}}</p>
                 <div class="video_banner">
                     <img :src="video.thumbnail" alt="">
-                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/icon_menbership.png" alt="">
+                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/icon_menbership.png" alt="">
                 </div>
                 <div class="video_bg"></div>
                 <div class="vip_download">
@@ -32,7 +32,7 @@
                 <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" class="download">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="default_page" v-show="pageNone">
-                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
+                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
                 <p v-show="pageNone2">まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
                 <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
             </div>
@@ -41,10 +41,10 @@
                 <ul>
                     <li class="con_left" :class="{'left_show':videos.length>0}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
-                            <img :src="videos.length>0?videos[0].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                            <img :src="videos.length>0?videos[0].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>0?formatTime(videos[0].duration):'00:00'"></span>
                             </div>
                         </div>
@@ -52,10 +52,10 @@
                     </a></li>
                     <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
-                            <img :src="videos.length>2?videos[2].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                            <img :src="videos.length>2?videos[2].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>2?formatTime(videos[2].duration):'00:00'"></span>
                             </div>
                         </div>
@@ -65,10 +65,10 @@
                 <ul>
                     <li class="con_left" :class="{'left_show':videos.length>1}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
-                            <img :src="videos.length>1?videos[1].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                            <img :src="videos.length>1?videos[1].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>1?formatTime(videos[1].duration):'00:00'"></span>
                             </div>
                         </div>
@@ -76,10 +76,10 @@
                     </a></li>
                     <li class="con_left" :class="{'left_show':videos.length>3}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
-                            <img :src="videos.length>3?videos[3].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                            <img :src="videos.length>3?videos[3].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>3?formatTime(videos[3].duration):'00:00'"></span>
                             </div>
                         </div>

@@ -1,14 +1,14 @@
 <template>
     <div class="main">
         <div class="header">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
             <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
         </div>
         <div class="content" :class="{'bottom':applyInfo.id}">
             <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                 <div class="idolInfo eBorder">
-                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
+                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
                     <p>
                         <span><i class="idol_name">...</i>  がイベントを登録した</span>
                         <span>@Groupy</span>
@@ -17,7 +17,7 @@
                 <ul class="shows_detail">
                     <li>
                         <p class="shows_name">@Groupy</p>
-                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/shows/icon_time.png">開場--:--/開演--:--</span></p>
+                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">開場--:--/開演--:--</span></p>
                     </li>
                     <li>
                         <h5 class="li_title">出演者</h5>
@@ -53,17 +53,17 @@
                     <span><i>{{applyInfo.nums}}</i>枚予約した | {{applyInfo.email}}</span>
                     <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">Groupyをダウンロードしてもっと見よう</a></div>
                 </div>
-                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/shows/bg_booked.png">
+                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/bg_booked.png">
             </div>
             <div class="default_page" v-show="pageNone && loadingBig == false">
-                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/shows/default_noactivity.png" alt="">
+                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/default_noactivity.png" alt="">
                 <p>該当イベント情報はありません</p>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <ul class="shows_detail" v-if="loadingBig == false && pageNone == false">
                 <li style="border-bottom: 1px solid #eee;">
                     <p class="shows_name">{{showsInfo.title}}</p>
-                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
+                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                     <div class="win_info" v-if="!applyInfo.id" @click="platform()">予約する</div>
                 </li>
                 <li v-if="showsInfo.groups">
@@ -105,18 +105,18 @@
         <!-- 预约弹窗 -->
         <div class="reservation" v-if="reservationShow">
             <div class="r_header">
-                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/shows/icon_cancel_2.png" @click="reservationShow = false">
+                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_cancel_2.png" @click="reservationShow = false">
                 予約する
                 <span :class="{'active': canPush}" @click="pushOrder()">予約する</span>
             </div>
             <div class="lin_k">個人情報</div>
             <div style="overflow: hidden;">
-                <p class="names"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/shows/icon_name.png"><i>お名前</i></p>
+                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_name.png"><i>お名前</i></p>
                 <p class="input_content" style="display: inline-block;width: 38%;float: left"><span>姓</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.lastName" placeholder="入力してください"></p>
                 <p class="input_content" style="display: inline-block;width: 38%;float: right;margin-left: 0;"><span>名</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.firstName" placeholder="入力してください"></p>
             </div>
             <div>
-                <p class="names"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/shows/icon_email.png"><i>メールアドレス</i></p>
+                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_email.png"><i>メールアドレス</i></p>
                 <p class="input_content"><input v-on:input="updateStyle()" type="email" name="" v-model="forms.email" placeholder="入力してください"></p>
             </div>
             <div class="lin_k" style="background: #00B4BB;">枚数</div>
