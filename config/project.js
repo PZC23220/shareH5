@@ -34,5 +34,6 @@ module.exports = {
         activity_recharge: './src/view/activity_recharge', 
         activity_halloween: './src/view/activity_halloween', 
         activity_books: './src/view/activity_books', 
+        activity_someJapanese: './src/view/activity_someJapanese', 
     },
 };
