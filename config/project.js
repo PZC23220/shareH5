@@ -35,5 +35,6 @@ module.exports = {
         activity_halloween: './src/view/activity_halloween', 
         activity_books: './src/view/activity_books', 
         activity_someJapanese: './src/view/activity_someJapanese', 
+        activity_subwayAds: './src/view/activity_subwayAds', 
     },
 };
