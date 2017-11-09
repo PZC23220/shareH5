@@ -2,8 +2,8 @@
     <div class="main">
         <div class="header">
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
-            <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a @click="p_log('Top_Banner_Download_Click')" target="_blank" :href="hrefs">インストール</a>
+            <p>{{msg_text.download}}</p>
+            <a @click="p_log('Top_Banner_Download_Click')" target="_blank" :href="hrefs">{{msg_text.downTips}}</a>
         </div>
         <div class="content">
             <img :src="video.activity.img" style="width: 100%;" v-if="video.activity">
@@ -11,7 +11,7 @@
                 <span><img :src="idol.avatar?idol.avatar: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                 <div class="video_desc">
                     <h3>{{idol.nickname?idol.nickname:'Groupy'}}</h3>
-                    <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす'}}</p>
+                    <p>{{idol.introduce?idol.introduce:msg_text.waiting}}</p>
                 </div>
             </div>
             <div class="vip_show" v-show="vipShow">
@@ -22,22 +22,22 @@
                 </div>
                 <div class="video_bg"></div>
                 <div class="vip_download">
-                    <p>会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう</p>
-                    <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
+                    <p v-html="msg_text.videoTips"></p>
+                    <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">{{msg_text.download_2}}</a>
                 </div>
             </div>
             <div class="public_show"v-show="publicShow">
                 <p><span style="color: #00B4BB;margin-right: 5px;" v-if="video.activityTag">#{{video.activityTag}}#</span>{{video.title}}</p>
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
-                <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" class="download">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" class="download">{{msg_text.download_2}}</a>
             </div>
             <div class="default_page" v-show="pageNone">
                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
-                <p v-show="pageNone2">まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
-                <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
+                <p v-show="pageNone2" v-html="msg_text.noneComment"></p>
+                <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">{{msg_text.download_2}}</a>
             </div>
             <div class="more_video">
-                <h3>おすすめ</h3>
+                <h3>{{msg_text.recommend}}</h3>
                 <ul>
                     <li class="con_left" :class="{'left_show':videos.length>0}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
@@ -48,7 +48,7 @@
                                 <span v-html="videos.length>0?formatTime(videos[0].duration):'00:00'"></span>
                             </div>
                         </div>
-                        <p class="video_content">{{videos.length>1?videos[1].title:'Groupyで待ってまーす'}}</p>
+                        <p class="video_content">{{videos.length>1?videos[1].title:msg_text.waiting}}</p>
                     </a></li>
                     <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
@@ -59,7 +59,7 @@
                                 <span v-html="videos.length>2?formatTime(videos[2].duration):'00:00'"></span>
                             </div>
                         </div>
-                        <p class="video_content">{{videos.length>2?videos[2].title:'Groupyで待ってまーす'}}</p>
+                        <p class="video_content">{{videos.length>2?videos[2].title:msg_text.waiting}}</p>
                     </a></li>
                 </ul>
                 <ul>
@@ -72,7 +72,7 @@
                                 <span v-html="videos.length>1?formatTime(videos[1].duration):'00:00'"></span>
                             </div>
                         </div>
-                        <p class="video_content">{{videos.length>1?videos[1].title:'Groupyで待ってまーす'}}</p>
+                        <p class="video_content">{{videos.length>1?videos[1].title:msg_text.waiting}}</p>
                     </a></li>
                     <li class="con_left" :class="{'left_show':videos.length>3}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
@@ -83,7 +83,7 @@
                                 <span v-html="videos.length>3?formatTime(videos[3].duration):'00:00'"></span>
                             </div>
                         </div>
-                        <p class="video_content">{{videos.length>3?videos[3].title:'Groupyで待ってまーす'}}</p>
+                        <p class="video_content">{{videos.length>3?videos[3].title:msg_text.waiting}}</p>
                     </a></li>
                 </ul>
             </div>
@@ -125,7 +125,19 @@
             pageNone2: false,
             // loadingBig: true,
             idolShow: false,
-            hrefs: 'itms-apps://itunes.apple.com/app/id1270083927'
+            hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
+            msg_text: {
+                noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',
+                download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
+                downTips: 'インストール',
+                waiting: 'Groupyで待ってまーす。',
+                videoTips: 'この動画は会員のみ視聴可能です',
+                vip: '会員登録へ',
+                write: 'コメントする',
+                total: '件すべてを表示',
+                commentTips: 'コメント',
+                download_2: 'Groupyをダウンロードしてもっと見よう'
+            }
           }
         },
         methods: {
@@ -282,6 +294,36 @@
             }else {
                 this.hrefs = 'https://itunes.apple.com/app/id1270083927';
             }
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                this.msg_text = {
+                    noneComment: '还没有收到粉丝的评论<br>分享视频能让更多粉丝关注',
+                    download: '会员独有的私密状态查看，一键应援，共同守护爱豆的成长!',
+                    downTips: '下载',
+                    waiting: '我在Groupy等你哦！',
+                    videoTips: '成为爱豆守护者才能观看此视频',
+                    vip: '成为守护者',
+                    write: '添加评论',
+                    total: '条评论',
+                    commentTips: '共',
+                    download_2: '下载groupy查看更多视频',
+                    recommend: '相关视频'
+                }
+              } else {
+                this.msg_text = {
+                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',
+                    download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
+                    downTips: 'インストール',
+                    waiting: 'Groupyで待ってまーす。',
+                    videoTips: '会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう',
+                    vip: '会員登録へ',
+                    write: 'コメントする',
+                    total: '件すべてを表示',
+                    commentTips: 'コメント',
+                    download_2: 'Groupyをダウンロードしてもっと見よう',
+                    recommend: 'おすすめ'
+                }
+              }
         }
       }
 </script>

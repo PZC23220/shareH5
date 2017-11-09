@@ -2,37 +2,37 @@
     <div class="main">
         <div class="header">
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
-            <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
+            <p>{{showstext.download}}</p>
+            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">{{showstext.downTips}}</a>
         </div>
         <div class="content" :class="{'bottom':applyInfo.id}">
             <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                 <div class="idolInfo eBorder">
                     <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
                     <p>
-                        <span><i class="idol_name">...</i>  がイベントを登録した</span>
+                        <span><i class="idol_name">...</i>  {{showstext.pub}}</span>
                         <span>@Groupy</span>
                     </p>
                 </div>
                 <ul class="shows_detail">
                     <li>
                         <p class="shows_name">@Groupy</p>
-                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">開場--:--/開演--:--</span></p>
+                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">{{showstext.start}}--:--/{{showstext.shows}}--:--</span></p>
                     </li>
                     <li>
-                        <h5 class="li_title">出演者</h5>
+                        <h5 class="li_title">{{showstext.performer}}</h5>
                         <p class="show_groups">@Groupy</p>
                     </li>
                     <li>
-                        <h5 class="li_title">料金</h5>
-                        <p>Groupy预约 <i>0</i>円/当日 0円(+1D)</p>
+                        <h5 class="li_title">{{showstext.tickets}}</h5>
+                        <p>{{showstext.reservation}} <i>0</i>{{showstext.yen}}/当日 0{{showstext.yen}}(+1D)</p>
                     </li>
                     <li>
-                        <h5 class="li_title">会場</h5>
+                        <h5 class="li_title">{{showstext.meeting}}</h5>
                         <p>@Groupy</p>
                     </li>
                     <li>
-                        <h5 class="li_title">説明</h5>
+                        <h5 class="li_title">{{showstext.desc}}</h5>
                         <div class="shows_info">
                             <span>@Groupy</span>
                         </div>
@@ -42,44 +42,44 @@
             <div class="idolInfo eBorder" v-if="loadingBig == false && pageNone == false">
                 <span class="avatar"><img v-lazy="idolInfo.avatar"></span>
                 <p>
-                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  がイベントを登録した</span>
+                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  {{showstext.pub}}</span>
                     <span v-show="organization.name">{{organization.name}}</span>
                 </p>
             </div>
             <div class="mine_info" v-if="applyInfo.id">
                 <div class="info_content">
-                    <h5 class="li_title">Groupy预约</h5>
+                    <h5 class="li_title">{{showstext.reservation}}</h5>
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
-                    <span><i>{{applyInfo.nums}}</i>枚予約した | {{applyInfo.email}}</span>
-                    <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">Groupyをダウンロードしてもっと見よう</a></div>
+                    <span><i>{{applyInfo.nums}}</i>{{showstext.nums}} | {{applyInfo.email}}</span>
+                    <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">{{showstext.download_2}}</a></div>
                 </div>
                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/bg_booked.png">
             </div>
             <div class="default_page" v-show="pageNone && loadingBig == false">
                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/default_noactivity.png" alt="">
                 <p>該当イベント情報はありません</p>
-                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">{{showstext.download_2}}</a>
             </div>
             <ul class="shows_detail" v-if="loadingBig == false && pageNone == false">
                 <li style="border-bottom: 1px solid #eee;">
                     <p class="shows_name">{{showsInfo.title}}</p>
-                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
-                    <div class="win_info" v-if="!applyInfo.id" @click="platform()">予約する</div>
+                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">{{showstext.start}}{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/{{showstext.shows}}{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
+                    <div class="win_info" v-if="!applyInfo.id" @click="platform()">{{showstext.nows}}</div>
                 </li>
                 <li v-if="showsInfo.groups">
-                    <h5 class="li_title">出演者</h5>
+                    <h5 class="li_title">{{showstext.performer}}</h5>
                     <p class="show_groups">{{showsInfo.groups}}</p>
                 </li>
                 <li>
-                    <h5 class="li_title">料金</h5>
-                    <p>Groupy预约 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
+                    <h5 class="li_title">{{showstext.tickets}}</h5>
+                    <p>Groupy预约 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>{{showstext.yen}}/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}{{showstext.yen}}<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
                 </li>
                 <li v-if="showsInfo.location">
-                    <h5 class="li_title">会場</h5>
+                    <h5 class="li_title">{{showstext.meeting}}</h5>
                     <p>{{showsInfo.location}}</p>
                 </li>
                 <li v-if="showsInfo.introduce">
-                    <h5 class="li_title">説明</h5>
+                    <h5 class="li_title">{{showstext.desc}}</h5>
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
                         <p v-if="showsInfo.imgs">
@@ -90,7 +90,7 @@
                     </div>
                 </li>
                 <li>
-                    <h5 class="li_title">{{fansList.length}}人予約した</h5>
+                    <h5 class="li_title">{{fansList.length}}{{showstext.people}}</h5>
                     <div class="fans_list">
                         <p v-for="fans in fansList">
                             <span class="avatar"><img v-lazy="fans.avatar"></span>
@@ -100,28 +100,28 @@
                 </li>
             </ul>
         </div>
-        <!-- <div class="footer" @click="reservationShow = true">予約する</div>
+        <!-- <div class="footer" @click="reservationShow = true">{{showstext.nows}}</div>
         <div class="footer" v-if="false">Groupyをダウンロードしてもっと見よう</div> -->
         <!-- 预约弹窗 -->
         <div class="reservation" v-if="reservationShow">
             <div class="r_header">
                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_cancel_2.png" @click="reservationShow = false">
-                予約する
-                <span :class="{'active': canPush}" @click="pushOrder()">予約する</span>
+                {{showstext.nows}}
+                <span :class="{'active': canPush}" @click="pushOrder()">{{showstext.nows}}</span>
             </div>
-            <div class="lin_k">個人情報</div>
+            <div class="lin_k">{{showstext.contact}}</div>
             <div style="overflow: hidden;">
-                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_name.png"><i>お名前</i></p>
-                <p class="input_content" style="display: inline-block;width: 38%;float: left"><span>姓</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.lastName" placeholder="入力してください"></p>
-                <p class="input_content" style="display: inline-block;width: 38%;float: right;margin-left: 0;"><span>名</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.firstName" placeholder="入力してください"></p>
+                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_name.png"><i>{{showstext.name}}</i></p>
+                <p class="input_content" style="display: inline-block;width: 38%;float: left"><span>姓</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.lastName" :placeholder="showstext.pla"></p>
+                <p class="input_content" style="display: inline-block;width: 38%;float: right;margin-left: 0;"><span>名</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.firstName" :placeholder="showstext.pla"></p>
             </div>
             <div>
-                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_email.png"><i>メールアドレス</i></p>
-                <p class="input_content"><input v-on:input="updateStyle()" type="email" name="" v-model="forms.email" placeholder="入力してください"></p>
+                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_email.png"><i>{{showstext.email}}</i></p>
+                <p class="input_content"><input v-on:input="updateStyle()" type="email" name="" v-model="forms.email" :placeholder="showstext.pla"></p>
             </div>
-            <div class="lin_k" style="background: #00B4BB;">枚数</div>
+            <div class="lin_k" style="background: #00B4BB;">{{showstext.showsNums}}</div>
             <div>
-                <p class="input_content" style="margin-top: 12px;border: 1px solid #00B4BB;"><input v-on:input="updateStyle()" v-model="forms.nums" type="tel" name="" placeholder="入力してください"></p>
+                <p class="input_content" style="margin-top: 12px;border: 1px solid #00B4BB;"><input v-on:input="updateStyle()" v-model="forms.nums" type="tel" name="" :placeholder="showstext.pla"></p>
             </div>
         </div>
         <!-- toast -->
@@ -157,7 +157,31 @@
             idx: 0,
             hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
             tokens: '',
-            toastText: '预约成功'
+            toastText: '预约成功',
+            showstext: {
+                pub: 'がイベントを登録した',
+                start: '開場',
+                shows: '開演',
+                performer: '出演者',
+                tickets: '料金',
+                meeting: '会場',
+                desc: '説明',
+                reservation: 'Groupyで予約',
+                yen: '円',
+                nums: '枚予約した',
+                people: '人予約した',
+                nows: '予約する',
+                edit: '編集',
+                download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
+                downTips: 'インストール',
+                waiting: 'Groupyで待ってまーす。',
+                download_2: 'Groupyをダウンロードしてもっと見よう',
+                contact: '個人情報',
+                name: 'お名前',
+                email: 'メールアドレス',
+                showsNums: '枚数',
+                pla: '入力してください'
+            }
           }
         },
         methods: {
@@ -186,28 +210,55 @@
             formatDay(key) {
                 let timer = new Date(key).getDay();
                 var str;
-                switch (timer) {  
-                    case 0 :  
-                            str = "日";  
-                            break;  
-                    case 1 :  
-                            str = "月";  
-                            break;  
-                    case 2 :  
-                            str = "火";  
-                            break;  
-                    case 3 :  
-                            str = "水";  
-                            break;  
-                    case 4 :  
-                            str = "木";  
-                            break;  
-                    case 5 :  
-                            str = "金";  
-                            break;  
-                    case 6 :  
-                            str = "土";  
-                            break;  
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                if(_lan === 'zh-cn') {
+                    switch (timer) {
+                        case 0 :  
+                                str = "周日";  
+                                break;  
+                        case 1 :  
+                                str = "周一";  
+                                break;  
+                        case 2 :  
+                                str = "周二";  
+                                break;  
+                        case 3 :  
+                                str = "周三";  
+                                break;  
+                        case 4 :  
+                                str = "周四";  
+                                break;  
+                        case 5 :  
+                                str = "周五";  
+                                break;  
+                        case 6 :  
+                                str = "周六";  
+                                break;  
+                    }
+                }else {
+                    switch (timer) {
+                        case 0 :  
+                                str = "日";  
+                                break;  
+                        case 1 :  
+                                str = "月";  
+                                break;  
+                        case 2 :  
+                                str = "火";  
+                                break;  
+                        case 3 :  
+                                str = "水";  
+                                break;  
+                        case 4 :  
+                                str = "木";  
+                                break;  
+                        case 5 :  
+                                str = "金";  
+                                break;  
+                        case 6 :  
+                                str = "土";  
+                                break;  
+                    }
                 }
                 return  str;
             },
@@ -278,7 +329,12 @@
                             if(res.status == 200) {
                                 self.getShows(self.tokens);
                                 self.reservationShow = false;
-                                self.toastText = '预约成功';
+                                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                                if(_lan === 'zh-cn') {
+                                    self.toastText = '预约成功';
+                                }else {
+                                    self.toastText = '予約しました';
+                                }
                                 self.toastShow = true;
                                 setTimeout(function(){
                                     self.toastShow = false;
@@ -292,7 +348,12 @@
                         });
                     }else {
                         self.reservationShow = false;
-                        self.toastText = '服务器错误';
+                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                        if(_lan === 'zh-cn') {
+                            self.toastText = '服务器错误';
+                        }else {
+                            self.toastText = 'エラーが発生しました';
+                        }
                         self.toastShow = true;
                         setTimeout(function(){
                             self.toastShow = false;
@@ -438,6 +499,59 @@
             }
             // this.platform();
             this.getShows();
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 this.showstext= {
+                    pub: '发布活动',
+                    start: '开场',
+                    shows: '开演',
+                    performer: '演出团体',
+                    tickets: '门票价格',
+                    meeting: '活动场地',
+                    desc: '活动信息',
+                    reservation: 'Groupy预约',
+                    yen: '日元',
+                    nums: '张预约',
+                    people: '人预约',
+                    nows: '立即预约',
+                    edit: '编辑',
+                    download: '会员独有的私密状态查看，一键应援，共同守护爱豆的成长!',
+                    downTips: '下载',
+                    waiting: '我在Groupy等你哦！',
+                    download_2: '下载groupy查看更多视频',
+                    contact: '联系方式',
+                    name: '姓名',
+                    email: '邮箱',
+                    showsNums: '预定数量',
+                    pla: '请输入'
+
+                }
+              } else {
+                this.showstext= {
+                    pub: 'がイベントを登録した',
+                    start: '開場',
+                    shows: '開演',
+                    performer: '出演者',
+                    tickets: '料金',
+                    meeting: '会場',
+                    desc: '説明',
+                    reservation: 'Groupyで予約',
+                    yen: '円',
+                    nums: '枚予約した',
+                    people: '人予約した',
+                    nows: '予約する',
+                    edit: '編集',
+                    download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
+                    downTips: 'インストール',
+                    waiting: 'Groupyで待ってまーす。',
+                    download_2: 'Groupyをダウンロードしてもっと見よう',
+                    contact: '個人情報',
+                    name: 'お名前',
+                    email: 'メールアドレス',
+                    showsNums: '枚数',
+                    pla: '入力してください'
+                }
+              }
         }
       }
 </script>

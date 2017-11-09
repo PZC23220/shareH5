@@ -2,8 +2,8 @@
     <div class="main">
         <div class="header">
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
-            <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
+            <p>{{msg_text.download}}</p>
+            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">{{msg_text.downTips}}</a>
         </div>
         <div class="content">
             <div class="idol_desc">
@@ -11,18 +11,18 @@
                 <div class="idol_desc_content">
                     <div>
                         <span class="avatar"><img v-lazy="idol.avatar"></span>
-                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><a class="cursor" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_join.png"><i>入会</i></a></div>
+                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>{{msg_text.people}}</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>{{msg_text.like}}</em></span><a class="cursor" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_join.png"><i>{{msg_text.come}}</i></a></div>
                         <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
-                        <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす。'}}</p>
-                        <a class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>ファンランキング</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
+                        <p>{{idol.introduce?idol.introduce:msg_text.waiting}}</p>
+                        <a class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
                     </div>
                 </div>
             </div>
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">動画</a>
-                <a class="tabs" @click="changePages(1)">掲示板</a>
-                <a class="tabs" :href="hrefs" target="_blank">個チャ</a>
-                <a class="tabs" :href="hrefs" target="_blank">ストア</a>
+                <a class="tabs active" @click="changePages(0)">{{msg_text.video}}</a>
+                <a class="tabs" @click="changePages(1)">{{msg_text.comment}}</a>
+                <a class="tabs" :href="hrefs" target="_blank">{{msg_text.msg}}</a>
+                <a class="tabs" :href="hrefs" target="_blank">{{msg_text.shop}}</a>
             </div>
             <div class="share_content">
                 <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
@@ -46,22 +46,22 @@
                                 <span class="play_times"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.data.readCount}}</span>
                                 <div class="Masked2" v-if="hot.data.publicType == 1">
                                     <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_vip.png">
-                                    <p>この動画は会員のみ視聴可能です</p>
-                                    <a :href="hrefs" target="_blank">会員登録へ</a>
+                                    <p>{{msg_text.videoTips}}</p>
+                                    <a :href="hrefs" target="_blank">{{msg_text.vip}}</a>
                                 </div>
                             </div>
                             <div class="video_desc_content">
-                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
+                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">{{msg_text.write}}</div></a>
                                 <p class="video_text"><span style="color: #00B4BB" v-if="hot.data.activity">#{{hot.data.activity.tag}}#</span>{{hot.data.title}}</p>
                                 <ul class="comment_list" style="background: #fff;">
-                                    <div class="comment_total"><span><i>コメント{{hot.data.postList.length}}件すべてを表示</i></span></div>
+                                    <div class="comment_total"><span><i>{{msg_text.commentTips}}{{hot.data.postList.length}}{{msg_text.total}}</i></span></div>
                                     <li v-for="comment in hot.data.postList" style="border: none;padding: 0 12px 3px;">
                                        <div class="comment_content"><span>{{comment.nickname?comment.nickname:'...'}}</span>{{comment.content}}</div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a>
+                        <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">{{msg_text.download_2}}</a>
                     </swiper-slide>
                     <swiper-slide id="swiper2">
                         <ul class="comment_list dynamic">
@@ -135,7 +135,7 @@
                             <p v-html="msg_text.noneComment"></p>
                         </div>
                     </ul>
-                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a>
+                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">{{msg_text.download_2}}</a>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -209,12 +209,24 @@
             boxShow: false,
             havedlast: false,
             msg_text: {
-                publish: '投稿',
-                pubMsg: '投稿して<br>盛り上がろう',
                 noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
-                load: '読み込み中',
-                loadAll: '全て表示されました'
-
+                download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
+                come: '入会',
+                downTips: 'インストール',
+                people: 'ファン',
+                like: 'Likes',
+                fans: 'ファンランキング',
+                waiting: 'Groupyで待ってまーす。',
+                video: '動画',
+                comment: '掲示板',
+                shop: 'ストア',
+                msg: '個チャ',
+                videoTips: 'この動画は会員のみ視聴可能です',
+                vip: '会員登録へ',
+                write: 'コメントする',
+                total: '件すべてを表示',
+                commentTips: 'コメント',
+                download_2: 'Groupyをダウンロードしてもっと見よう'
             },
             hotList:[],
             idol: {},
@@ -355,6 +367,50 @@
             }else {
                 this.hrefs = 'https://itunes.apple.com/app/id1270083927';
             }
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                this.msg_text = {
+                    noneComment: '还没有留言<br>去发布留言，让粉丝来互动吧！',
+                    download: '会员独有的私密状态查看，一键应援，共同守护爱豆的成长!',
+                    come: '关注',
+                    downTips: '下载',
+                    people: '守护者',
+                    like: 'Likes',
+                    fans: '贡献排行榜',
+                    waiting: '我在Groupy等你哦！',
+                    video: '动态',
+                    comment: '留言板',
+                    shop: '商品',
+                    msg: '私信',
+                    videoTips: '成为爱豆守护者才能观看此视频',
+                    vip: '成为守护者',
+                    write: '添加评论',
+                    total: '条评论',
+                    commentTips: '共',
+                    download_2: '下载groupy查看更多视频'
+                }
+              } else {
+                this.msg_text = {
+                    noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
+                    download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
+                    come: '入会',
+                    downTips: 'インストール',
+                    people: 'ファン',
+                    like: 'Likes',
+                    fans: 'ファンランキング',
+                    waiting: 'Groupyで待ってまーす。',
+                    video: '動画',
+                    comment: '掲示板',
+                    shop: 'ストア',
+                    msg: '個チャ',
+                    videoTips: 'この動画は会員のみ視聴可能です',
+                    vip: '会員登録へ',
+                    write: 'コメントする',
+                    total: '件すべてを表示',
+                    commentTips: 'コメント',
+                    download_2: 'Groupyをダウンロードしてもっと見よう'
+                }
+              }
         }
       }
 </script>
@@ -558,7 +614,7 @@
         img {
             width: 34px;
             display: block;
-            margin: 100px auto 12px;
+            margin: 60px auto 12px;
         }
         p {
             font-size: 14px;
