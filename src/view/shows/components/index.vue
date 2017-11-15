@@ -526,6 +526,9 @@
                     pla: '请输入'
 
                 }
+                $('.htmlTilte').html('Groupy');
+                $('.metaTitle').attr('content','Groupy')
+                $('.metaDesc').attr('content','快来Groupy跟偶像亲密互动吧')
               } else {
                 this.showstext= {
                     pub: 'がイベントを登録した',

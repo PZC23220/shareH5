@@ -389,6 +389,9 @@
                     commentTips: '共',
                     download_2: '下载groupy查看更多视频'
                 }
+                $('.htmlTilte').html('Groupy');
+                $('.metaTitle').attr('content','Groupy')
+                $('.metaDesc').attr('content','快来Groupy跟偶像亲密互动吧')
               } else {
                 this.msg_text = {
                     noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',

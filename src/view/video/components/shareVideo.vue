@@ -309,6 +309,9 @@
                     download_2: '下载groupy查看更多视频',
                     recommend: '相关视频'
                 }
+                $('.htmlTilte').html('Groupy');
+                $('.metaTitle').attr('content','Groupy')
+                $('.metaDesc').attr('content','快来Groupy跟偶像亲密互动吧')
               } else {
                 this.msg_text = {
                     noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',
