@@ -161,7 +161,7 @@
                 var self = this;
                 http.get('/video/get',{
                     params: {
-                        videoId: location.href.split('?videoId=')[1].split('#/')[0]
+                        videoId: getParams('videoId')
                     }
                 }).then(function(res){
                     console.log(res);
@@ -266,7 +266,7 @@
                     version: "1.0.0",
                     action: val,
                     result: "success",
-                    videoId: location.href.split('?videoId=')[1].split('#/')[0]
+                    videoId: getParams('videoId')
                 }
                 http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');

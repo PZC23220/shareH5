@@ -195,7 +195,7 @@
                     version: "1.0.0",
                     action: val,
                     result: "success",
-                    showsId: location.href.split('?showsId=')[1].split('#/')[0]
+                    showsId: getParams('showsId')
                 }
                 http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');

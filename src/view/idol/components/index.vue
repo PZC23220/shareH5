@@ -309,7 +309,7 @@
                 let self = this;
                 http.get('/post/listByFans',{
                     params: {
-                        idolId: location.href.split('?idolId=')[1].split('#/')[0],
+                        idolId: getParams('idolId'),
                         from: 0,
                         rows: 10
                     }
@@ -336,7 +336,7 @@
                     version: "1.0.0",
                     action: val,
                     result: "success",
-                    idolId: location.href.split('?idolId=')[1].split('#/')[0]
+                    idolId: getParams('idolId')
                 }
                 http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
