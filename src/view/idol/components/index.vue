@@ -281,7 +281,7 @@
                 var self = this;
                 http.get('/group/idolHomeAsFans',{
                     params: {
-                        idolId: location.href.split('?idolId=')[1].split('#/')[0]
+                        idolId: getParams('idolId')
                     }
                 }).then(function(res){
                     console.log(res);
