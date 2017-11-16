@@ -12,5 +12,5 @@
  @import "../../css/reset.css";
  @import "../../css/common.scss";
  @import "../../css/share.scss";
- @import "../../css/activity_share.scss";
+ @import "../../css/idol_activity.scss";
 </style>
