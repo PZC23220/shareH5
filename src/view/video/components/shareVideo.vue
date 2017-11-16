@@ -97,6 +97,7 @@
     import VideoPlayer from 'vue-video-player';
     import http from '@api/js/http.js';
     import $ from 'n-zepto';
+    require('@api/js/common.js')
     export default {
         data() {
           return {
