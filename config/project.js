@@ -37,5 +37,6 @@ module.exports = {
         activity_someJapanese: './src/view/activity_someJapanese', 
         activity_subwayAds: './src/view/activity_subwayAds', 
         activity_fun: './src/view/activity_fun', 
+        activity_fun_begin: './src/view/activity_fun_begin', 
     },
 };
