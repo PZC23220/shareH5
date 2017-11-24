@@ -1,0 +1,84 @@
+<template>
+    <div class="main">
+        <div class="content">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-attendance.jpg" class="banner">
+            <img class="attendance-title" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-attendance-title.png" alt="">
+            <p class="attendance-desc">Groupyアプリおよび公式Twitter @GGroupyyy にて発表されます。<br>※アプリでの掲載期間は一週間となります。</p>
+            <ul class="ranking_list">
+                <li v-for="(idol,key) in ranking">
+                    <div class="ranking-idol-content" @click="idol.idol_id?showIdolPage(idol.idol_id):false">
+                        <span class="avatar"><img v-lazy="idol.avatar"></span>
+                        <div class="name">{{idol.nickname?idol.nickname:'...'}}</div>
+                        <div class="idol_desc">
+                            <p><span>{{Number(idol.followedCount?idol.followedCount:0).toLocaleString()}}</span><i>フォロワー</i></p>
+                            <p><span>{{Number(idol.fansCount?idol.fansCount:0).toLocaleString()}}</span><i>守護者</i></p>
+                            <p><span>{{Number(idol.popularityCount?idol.popularityCount:0).toLocaleString()}}</span><i>Likes</i></p>
+                        </div>
+                    </div>
+                    <img class="attendance-bg" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-attendance-bg.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="header">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
+            <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
+            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
+        </div>
+    </div>
+</template>
+<script>
+    import http from '@api/js/http.js';
+    require('@api/js/common.js')
+    export default {
+        data() {
+            return {
+                ranking: [],
+                idx: 0,
+                idx2: 0,
+                activityInfo:{}
+            }
+        },
+        methods: {
+          getList() {
+            let self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(self.idx < 2) {
+                let startDate = getParams('startDate');
+                let endDate = getParams('endDate');
+                http.get('/ranking/idolVideoAttendance',{
+                    params: {
+                        startDate:startDate,
+                        endDate: endDate,
+                        dateCount: Math.round((endDate - startDate)/(24*60*60))
+                        // dateCount: 1,
+                    }
+                }).then(function(res){
+                    self.ranking = res.data;
+                }).catch(function(){
+                    self.idx++;
+                    self.getList();
+                });
+            }else {
+                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                     }
+                })
+            }
+          },
+          showIdolPage(val) {
+            console.log(val)
+            window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler('showIdolPage', {'idolId': val})
+            })
+          },
+        },
+        mounted() {
+        },
+        created() {
+            this.getList();
+        }
+    }
+</script>
