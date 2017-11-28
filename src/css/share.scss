@@ -2,11 +2,9 @@
 	padding: 9px 12px;
 	border-bottom: #FAFAFA solid 1px;
 	box-shadow: 0 1px 4.5px 0 rgba(0,0,0,0.18);
-	box-sizing: border-box;
 	max-height: 64px;
 	background: #fff;
 	font-size: 12px;
-	position: fixed;
 	>img:first-child {
 		width: 45px;
 		margin-right: 10.5px;
@@ -30,27 +28,11 @@
 		margin-top: 7.5px;
 	}
 }
-.content {
-    position: absolute;
-    height: calc(100vh - 64px);
-    overflow: auto;
-    left: 0;
-    width: 100%;
-    overflow-x: hidden;
-	top: 64px;
-	padding-bottom: 20px;
-	box-sizing: border-box;
-}
-// @media screen and (max-width: 499px) {
-//     .content {
-//         height: calc(100vh - 124px);
-//     }
-// }
 @media screen and (min-width: 500px) {
 	.header, .footer, .reservation {
 		left: 50% !important;
 		width: 500px !important;
-		margin-left: -250px !important;
+		margin-left: -243px !important;
 	}
 	.header > p {
     	line-height: 45px;
