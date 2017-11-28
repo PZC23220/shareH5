@@ -1,32 +1,20 @@
 <template>
     <div class="main">
         <div class="content">
-            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-halloween-over.jpg" class="banner">
-            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-halloween.jpg" class="banner">
-            <h2 class="activity_title">ハロウィンを盛り上げよう！期間中上位のアイドルは起動画面・次のイベントバナーに掲載など豪華な特典が盛りだくさん！さらに、ファンにも、ハロウィン限定ギフトと推しメンの直筆メッセージカードを用意！</h2>
-            <div class="idol-ranking" v-if="!idol.idol_id">
+            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAds_preliminaries-over.jpg" class="banner">
+            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAds_preliminaries.jpg" class="banner">
+            <h2 class="activity_title">上位5名かつ50万Like達成のユニットは決勝への参加権を獲得！さらに、Groupyアプリの起動画面に登場して貰います。。</h2>
+            <div class="idol-ranking">
                 <div class="ranking-two">
-                    <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><span><img v-lazy="ranking[0].avatar"></span></p><p class="idolName-content"><span>{{ranking[0].nickname?ranking[0].nickname:'...'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].popularity?ranking[0].popularity:0).toLocaleString()}}</i></span></p></div>
-                    <div class="ranking-idol" v-if="ranking.length > 1"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><span><img v-lazy="ranking[1].avatar"></span></p><p class="idolName-content"><span>{{ranking[1].nickname?ranking[1].nickname:'...'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[1].popularity?ranking[1].popularity:0).toLocaleString()}}</i></span></p></div>
-                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_3.png"><span><img v-lazy="ranking[2].avatar"></span></p><p class="idolName-content"><span>{{ranking[2].nickname?ranking[2].nickname:'...'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].popularity?ranking[2].popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 0"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_1.png"><span><img v-lazy="ranking[0].avatar"></span></p><p class="idolName-content"><span>{{ranking[0].orgName?ranking[0].orgName:ranking[0].nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[0].totalPopularity?ranking[0].totalPopularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 1"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_2.png"><span><img v-lazy="ranking[1].avatar"></span></p><p class="idolName-content"><span>{{ranking[1].orgName?ranking[1].orgName:ranking[1].nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[1].totalPopularity?ranking[1].totalPopularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 2"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_3.png"><span><img v-lazy="ranking[2].avatar"></span></p><p class="idolName-content"><span>{{ranking[2].orgName?ranking[2].orgName:ranking[2].nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[2].totalPopularity?ranking[2].totalPopularity:0).toLocaleString()}}</i></span></p></div>
+                </div>
+                <div class="ranking-two" style="margin-top: 10px;">
+                    <div class="ranking-idol" v-if="ranking.length > 3"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_4.jpg"><span><img v-lazy="ranking[3].avatar"></span></p><p class="idolName-content"><span>{{ranking[3].orgName?ranking[3].orgName:ranking[3].nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[3].totalPopularity?ranking[3].totalPopularity:3).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol" v-if="ranking.length > 4"><p class="avatar-content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_5.jpg"><span><img v-lazy="ranking[4].avatar"></span></p><p class="idolName-content"><span>{{ranking[4].orgName?ranking[4].orgName:ranking[4].nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-4.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(ranking[4].totalPopularity?ranking[4].totalPopularity:0).toLocaleString()}}</i></span></p></div>
                 </div>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
-            </div>
-            <div class="idol-ranking" v-if="idol.idol_id">
-                <div class="ranking-one">
-                   <div class="img_content">
-                        <span class="avatar"><img v-lazy="idol.avatar"></span>
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/pic_ranking_1.png" class="ranking_pic">
-                        <span class="idol_level">NO.{{idol.ranking?idol.ranking:'-'}}</span>
-                    </div>
-                    <div class="name">{{idol.nickname?idol.nickname:'...'}}</div>
-                    <div class="idol_desc">
-                        <!-- <p><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>0?(idol.gcoin?idol.gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p> -->
-                        <p><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span></p>
-                        <p><span><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i>作品</i></p>
-                    </div>
-                </div>
-                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="width: 150px;">Groupyへ応援する</a>
             </div>
             <div class="share_content">
                 <div class="video_content" v-for="(hot,key) in videos" v-if="key < 10">
@@ -153,33 +141,15 @@
                 let timer = new Date(key);
                 return timer.Format('MM.dd') + '  '+ timer.Format('hh:mm');
             },
-            getActivityInfo() {
-                var self = this;
-                http.get('/video/shareActivityVideos',{
-                    params: {
-                        idolId: getParams('idolId'),
-                        activityId: getParams('activityId')
-                    }
-                }).then(function(res){
-                    console.log(res)
-                    if(res.data.selfRanking) {
-                        self.idol = res.data.selfRanking;
-                    }
-                    if(res.data.videos) {
-                        self.videos = res.data.videos;
-                    }
-                }).catch(function(){
-
-                });
-            },
             getRanking() {
                 var self = this;
-                http.get('/video/activityIdols',{
+                http.get('/ranking/idolActVideoByOrganzation',{
                     params: {
                         activityId: getParams('activityId'),
-                        rows: 10
+                        rows: 5
                     }
                 }).then(function(res){
+                    console.log(res);
                     if(res.data.ranking) {
                         self.ranking = res.data.ranking;
                     }
@@ -200,7 +170,6 @@
                         rows: 10
                     }
                 }).then(function(res){
-                    console.log(res);
                     if(res.data.videos) {
                         self.videos = res.data.videos;
                     }
@@ -236,11 +205,7 @@
         },
         created() {
             this.getRanking();
-            if(getParams('isFans') == 1 || !getParams('idolId') || getParams('idolId') == 'undefined') {
-                this.getVideoList();
-            }else {
-                this.getActivityInfo();
-            }
+            this.getVideoList();
             
             this.p_log('idol_shareActivity_halloween_h5_open');
             var ua = navigator.userAgent.toLowerCase();

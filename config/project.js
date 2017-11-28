@@ -39,5 +39,6 @@ module.exports = {
         activity_fun: './src/view/activity_fun', 
         activity_fun_begin: './src/view/activity_fun_begin', 
         activity_attendance: './src/view/activity_attendance', 
+        activity_subwayAds_preliminaries: './src/view/activity_subwayAds_preliminaries', 
     },
 };
