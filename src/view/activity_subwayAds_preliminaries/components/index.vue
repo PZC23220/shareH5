@@ -153,7 +153,7 @@
                     if(res.data.ranking) {
                         self.ranking = res.data.ranking;
                     }
-                    if(res.data.isActivityEnded) {
+                    if(res.data.activityEnded) {
                         self.isOver = true;
                     }else {
                         self.isOver = false;
