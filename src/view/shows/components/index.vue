@@ -78,7 +78,7 @@
                     <h5 class="li_title">{{showstext.meeting}}</h5>
                     <p>{{showsInfo.location}}</p>
                 </li>
-                <li v-if="showsInfo.introduce">
+                <li v-if="showsInfo.introduce || showsInfo.imgs">
                     <h5 class="li_title">{{showstext.desc}}</h5>
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
