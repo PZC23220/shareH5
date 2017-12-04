@@ -3,14 +3,14 @@
         <div class="content">
             <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAds_preliminaries-over.jpg" class="banner">
             <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAds_preliminaries.jpg" class="banner">
-            <h2 class="activity_title">上位5名かつ50万Like達成のユニットは決勝への参加権を獲得！さらに、Groupyアプリの起動画面に登場して貰います。。</h2>
+            <h2 class="activity_title"><i style="color: #42A9DE;">※<12月04日(月)お知らせ><br>より多くのユニットがイベントに参加できるよう、イベントの期間・特典等を修正させて頂きます。 詳細をご確認ください。大変申し訳ございませんが、ご理解いただきますようお願い致します。</i>上位5名かつ50万Like達成のユニットは決勝への参加権を獲得！さらに、Groupyアプリの起動画面に登場して貰います。。</h2>
             <div class="idol-ranking">
                 <div class="ranking-two">
                     <div class="ranking-idol" v-for="(idol , key) in ranking" v-if="isOver?(idol.popularity >= 500000&&key < 3):key < 3"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'"><span><img v-lazy="idol.orgLogo?idol.orgLogo:idol.avatar"></span></p><p class="idolName-content"><span>{{idol.orgName?idol.orgName:idol.nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
                 </div>
-                <div class="ranking-two" style="margin-top: 10px;">
+                <!-- <div class="ranking-two" style="margin-top: 10px;">
                     <div class="ranking-idol" v-for="(idol , key) in ranking" v-if="isOver?(idol.popularity >= 500000 && key > 2 & key < 5):(key > 2 & key < 5)"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.jpg'"><span><img v-lazy="idol.orgLogo?idol.orgLogo:idol.avatar"></span></p><p class="idolName-content"><span>{{idol.orgName?idol.orgName:idol.nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
-                </div>
+                </div> -->
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
             </div>
             <div class="share_content">
