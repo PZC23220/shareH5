@@ -3,7 +3,11 @@
         <div class="content">
             <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAds_preliminaries-over.jpg" class="banner">
             <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAds_preliminaries.jpg" class="banner">
-            <h2 class="activity_title"><i style="color: #42A9DE;">※<12月04日(月)お知らせ><br>より多くのユニットがイベントに参加できるよう、イベントの期間・特典等を修正させて頂きます。 詳細をご確認ください。大変申し訳ございませんが、ご理解いただきますようお願い致します。</i>上位5名かつ50万Like達成のユニットは決勝への参加権を獲得！さらに、Groupyアプリの起動画面に登場して貰います。。</h2>
+            <!-- <h2 class="activity_title"><i style="color: #42A9DE;">※<12月04日(月)お知らせ><br>より多くのユニットがイベントに参加できるよう、イベントの期間・特典等を修正させて頂きます。 詳細をご確認ください。大変申し訳ございませんが、ご理解いただきますようお願い致します。</i>上位3名のユニットは、中国・広州の中心地にある広州塔駅で大型看板に1ヶ月ジャック！さらに、Groupyアプリの起動画面に登場して貰います。</h2> -->
+            <div class="activity_rule" style="padding: 12px;font-size:14px;">
+                <p><i style="color: #42A9DE;font-weight: 600;">※<12月04日(月)お知らせ><br>より多くのユニットがイベントに参加できるよう、イベントの期間・特典等を修正させて頂きます。 詳細をご確認ください。大変申し訳ございませんが、ご理解いただきますようお願い致します。</i></p>
+                <p>上位3名のユニットは、中国・広州の中心地にある広州塔駅で大型看板に1ヶ月ジャック！さらに、Groupyアプリの起動画面に登場して貰います。</p>
+            </div>
             <div class="idol-ranking">
                 <div class="ranking-two">
                     <div class="ranking-idol" v-for="(idol , key) in ranking" v-if="isOver?(idol.popularity >= 500000&&key < 3):key < 3"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'"><span><img v-lazy="idol.orgLogo?idol.orgLogo:idol.avatar"></span></p><p class="idolName-content"><span>{{idol.orgName?idol.orgName:idol.nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
