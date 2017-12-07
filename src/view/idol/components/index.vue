@@ -14,7 +14,7 @@
                         <a :href="hrefs" class="cursor" target="_blank"><span class="avatar"><img v-lazy="idol.avatar"></span></a>
                         <span class="ranking_position">{{idol.rankingPosition?idol.rankingPosition:0}}位</span>
                         <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
-                        <span class="idol_org">@{{idol.organization?idol.organization.introduce:'  '}}</span>
+                        <span class="idol_org" v-if="organization.name">@{{organization.name}}</span>
                         <div class="idol_support">
                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow_1.png" alt=""><em>{{totalFollowed?Number(totalFollowed).toLocaleString():0}}</em></span>
                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip_1.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}</em></span>
@@ -65,7 +65,7 @@
                                 <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">{{msg_text.write}}</div></a>
                                 <p class="video_text"><span style="color: #00B4BB" v-if="hot.data.activity">#{{hot.data.activity.tag}}#</span>{{hot.data.title}}</p>
                                 <ul class="comment_list" style="background: #fff;">
-                                    <div class="comment_total"><span><i>{{msg_text.commentTips}}{{hot.data.postList.length}}{{msg_text.total}}</i></span></div>
+                                    <div class="comment_total"><span><i>{{msg_text.commentTips}}{{hot.data.postCount}}{{msg_text.total}}</i></span></div>
                                     <li v-for="comment in hot.data.postList" style="border: none;padding: 0 12px 3px;">
                                        <div class="comment_content"><span>{{comment.nickname?comment.nickname:'...'}}</span>{{comment.content}}</div>
                                     </li>
@@ -214,6 +214,7 @@
             activities: [],
             totalFollowed: 0,
             groupInfo: {},
+            organization: {},
             pageNone: true,
             pageNone2: false,
             loadingBig: true,
@@ -303,10 +304,6 @@
                     console.log(res);
                     if(res.data.idol) {
                         self.idol = res.data.idol;
-                        // $('.htmlTilte').html(res.data.idol.nickname);
-                        // $('.metaTitle').attr('content',res.data.idol.nickname);
-                        // $('.metaDesc').attr('content',res.data.idol.introduce);
-                        // $('.metaImg').attr('content',res.data.idol.avatar);
                     }
                     if(res.data.groupInfo) {
                         self.groupInfo = res.data.groupInfo;
@@ -338,6 +335,9 @@
                     console.log(res);
                     if(res.data.activities) {
                         self.activities = res.data.activities;
+                    }
+                    if(res.data.organization) {
+                        self.organization = res.data.organization;
                     }
                 })
             },
