@@ -7,14 +7,25 @@
         </div>
         <div class="content">
             <div class="idol_desc">
-                <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png);'"></div>
+                <!-- <div class="idol_desc_bg" :style="groupInfo.bgImg?'background-image: url('+ idol.bgImg +');':'background-image: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png);'"></div> -->
+                <img class="idol_desc_bg" :src="groupInfo.bgImg?groupInfo.bgImg:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/bg.png'" alt="">
                 <div class="idol_desc_content">
                     <div>
-                        <span class="avatar"><img v-lazy="idol.avatar"></span>
-                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>{{msg_text.people}}</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>{{msg_text.like}}</em></span><a class="cursor" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_join.png"><i>{{msg_text.come}}</i></a></div>
+                        <a :href="hrefs" class="cursor" target="_blank"><span class="avatar"><img v-lazy="idol.avatar"></span></a>
+                        <span class="ranking_position">{{idol.rankingPosition?idol.rankingPosition:0}}位</span>
                         <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
-                        <p>{{idol.introduce?idol.introduce:msg_text.waiting}}</p>
+                        <span class="idol_org">@{{idol.organization?idol.organization.introduce:'  '}}</span>
+                        <div class="idol_support">
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow_1.png" alt=""><em>{{totalFollowed?Number(totalFollowed).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip_1.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes_1.png" alt=""><em>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}</em></span>
+                        </div>
+                        <div class="attention">
+                            <a class="cursor" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
+                            <a class="cursor" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip.png"><i>{{msg_text.protector}}</i></a>
+                        </div>
                         <a class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
+                        <div class="ativity" v-if="activities.length > 0">{{msg_text.shows}}<a v-for="activity in activities" class="cursor" target="_blank" :href="hrefs">#{{activity.tag}}#</a></div>
                     </div>
                 </div>
             </div>
@@ -30,14 +41,14 @@
                     <swiper-slide id="swiper1">
                         <div class="video_content" v-for="(hot,key) in hotList" v-if="key < 5">
                             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                                <span><img v-lazy="idol.avatar" alt=""></span>
+                                <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                 <div class="video_desc">
                                     <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
                                     <p>{{formatTime(hot.data.publishTime)}}</p>
                                 </div>
                             </div>
                             <div class="public_show">
-                                <video-player  ref="videoPlayer" :options="hot.data.videoItemList[2]?getSrc(hot.data.videoItemList[2],hot.data.thumbnail):false"></video-player>
+                                <video-player  ref="videoPlayer" :options="hot.data.videoItemList[2]?getSrc(hot.data.videoItemList[2],hot.data.thumbnail):{}"></video-player>
                                 <div class="Masked" v-if="hot.data.publicType == 1"></div>
                                 <div class="gift_content">
                                     <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
@@ -135,7 +146,7 @@
                             <p v-html="msg_text.noneComment"></p>
                         </div>
                     </ul>
-                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">{{msg_text.download_2}}</a>
+                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 20px;">{{msg_text.download_2}}</a>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -200,6 +211,9 @@
             video: {},
             videos:[],
             idol: {},
+            activities: [],
+            totalFollowed: 0,
+            groupInfo: {},
             pageNone: true,
             pageNone2: false,
             loadingBig: true,
@@ -211,7 +225,8 @@
             msg_text: {
                 noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
                 download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
-                come: '入会',
+                come: '推しメン',
+                protector: '守護者登録へ',
                 downTips: 'インストール',
                 people: 'ファン',
                 like: 'Likes',
@@ -226,6 +241,7 @@
                 write: 'コメントする',
                 total: '件すべてを表示',
                 commentTips: 'コメント',
+                shows: '参加中のイベント',
                 download_2: 'Groupyをダウンロードしてもっと見よう'
             },
             hotList:[],
@@ -292,11 +308,17 @@
                         // $('.metaDesc').attr('content',res.data.idol.introduce);
                         // $('.metaImg').attr('content',res.data.idol.avatar);
                     }
+                    if(res.data.groupInfo) {
+                        self.groupInfo = res.data.groupInfo;
+                    }
                     if(res.data.hotList) {
                         self.hotList = res.data.hotList;
                         for(var i=0;i<res.data.hotList.length;i++) {
 
                         }
+                    }
+                    if(res.data.totalFollowed) {
+                        self.totalFollowed = res.data.totalFollowed;
                     }
                     if(res.data.fansList) {
                         self.fansList = res.data.fansList;
@@ -304,6 +326,20 @@
                 }).catch(function(){
 
                 });
+            },
+            getActivity() {
+                var self = this;
+                http.get('/groupyuser/profile',{
+                    params: {
+                        id: getParams('idolId'),
+                        type: 'idol'
+                    }
+                }).then(function(res){
+                    console.log(res);
+                    if(res.data.activities) {
+                        self.activities = res.data.activities;
+                    }
+                })
             },
             getComments() {
                 let self = this;
@@ -357,6 +393,7 @@
         },
         created() {
             this.getIdolInfo();
+            this.getActivity();
             this.getComments();
             this.p_log('idol_shareIdolHome_h5_open');
             var ua = navigator.userAgent.toLowerCase();
@@ -373,6 +410,7 @@
                     noneComment: '还没有留言<br>去发布留言，让粉丝来互动吧！',
                     download: '会员独有的私密状态查看，一键应援，共同守护爱豆的成长!',
                     come: '关注',
+                    protector: '成为守护者',
                     downTips: '下载',
                     people: '守护者',
                     like: 'Likes',
@@ -380,13 +418,14 @@
                     waiting: '我在Groupy等你哦！',
                     video: '动态',
                     comment: '留言板',
-                    shop: '商品',
-                    msg: '私信',
+                    shop: '商城',
+                    msg: '活动',
                     videoTips: '成为爱豆守护者才能观看此视频',
                     vip: '成为守护者',
                     write: '添加评论',
                     total: '条评论',
                     commentTips: '共',
+                    shows: '活动参加中',
                     download_2: '下载groupy查看更多视频'
                 }
                 $('.htmlTilte').html('Groupy');
@@ -396,7 +435,8 @@
                 this.msg_text = {
                     noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
                     download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
-                    come: '入会',
+                    come: '推しメン',
+                    protector: '守護者登録へ',
                     downTips: 'インストール',
                     people: 'ファン',
                     like: 'Likes',
@@ -411,502 +451,10 @@
                     write: 'コメントする',
                     total: '件すべてを表示',
                     commentTips: 'コメント',
+                    shows: '参加中のイベント',
                     download_2: 'Groupyをダウンロードしてもっと見よう'
                 }
               }
         }
       }
 </script>
-
-<style scoped lang="scss">
-    // @import "../styles/share.scss";
-    .idol_desc {
-        .idol_desc_bg {
-            width: 100%;
-            height: 240px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            filter: blur(12px);           
-        }
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        .idol_desc_content {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 240px;
-            padding-top: 95px; 
-            background-color: rgba(0,0,0,0.4);
-            overflow: hidden;
-            text-align: center;
-            box-sizing: border-box;
-            padding-top: 94px;
-            >div {
-                background: #fff;
-                height: 146px;
-                box-sizing: border-box;
-                padding: 0 12px 12px;
-                >p {
-                    text-align: left;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
-            }
-            .avatar {
-                width: 90px;
-                height: 90px;
-                position: absolute;
-                left: 12px;
-                top: 50px;
-                margin: 0;
-                overflow: hidden;
-                img {
-                    width: 90px;
-                    min-height: 90px;
-                }
-            }
-            .idol_name {
-                font-size: 18px;
-                text-align: left;
-                display: block;
-                max-width: 80%;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-                padding: 8px 0;
-            }
-            .idol_support {
-                overflow: hidden;
-                padding-top: 9px;
-                padding-left: 110px;
-                span {
-                    display: block;
-                    float: left;
-                    width: 41px;
-                    em {
-                        width: 40px;
-                        display: block;
-                        margin: 0 auto;
-                        color: #666;
-                    }
-                    font-size: 12px;
-                }
-                span:nth-child(2) {
-                    margin-left: 10%;
-                    margin-right: 10%;
-                }
-                a {
-                    float: right;
-                    width: 34%;
-                    height: 36px;
-                    line-height: 34px;
-                    background-image: linear-gradient(124deg, #FF8550 0%, #FF2E79 100%);
-                    border-radius: 50px;
-                    font-size: 16px;
-                    color: #fff;
-                    img {
-                        width: 20px;
-                        vertical-align: middle;
-                    }
-                }
-            }
-            .idol_fans_ranking {
-                text-align: left;
-                font-weight: 100;
-                overflow: hidden;
-                display: block;
-                line-height: 25px;
-                i:first-child {
-                    float: left;
-                }
-                >img:last-child {
-                    float: right;
-                    width: 7px;
-                    margin-top: 6.5px;
-                }
-                div {
-                    overflow: hidden;
-                    margin-left: 12px;
-                    float: left;
-                    img {
-                        float: left;
-                        margin-left: 8px;
-                        display: block;
-                        width: 25px;
-                        height: 25px;
-                        border-radius: 50%;
-                    }
-                }
-                .no_fans {
-                    font-size: 10px;
-                    -webkit-transform: scale(0.8);
-                    display: inline-block;
-                }
-            }
-        }
-    }
-    .detailPages {
-        border-top: 10px solid #eee;
-        width: 100%;
-        background: #fff;
-        height: 50px;
-        line-height: 40px;
-        display: flex;
-        padding: 0 12px;
-        text-align: center;
-        box-sizing: border-box;
-        .tabs {
-            flex: 1;
-            box-sizing: border-box;
-            margin: 0 12px;
-            font-size: 14px;
-            font-weight: 200;
-        }
-        .tabs.active {
-            border-bottom: 3px solid #FC4083;
-            color: #FC4083;
-            font-weight: 600;
-        }
-    }
-    .share_content {
-        position: relative;
-        overflow: hidden;
-        .userinfo >img {
-            width: 40px;
-            height: 40px;
-        }
-        .video_desc p {
-            font-size: 10px;
-            -webkit-transform: scale(0.8);
-            margin-left: -28px;
-        }
-    }
-    .public_show {
-        position: relative;
-        overflow: hidden;
-    }
-    .Masked {
-        position: absolute;
-        left: 0 ;
-        top: 0;
-        width: 120vw;
-        margin-left: -20px;
-        margin-top: -20px;
-        height: calc(100vw * 502/355);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        filter: blur(12px);
-        overflow: hidden;
-        background-image: url(http://videodebugoutput.oss-cn-hongkong.aliyuncs.com/Act-Snapshot/04183d8a5fd54c47aec133494326072a/1000.jpg);
-
-    }
-    .Masked2 {
-        background-color: rgba(0,0,0,0.4);
-        width: 100%;
-        height: calc(100vw * 502/375);
-        position: absolute;
-        left: 0 ;
-        top: 0;
-        text-align: center;
-        color: #fff;
-        img {
-            width: 34px;
-            display: block;
-            margin: 60px auto 12px;
-        }
-        p {
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-        a {
-            width: 140px;
-            height: 45px;
-            display: block;
-            line-height: 45px;
-            border-radius: 26px;
-            background: #00B4BC;
-            font-size: 18px;
-            margin: 0 auto;
-            color: #fff;
-        }
-    }
-    .gift_content {
-        position: absolute;
-        right: 20px;
-        bottom: 50px;
-        text-align: center;
-        a {
-            display: block;
-            width: 45px;
-            margin: 0 auto;
-            color: #fff;
-        }
-        a:last-child {
-            width: 64px;
-        }
-        img {
-            display: block;
-            width: 100%;
-        }
-    }
-    .play_times {
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        color: #fff;
-        img {
-            width: 14px;
-            margin-right: 5px;
-        }
-    }
-    .video_option {
-        overflow: hidden;
-        display: block;
-        padding: 5px 12px 0;
-        // border-bottom: 1px solid #eee;
-        span {
-            float: left;
-            box-sizing: border-box;
-            margin-top: 5px;
-            img {
-                width: 15px;
-                margin-right: 3px;
-                float: left;
-                margin-top: 2px;
-            }
-        }
-        span:first-child {
-            margin-right: 28px;
-        }
-        >div {
-            float: right;
-            overflow: hidden;
-            >img {
-                width: 25px;
-                vertical-align: middle;
-                margin-right: 3px;
-            }
-        }   
-    }
-    .comment_total {
-        overflow: hidden;
-        padding: 0 12px 3px;
-        line-height: 20px;
-        color: #bbb;
-        color: #999;
-        font-size: 14px;
-        span:first-child {
-            display: block;
-            float: left;
-            img:first-child {
-                width: 18px;
-                float: left;
-                margin-right: 5.5px;
-            }
-            i {
-                float: left;
-            }
-            img:last-child {
-                width: 7px;
-                margin-left: 5.5px;
-                float: left;
-                margin-top: 3px;
-            }
-        }
-        div:last-child {
-            float: right;
-            display: block;
-            border: 1px solid #999999;
-            border-radius: 27.5px;
-            width: 90px;
-            height: 32px;
-            line-height: 32px;
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-        }
-    }
-    .comment_list {
-        border-bottom: solid 8px #eee;
-    }
-    .page_defalt {
-        height: auto;
-        opacity: 0.8;
-        overflow: hidden;
-        transition: all 0.3s;
-    }
-    .page_defalt_none {
-        height: 0;
-        padding:0;
-        opacity: 0;
-        border: none;
-    }
-    .defalt_msg {
-         z-index: -1;
-        .userinfo {
-            span {
-                width: 50px;
-                height: 14px;
-                background: #eee;
-                margin-top:8px;
-            }
-        }
-        .comment_content {
-            >* {
-
-                margin-top:10px;
-                background: #eee;
-                height: 14px;
-            }
-        }
-    }
-    .bullet_box {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: 3;
-        background: rgba(0,0,0,0.2);
-        .bullet_box_content {
-            position: relative;
-            width: 260px;
-            margin: calc(50vh - 158px) auto;
-            opacity: 0;
-            transition: all 0.3s;
-            transform: scale(0);
-        }
-        .box_bg {
-            width: 100%;
-            display: block;
-        }
-        .box_content {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            text-align: center;
-            .close {
-                width: 22px;
-                padding: 12px;
-                display: block;
-            }
-            .groupy {
-                width: 60px;
-                display: block;
-                margin: 20px auto 15px;
-            }
-            .tips {
-                color: #fff;
-                font-size: 16px;
-                font-weight: 100;
-                margin-bottom: 67px;
-            }
-            .tips2 {
-                color: #666666;
-            }
-            .appstore {
-                width: 145px;
-                display: block;
-                margin: 8px auto 0;
-                img {
-                    width: 100%;
-                }
-            }
-        }
-    }
-    .bigImg {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        max-width: 500px;
-        height: 100vh;
-        z-index: 5;
-        background: #000;
-        vertical-align: middle;
-        line-height: 100vh;
-        opacity: 0;
-        transition: all 0.3s;
-        transform: scale(0);
-        img {
-            width: 100%;
-            height: auto;
-            vertical-align: middle;
-        }
-
-    }
-    @media screen and (min-width: 500px) {
-        .bigImg {
-            left: 50% !important;
-            margin-left: -250px !important;
-        }
-    }
-    .bullet_box_show {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-    }
-</style>
-<style lang="scss">
-    .vjs_video_417-dimensions {
-        height: auto !important;
-        video {
-            position: inherit !important;
-            background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%) !important;
-        }
-    }
-    .vjs_video_3-dimensions,.vjs_video_364-dimensions,.video-js {
-        height: auto !important;
-    }
-    .vjs_video_375-dimensions,.vjs_video_388-dimensions {
-        width: 100%;
-        height: auto;
-    }
-    .video-js .vjs-tech {
-        position: inherit !important;
-        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%) !important;
-        height: auto !important;
-        background-color: rgba(0,0,0,0.2);
-    }
-    .vjs-playback-rate-value {
-        display: none;
-    }
-    .video-js.vjs-custom-skin .vjs-control-bar .vjs-fullscreen-control  {
-        display: none;
-    }
-    // .video-player,.vjs-poster {
-    //     height: calc(100vw * 502/375) !important;
-    //     max-height: calc(500px * 502/375) !important;
-    //     // background-color: rgba(0,0,0,0.2);
-    // }
-    .video-player .video-js.vjs-custom-skin .vjs-big-play-button {
-        width: 41px !important;
-        height: 41px !important;
-        line-height: 41px !important;
-        border-radius: 50%;
-        border: 1px solid #fff;
-        margin-left: -20.5px;
-        margin-top: -20.5px !important;
-    }
-    .public_show >p {
-        font-size: 16px;
-        padding: 0 12px 7.5px;
-    }
-    .video_bg {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%);
-        height: 155px;
-    }
-    .swiper-slide {
-        max-height: auto;
-        height: auto;
-    }
-</style>
