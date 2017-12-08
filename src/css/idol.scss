@@ -215,6 +215,12 @@
         position: relative;
         overflow: hidden;
     }
+    .featuremask {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 56px;
+    }
     .Masked {
         position: absolute;
         left: 0 ;

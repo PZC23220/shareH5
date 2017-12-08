@@ -54,7 +54,10 @@
                                     <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
                                     <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/gift.png" class="cursor"></a>
                                 </div>
-                                <span class="play_times"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.data.readCount}}</span>
+                                <img :src="msg_text.hot" alt="" class="featuremask" v-if="hot.data.featureMask == 3">
+                                <img :src="msg_text.recommend" alt="" class="featuremask" v-if="hot.data.featureMask == 4">
+                                <img :src="msg_text.good" alt="" class="featuremask" v-if="hot.data.featureMask == 2">
+                                <!-- <span class="play_times"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.data.readCount}}</span> -->
                                 <div class="Masked2" v-if="hot.data.publicType == 1">
                                     <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_vip.png">
                                     <p>{{msg_text.videoTips}}</p>
@@ -243,7 +246,10 @@
                 total: '件すべてを表示',
                 commentTips: 'コメント',
                 shows: '参加中のイベント',
-                download_2: 'Groupyをダウンロードしてもっと見よう'
+                download_2: 'Groupyをダウンロードしてもっと見よう',
+                good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
+                hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
+                recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png'
             },
             hotList:[],
             idol: {},
@@ -426,7 +432,10 @@
                     total: '条评论',
                     commentTips: '共',
                     shows: '活动参加中',
-                    download_2: '下载groupy查看更多视频'
+                    download_2: '下载groupy查看更多视频',
+                    good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good_cn.png',
+                    hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot_cn.png',
+                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend_cn.png'
                 }
                 $('.htmlTilte').html('Groupy');
                 $('.metaTitle').attr('content','Groupy')
@@ -452,7 +461,10 @@
                     total: '件すべてを表示',
                     commentTips: 'コメント',
                     shows: '参加中のイベント',
-                    download_2: 'Groupyをダウンロードしてもっと見よう'
+                    download_2: 'Groupyをダウンロードしてもっと見よう',
+                    good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
+                    hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
+                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png'
                 }
               }
         }
