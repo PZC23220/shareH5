@@ -46,6 +46,11 @@
                 <p v-html="activity.warning.p2"></p>
             </div>
          </div>
+         <div class="header">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
+            <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
+            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
+        </div>
     </div>
 </template>
 <style type="text/css">
@@ -79,6 +84,7 @@
                 loadingShow: false,
                 isOver: false,
                 havedMe: false,
+                hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
                 activity: {
                     theme:'#アイドル応援企画#',
                     time: 'イベント期間',
@@ -126,10 +132,37 @@
             }
         },
         methods: {
+             p_log(val) {
+                var _data = {
+
+                    topic: "groupy",
+                    app: "groupy",
+                    platform: "h5",
+                    system: navigator.userAgent,
+                    version: "1.0.0",
+                    action: val,
+                    result: "success",
+                    activityId: getParams('activityId')
+                }
+                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                    console.log('success');
+                }).catch(function(){
+
+                })
+            }
         },
         mounted() {
         },
         created() {
+            this.p_log('idol_shareActivity_fun_h5_open');
+            var ua = navigator.userAgent.toLowerCase();
+            if (/iphone|ipad|ipod/.test(ua)) {
+                this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+            }else if(/android/.test(ua)) {
+                this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+            }else {
+                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
+            }
         }
     }
 </script>

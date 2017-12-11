@@ -32,6 +32,7 @@
     export default {
         data() {
             return {
+                hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
                 ranking: [],
                 idx: 0,
                 idx2: 0,
@@ -75,11 +76,38 @@
                 bridge.callHandler('showIdolPage', {'idolId': val})
             })
           },
+          p_log(val) {
+                var _data = {
+
+                    topic: "groupy",
+                    app: "groupy",
+                    platform: "h5",
+                    system: navigator.userAgent,
+                    version: "1.0.0",
+                    action: val,
+                    result: "success",
+                    activityId: getParams('activityId')
+                }
+                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                    console.log('success');
+                }).catch(function(){
+
+                })
+            }
         },
         mounted() {
         },
         created() {
             this.getList();
+            this.p_log('idol_shareActivity_attendance_h5_open');
+            var ua = navigator.userAgent.toLowerCase();
+            if (/iphone|ipad|ipod/.test(ua)) {
+                this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+            }else if(/android/.test(ua)) {
+                this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+            }else {
+                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
+            }
         }
     }
 </script>

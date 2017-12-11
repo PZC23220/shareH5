@@ -48,6 +48,7 @@
                 idx2: 0,
                 loadingShow: false,
                 havedMe: false,
+                hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
                 activity: {
                     theme:'大チャンス！購入したコイン数に応じて、100%プレゼント',
                     time: 'イベント期間',
@@ -80,6 +81,24 @@
             }
         },
         methods: {
+             p_log(val) {
+                var _data = {
+
+                    topic: "groupy",
+                    app: "groupy",
+                    platform: "h5",
+                    system: navigator.userAgent,
+                    version: "1.0.0",
+                    action: val,
+                    result: "success",
+                    activityId: getParams('activityId')
+                }
+                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                    console.log('success');
+                }).catch(function(){
+
+                })
+            }
         },
         mounted() {
         },
@@ -88,6 +107,15 @@
                 this.isFans = false;
             }else {
                 this.isFans = true;
+            }
+            this.p_log('idol_shareActivity_recharge_h5_open');
+            var ua = navigator.userAgent.toLowerCase();
+            if (/iphone|ipad|ipod/.test(ua)) {
+                this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+            }else if(/android/.test(ua)) {
+                this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+            }else {
+                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
             }
         }
     }
