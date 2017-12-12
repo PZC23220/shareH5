@@ -42,5 +42,6 @@ module.exports = {
         activity_subwayAds_preliminaries: './src/view/activity_subwayAds_preliminaries', 
         activity_subwayAds_finals: './src/view/activity_subwayAds_finals', 
         activity_christmas: './src/view/activity_christmas', 
+        activity_spokesman: './src/view/activity_spokesman', 
     },
 };
