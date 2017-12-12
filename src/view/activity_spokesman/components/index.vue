@@ -240,7 +240,7 @@
                 this.getActivityInfo();
             }
             
-            this.p_log('idol_shareActivity_halloween_h5_open');
+            this.p_log('idol_shareActivity_spokesman_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
