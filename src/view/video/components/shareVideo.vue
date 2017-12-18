@@ -48,7 +48,7 @@
                                 <span v-html="videos.length>0?formatTime(videos[0].duration):'00:00'"></span>
                             </div>
                         </div>
-                        <p class="video_content">{{videos.length>1?videos[1].title:msg_text.waiting}}</p>
+                        <p class="video_content">{{videos.length>0?videos[0].title:msg_text.waiting}}</p>
                     </a></li>
                     <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
                         <div class="video_bigImg">
