@@ -61,6 +61,7 @@
 </template>
 <script>
   import http from '@api/js/http.js';
+  // require('@api/js/common.js')
   export default {
     data() {
       return {
