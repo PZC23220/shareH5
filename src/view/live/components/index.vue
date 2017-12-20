@@ -61,7 +61,7 @@
 </template>
 <script>
   import http from '@api/js/http.js';
-  // require('@api/js/common.js')
+  // require('@api/js/vconsole.min.js')
   export default {
     data() {
       return {

@@ -12,49 +12,25 @@
       }
     }
     var player;
-    var ua = navigator.userAgent.toLowerCase();
-    if (/iphone|ipad|ipod|safari/.test(ua)) {
-      player = new Aliplayer({
-        id: "J_prismPlayer",
-        autoplay: false,
-         isLive:true,
-         playsinline:true,
-         width:"100%",
-         height:"auto",
-         controlBarVisibility:"always",
-         useH5Prism:true,
-         useFlashPrism:false,
-         source:decodeURIComponent(getParams('m3u8Url')),
-         cover:"http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/Live/pic_live.jpg",
-         skinLayout:[
-                {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
-                {"name":"H5Loading","align":"cc"}]
-         },function(player){
+    var player = new Aliplayer({
+    id: "J_prismPlayer",
+       autoplay: false,
+       isLive:true,
+       playsinline:true,
+       width:"100%",
+       height:"auto",
+       controlBarVisibility:"always",
+       useH5Prism:false,
+       useFlashPrism:false,
+       source:decodeURIComponent(getParams('m3u8Url')),
+       cover:"http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/Live/pic_live.jpg",
+       skinLayout:[{"name":"bigPlayButton","align":"blabs","x":30,"y":80},
+              {"name":"H5Loading","align":"cc"}]
+       },function(player){
+          console.log("播放器创建了。");
         }
-      );
-    }{
-      player = new Aliplayer({
-        id: "J_prismPlayer",
-        autoplay: false,
-         isLive:true,
-         playsinline:true,
-         width:"100%",
-         height:"auto",
-         controlBarVisibility:"always",
-         useH5Prism:false,
-         useFlashPrism:true,
-         source:decodeURIComponent(getParams('flvUrl')),
-         cover:"http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/Live/pic_live.jpg",
-         skinLayout:[
-                {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
-                {"name":"H5Loading","align":"cc"}]
-         },function(player){
-        }
-      );
-    }
-    player.on('ready',function(e) {
-      player.play();
-    });
+    );
+    console.log(player)
     player.on('error', function(e) {
       console.log(e);
       if(e.paramData.error_code == 4008 || e.paramData.error_code == 4014) {
