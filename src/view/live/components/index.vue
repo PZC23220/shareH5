@@ -5,7 +5,7 @@
       <p>{{msg_text.download}}</p>
       <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">{{msg_text.downTips}}</a>
     </div>
-    <a  @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 20px;">为爱豆应援</a>
+    <a  @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 20px;">アイドルを応援する</a>
     <div class="more_video">
       <h3>{{msg_text.recommend}}</h3>
       <ul>
@@ -127,7 +127,8 @@
       let self = this;
       var ua = navigator.userAgent.toLowerCase();
       if (/iphone|ipad|ipod/.test(ua)) {
-          this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+        window.open('groupy-thirdparty://');
+        this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
       }else if(/android/.test(ua)) {
           this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
       }else {
