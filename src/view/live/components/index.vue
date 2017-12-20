@@ -127,7 +127,7 @@
       let self = this;
       var ua = navigator.userAgent.toLowerCase();
       if (/iphone|ipad|ipod/.test(ua)) {
-        window.open('groupy-thirdparty://');
+        // window.open('groupy-thirdparty://');
         this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
       }else if(/android/.test(ua)) {
           this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
