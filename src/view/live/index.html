@@ -73,10 +73,10 @@
     }
     var player;
     var ua = navigator.userAgent.toLowerCase();
-    if (/iphone|ipad|ipod|android/.test(ua)) {
+    if (/iphone|ipad|ipod|safari/.test(ua)) {
       player = new Aliplayer({
         id: "J_prismPlayer",
-        autoplay: true,
+        autoplay: false,
          isLive:true,
          playsinline:true,
          width:"100%",
@@ -90,13 +90,12 @@
                 {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
                 {"name":"H5Loading","align":"cc"}]
          },function(player){
-          player.play();
         }
       );
     }{
       player = new Aliplayer({
         id: "J_prismPlayer",
-        autoplay: true,
+        autoplay: false,
          isLive:true,
          playsinline:true,
          width:"100%",
@@ -110,7 +109,6 @@
                 {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
                 {"name":"H5Loading","align":"cc"}]
          },function(player){
-          player.play();
         }
       );
     }

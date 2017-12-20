@@ -66,7 +66,6 @@
     data() {
       return {
         msg_text: {
-          noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',
           download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
           downTips: 'インストール',
           waiting: 'Groupyで待ってまーす。',
@@ -126,6 +125,14 @@
     },
     created: function() {
       let self = this;
+      var ua = navigator.userAgent.toLowerCase();
+      if (/iphone|ipad|ipod/.test(ua)) {
+          this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+      }else if(/android/.test(ua)) {
+          this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+      }else {
+          this.hrefs = 'https://itunes.apple.com/app/id1270083927';
+      }
       this.getVideo();
     }
   }
