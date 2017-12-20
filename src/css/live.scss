@@ -18,6 +18,8 @@
     top: 0;
     width: 100vw;
     min-height: 56vw !important;
+    max-height: 60vw !important;
+    overflow: hidden;
 }
 embed {
 	min-height: 56vw !important;
@@ -237,6 +239,7 @@ embed {
     }
     #J_prismPlayer,embed {
     	min-height: 280px !important;
+    	max-height: 300px !important;
     }
     .live_bg {
 	    min-height: 1355px;
