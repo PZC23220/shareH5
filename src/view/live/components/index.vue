@@ -96,6 +96,10 @@
         }).then(function(res){
               if(res.data.related) {
                   self.videos = res.data.related;
+                  setTimeout( function() {
+                    console.log(document.querySelector('.content').offsetHeight + 'px')
+                    document.querySelector('.live_bg').style.height = document.querySelector('.content').offsetHeight + 'px';
+                  },0)
               }
         }).catch(function(){
 
@@ -121,11 +125,12 @@
       }
     },
     computed: {
-      
+
     },
     created: function() {
       let self = this;
       var ua = navigator.userAgent.toLowerCase();
+      this.p_log('shareh5_live_open');
       if (/iphone|ipad|ipod/.test(ua)) {
         // window.open('groupy-thirdparty://');
         this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
