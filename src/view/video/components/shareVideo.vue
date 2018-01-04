@@ -235,7 +235,7 @@
                                     }else {
                                         self.playerOptions.sources[0].src = videoitem.sd
                                     }
-                                    
+
                                 }
                             } else {
                                 self.pageNone = true;

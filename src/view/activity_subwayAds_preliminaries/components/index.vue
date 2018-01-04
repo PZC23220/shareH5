@@ -32,7 +32,6 @@
                         <div class="Masked" v-if="hot.publicType == 1"></div>
                         <div class="gift_content">
                             <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
-                            <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/gift.png" class="cursor"></a>
                         </div>
                         <span class="play_times"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.readCount}}</span>
                         <div class="Masked2" v-if="hot.publicType == 1">
@@ -42,7 +41,7 @@
                         </div>
                     </div>
                     <div class="video_desc_content">
-                        <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.giftCount}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
+                        <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
                         <p class="video_text"><span style="color: #00B4BB" v-if="hot.activityTag">#{{hot.activityTag}}#</span>{{hot.title}}</p>
                         <ul class="comment_list" style="background: #fff;">
                             <div class="comment_total"><span><i>コメント{{hot.postList.length}}件すべてを表示</i></span></div>
@@ -207,7 +206,7 @@
         created() {
             this.getRanking();
             this.getVideoList();
-            
+
             this.p_log('idol_shareActivity_subwayAdsPreliminaries_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {

@@ -52,7 +52,6 @@
                                 <div class="Masked" v-if="hot.data.publicType == 1"></div>
                                 <div class="gift_content">
                                     <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
-                                    <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/gift.png" class="cursor"></a>
                                 </div>
                                 <img :src="msg_text.hot" alt="" class="featuremask" v-if="hot.data.featureMask == 3">
                                 <img :src="msg_text.recommend" alt="" class="featuremask" v-if="hot.data.featureMask == 4">
@@ -65,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="video_desc_content">
-                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">{{msg_text.write}}</div></a>
+                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">{{msg_text.write}}</div></a>
                                 <p class="video_text"><span style="color: #00B4BB" v-if="hot.data.activity">#{{hot.data.activity.tag}}#</span>{{hot.data.title}}</p>
                                 <ul class="comment_list" style="background: #fff;">
                                     <div class="comment_total"><span><i>{{msg_text.commentTips}}{{hot.data.postCount}}{{msg_text.total}}</i></span></div>
@@ -289,11 +288,11 @@
                 tabs.eq(val).addClass('active')
                 this.swiper.slideTo(val, 500, false)
                 if(val == 0) {
-                    
+
                 }else if(val == 1) {
-                    
+
                 }else {
-                    
+
                 }
             },
             formatTime(key) {
@@ -302,7 +301,7 @@
             },
             getIdolInfo() {
                 var self = this;
-                http.get('/group/idolHomeAsFans',{
+                http.get('http://api.groupy.cn:8080/group/idolHomeAsFans',{
                     params: {
                         idolId: getParams('idolId')
                     }
@@ -362,7 +361,7 @@
                     if(res.data.post.length > 0 ) {
                         for(var i=0;i<res.data.post.length;i++){
                             self.commentList.push(res.data.post[i]);
-                        }                    
+                        }
                     }else {
                         self.havedlast = true;
                     }

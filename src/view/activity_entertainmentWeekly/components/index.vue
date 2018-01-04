@@ -4,11 +4,26 @@
             <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-entertainmentWeekly-over.png" class="banner">
             <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-entertainmentWeekly.png" class="banner">
             <h2 class="activity_title">中国のエンタメ誌「娯楽・品味週刊」に、上位1名の所属ユニットメンバー全員が特集ページに登場する！是非奮ってご参加ください！</h2>
-            <div class="idol-ranking">
+            <div class="idol-ranking" v-if="!idol.idol_id">
                 <div class="ranking-two">
-                    <div class="ranking-idol" v-for="(idol , key) in ranking" v-if="key < 3"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'"><span><img v-lazy="idol.orgLogo?idol.orgLogo:idol.avatar"></span></p><p class="idolName-content"><span>{{idol.orgName?idol.orgName:idol.nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
+                    <div class="ranking-idol"  v-for="(idol , key) in ranking" v-if="key < 3"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'"><span><img v-lazy="idol.avatar"></span></p><p class="idolName-content"><span>{{idol.nickname?idol.nickname:'...'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
                 </div>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
+            </div>
+            <div class="idol-ranking" v-if="idol.idol_id">
+                <div class="ranking-one">
+                   <div class="img_content">
+                        <span class="avatar"><img v-lazy="idol.avatar"></span>
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/pic_ranking_1.png" class="ranking_pic">
+                        <span class="idol_level">NO.{{idol.ranking?idol.ranking:'-'}}</span>
+                    </div>
+                    <div class="name">{{idol.nickname?idol.nickname:'...'}}</div>
+                    <div class="idol_desc">
+                        <p><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span></p>
+                        <p><span><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i>作品</i></p>
+                    </div>
+                </div>
+                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="width: 150px;">Groupyへ応援する</a>
             </div>
             <div class="share_content">
                 <div class="video_content" v-for="(hot,key) in videos" v-if="key < 10">
@@ -25,7 +40,6 @@
                         <div class="Masked" v-if="hot.publicType == 1"></div>
                         <div class="gift_content">
                             <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
-                            <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/gift.png" class="cursor"></a>
                         </div>
                         <span class="play_times"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.readCount}}</span>
                         <div class="Masked2" v-if="hot.publicType == 1">
@@ -35,7 +49,7 @@
                         </div>
                     </div>
                     <div class="video_desc_content">
-                        <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.giftCount}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
+                        <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
                         <p class="video_text"><span style="color: #00B4BB" v-if="hot.activityTag">#{{hot.activityTag}}#</span>{{hot.title}}</p>
                         <ul class="comment_list" style="background: #fff;">
                             <div class="comment_total"><span><i>コメント{{hot.postList.length}}件すべてを表示</i></span></div>
@@ -45,7 +59,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a> -->
             </div>
         </div>
         <div class="header">
@@ -64,15 +77,10 @@
         data() {
           return {
             playerOptions: {
-
-              // component options
               start: 0,
               playsinline: true,
-              // autoplay: true,
               preload: true,
-              // videojs options
               language: 'en',
-              // playbackRates: [0.7, 1.0, 1.5, 2.0],
               sources: [{
                 type: "application/x-mpegURL",
                 src: '',
@@ -135,15 +143,33 @@
                 let timer = new Date(key);
                 return timer.Format('MM.dd') + '  '+ timer.Format('hh:mm');
             },
-            getRanking() {
+            getActivityInfo() {
                 var self = this;
-                http.get('/ranking/idolActVideoByOrganzation',{
+                http.get('/video/shareActivityVideos',{
                     params: {
-                        activityId: getParams('activityId'),
-                        rows: 5
+                        idolId: getParams('idolId'),
+                        activityId: getParams('activityId')
                     }
                 }).then(function(res){
-                    console.log(res);
+                    console.log(res)
+                    if(res.data.selfRanking) {
+                        self.idol = res.data.selfRanking;
+                    }
+                    if(res.data.videos) {
+                        self.videos = res.data.videos;
+                    }
+                }).catch(function(){
+
+                });
+            },
+            getRanking() {
+                var self = this;
+                http.get('/video/activityIdols',{
+                    params: {
+                        activityId: getParams('activityId'),
+                        rows: 10
+                    }
+                }).then(function(res){
                     if(res.data.ranking) {
                         self.ranking = res.data.ranking;
                     }
@@ -164,6 +190,7 @@
                         rows: 10
                     }
                 }).then(function(res){
+                    console.log(res);
                     if(res.data.videos) {
                         self.videos = res.data.videos;
                     }
@@ -199,7 +226,11 @@
         },
         created() {
             this.getRanking();
-            this.getVideoList();
+            if(getParams('isFans') == 1 || !getParams('idolId') || getParams('idolId') == 'undefined') {
+                this.getVideoList();
+            }else {
+                this.getActivityInfo();
+            }
 
             this.p_log('idol_entertainmentWeekly_h5_open');
             var ua = navigator.userAgent.toLowerCase();
