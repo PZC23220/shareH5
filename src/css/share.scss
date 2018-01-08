@@ -1,9 +1,19 @@
+body >* {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
 .header {
 	padding: 9px 12px;
 	border-bottom: #FAFAFA solid 1px;
 	box-shadow: 0 1px 4.5px 0 rgba(0,0,0,0.18);
 	max-height: 64px;
+	box-sizing: border-box;
 	background: #fff;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 2;
 	font-size: 12px;
 	>img:first-child {
 		width: 45px;
@@ -28,11 +38,16 @@
 		margin-top: 7.5px;
 	}
 }
+.content {
+    width: 100%;
+    padding-top: 64px;
+    background: #fff;
+}
 @media screen and (min-width: 500px) {
 	.header, .footer, .reservation {
 		left: 50% !important;
 		width: 500px !important;
-		margin-left: -243px !important;
+		margin-left: -250px !important;
 	}
 	.header > p {
     	line-height: 45px;

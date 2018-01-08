@@ -4,13 +4,15 @@ import VueRouter from 'vue-router'
 // import VueResource from 'vue-resource'// 注册两个插件
 import routes  from './router.js'
 import VideoPlayer from 'vue-video-player';
+import VueAwesomeSwiper from 'vue-awesome-swiper';
 
 import main from './main.vue'
 
 // Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(VideoPlayer);
-
+Vue.use(VueAwesomeSwiper);
+require('swiper/dist/css/swiper.css');
 // 1. 开启debug模式
 Vue.config.debug = true
 
