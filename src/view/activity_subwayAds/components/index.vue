@@ -1,6 +1,40 @@
 <template>
     <div class="main">
-         <div class="content">
+        <div class="header">
+            <swiper :options="swiperOption2" ref="mySwiper2">
+                <swiper-slide id="swiper2" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <span>Groupy</span>
+                            <em>{{hederText.text2}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper1" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text4}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper3" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text1}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper4" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text3}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+            </swiper>
+        </div>
+        <div class="content">
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAdsApply.png" class="banner">
             <h2>{{activity.theme}}</h2>
             <div class="activity_rule">
@@ -66,7 +100,14 @@
                 <p v-html="activity.warning.p4"></p>
                 <p v-html="activity.warning.p5"></p>
             </div>
-         </div>
+        </div>
+        <div class="groupy-footer">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
+            <div class="groupy-content">
+                <p>{{hederText.videomore}}</p>
+                <a @click="p_log('activityshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.videodownload}}</a>
+            </div>
+        </div>
     </div>
 </template>
 <style type="text/css">
@@ -147,6 +188,27 @@
                         p2: '決勝ランキング上位3名のユニット・ソロアイドルはGroupy駅広告モデルとして起用！'
                     }]
                 },
+                swiperOption2: {
+                  setWrapperSize :true,
+                  pagination : '.swiper-pagination',
+                  grabCursor: true,
+                  paginationClickable: true,
+                  autoplayDisableOnInteraction: false,
+                  loop : true,
+                  autoplay: 3000
+            },
+            hederText: {
+                text1: '今日は浴衣だけど、どう？似合う...かな？',
+                text2: '推しメンの新たな一面を発見しよう！',
+                text3: '明日には握手会あるんだ、これを着れば良い？(/ω＼*)迷ったなぁ',
+                text4: '初めてのメイド服動画、ヾ(*´∀｀*)ﾉ絶対見てね...',
+                download: 'ダウンロード',
+                videomore: 'プライベート動画が盛りだくさん！',
+                commentmore: 'Groupyで推しメンにメッセージしよう',
+                videodownload: 'ダウンロードして入手する',
+                supportdownload: 'ダウンロードして応援する',
+                dream: '推しメンの夢を見守ってあげよう'
+            },
                 isFans: true,
                 activityInfo: {}
             }
@@ -174,7 +236,7 @@
         mounted() {
         },
         created() {
-            this.p_log('idol_shareActivity_subwayAds_h5_open');
+            this.p_log('shareActivity_subwayAds_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';

@@ -1,9 +1,38 @@
 <template>
     <div class="main">
-        <div class="header">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
-            <p>{{showstext.download}}</p>
-            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">{{showstext.downTips}}</a>
+         <div class="header">
+            <swiper :options="swiperOption2" ref="mySwiper2">
+                <swiper-slide id="swiper1" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text1}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper2" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <span>Groupy</span>
+                            <em>{{hederText.text2}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper3" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text3}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper4" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text4}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+            </swiper>
         </div>
         <div class="content" :class="{'bottom':applyInfo.id}">
             <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
@@ -181,7 +210,28 @@
                 email: 'メールアドレス',
                 showsNums: '枚数',
                 pla: '入力してください'
-            }
+            },
+            swiperOption2: {
+                  setWrapperSize :true,
+                  pagination : '.swiper-pagination',
+                  grabCursor: true,
+                  paginationClickable: true,
+                  autoplayDisableOnInteraction: false,
+                  loop : true,
+                  autoplay: 3000
+            },
+            hederText: {
+                text1: '今日は浴衣だけど、どう？似合う...かな？',
+                text2: '推しメンの新たな一面を発見しよう！',
+                text3: '明日には握手会あるんだ、これを着れば良い？(/ω＼*)迷ったなぁ',
+                text4: '初めてのメイド服動画、ヾ(*´∀｀*)ﾉ絶対見てね...',
+                download: 'ダウンロード',
+                videomore: 'プライベート動画が盛りだくさん！',
+                commentmore: 'Groupyで推しメンにメッセージしよう',
+                videodownload: 'ダウンロードして入手する',
+                supportdownload: 'ダウンロードして応援する',
+                dream: '推しメンの夢を見守ってあげよう'
+            },
           }
         },
         methods: {
@@ -213,51 +263,51 @@
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 if(_lan === 'zh-cn') {
                     switch (timer) {
-                        case 0 :  
-                                str = "周日";  
-                                break;  
-                        case 1 :  
-                                str = "周一";  
-                                break;  
-                        case 2 :  
-                                str = "周二";  
-                                break;  
-                        case 3 :  
-                                str = "周三";  
-                                break;  
-                        case 4 :  
-                                str = "周四";  
-                                break;  
-                        case 5 :  
-                                str = "周五";  
-                                break;  
-                        case 6 :  
-                                str = "周六";  
-                                break;  
+                        case 0 :
+                                str = "周日";
+                                break;
+                        case 1 :
+                                str = "周一";
+                                break;
+                        case 2 :
+                                str = "周二";
+                                break;
+                        case 3 :
+                                str = "周三";
+                                break;
+                        case 4 :
+                                str = "周四";
+                                break;
+                        case 5 :
+                                str = "周五";
+                                break;
+                        case 6 :
+                                str = "周六";
+                                break;
                     }
                 }else {
                     switch (timer) {
-                        case 0 :  
-                                str = "日";  
-                                break;  
-                        case 1 :  
-                                str = "月";  
-                                break;  
-                        case 2 :  
-                                str = "火";  
-                                break;  
-                        case 3 :  
-                                str = "水";  
-                                break;  
-                        case 4 :  
-                                str = "木";  
-                                break;  
-                        case 5 :  
-                                str = "金";  
-                                break;  
-                        case 6 :  
-                                str = "土";  
-                                break;  
+                        case 0 :
+                                str = "日";
+                                break;
+                        case 1 :
+                                str = "月";
+                                break;
+                        case 2 :
+                                str = "火";
+                                break;
+                        case 3 :
+                                str = "水";
+                                break;
+                        case 4 :
+                                str = "木";
+                                break;
+                        case 5 :
+                                str = "金";
+                                break;
+                        case 6 :
+                                str = "土";
+                                break;
                     }
                 }
                 return  str;
@@ -367,7 +417,7 @@
                 }else if(getParams('platform') == 'tw') {
                     this.twitterLogin();
                 }
-                
+
             },
             facebookLogin() {
                 var self= this;
@@ -388,7 +438,7 @@
                             snsUid:response.id,
                             snsPlatform:'fb',
                             nickname:response.name,
-                            avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large', 
+                            avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large',
                             sign:'',
                             introduce:''
                         };
@@ -402,7 +452,7 @@
                                 snsUid:response.id,
                                 snsPlatform:'fb',
                                 nickname:response.name,
-                                avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large', 
+                                avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large',
                                 sign:'',
                                 introduce:''
                             };
@@ -439,7 +489,7 @@
                 }(document, "script", "twitter-wjs"));
                 var log = console.log;
                 hello.init({'twitter': '6YNVtKZPe9RhAI32wKCvfp8RN'},{
-                  oauth_proxy: 'https://auth-server.herokuapp.com/proxy' 
+                  oauth_proxy: 'https://auth-server.herokuapp.com/proxy'
                 });
                 function login_twitter(network){  //登录方法，并将twitter 作为参数传入
                       // Twitter instance
@@ -449,14 +499,14 @@
                           // Get Profile
                           return twitter.api('/me');
                       },log).then(function(p){
-                          //已获取用户信息，在此处理                   
+                          //已获取用户信息，在此处理
                           // var response = {'id':p.id,'name':p.name,'picture':p.thumbnail,'link':'https://twitter.com/'+p.screen_name,'login_type':'twitter'};
                           // console.dir(response);
                           var obj = {
                             snsUid:p.id,
                             snsPlatform:'tw',
                             nickname:p.name,
-                            avatar:p.thumbnail, 
+                            avatar:p.thumbnail,
                             sign:'',
                             introduce:''
                         };
@@ -526,6 +576,18 @@
                     pla: '请输入'
 
                 }
+                this.hederText = {
+                    text1: '心动：她穿和服的样子很可爱？！',
+                    text2: '守护爱豆的梦想，为她应援',
+                    text3: '今天有握手会，选哪件衣服比较合适？帮她选择...',
+                    text4: '首次尝试女仆装，竟然异常适合她',
+                    download: '打开应用',
+                    videomore: '更多视频，尽在Groupy',
+                    commentmore: '更多留言，尽在Groupy',
+                    videodownload: '下载Groupy，查看更多视频',
+                    supportdownload: '下载Groupy，为她应援',
+                    dream: '她的梦想 由你守护'
+                }
                 $('.htmlTilte').html('Groupy');
                 $('.metaTitle').attr('content','Groupy')
                 $('.metaDesc').attr('content','快来Groupy跟偶像亲密互动吧')
@@ -553,6 +615,18 @@
                     email: 'メールアドレス',
                     showsNums: '枚数',
                     pla: '入力してください'
+                }
+                this.hederText = {
+                    text1: '今日は浴衣だけど、どう？似合う...かな？',
+                    text2: '推しメンの新たな一面を発見しよう！',
+                    text3: '明日には握手会あるんだ、これを着れば良い？(/ω＼*)迷ったなぁ',
+                    text4: '初めてのメイド服動画、ヾ(*´∀｀*)ﾉ絶対見てね...',
+                    download: 'ダウンロード',
+                    videomore: 'プライベート動画が盛りだくさん！',
+                    commentmore: 'Groupyで推しメンにメッセージしよう',
+                    videodownload: 'ダウンロードして入手する',
+                    supportdownload: 'ダウンロードして応援する',
+                    dream: '推しメンの夢を見守ってあげよう'
                 }
               }
         }
@@ -642,7 +716,7 @@
                 font-size: 14px;
             }
             input {
-                
+
                 height: 44px;
                 line-height: 44px;
                 width: 100%;
@@ -673,7 +747,7 @@
         z-index: 4;
         margin-left: -57px;
         transition: all 0.3s;
-        transform: scale(0);        
+        transform: scale(0);
     }
     .toast.active {
         transform: scale(1);

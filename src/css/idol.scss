@@ -1,552 +1,349 @@
-    .header {
-        top: auto;
-        bottom: 0;
+.comment_list {
+    max-height: 148vw;
+    overflow: hidden;
+}
+.banner_container {
+    padding: 0;
+}
+.idol_desc {
+    color: #666666;
+    height: 309px;
+    background-image: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center -100px;
+    overflow: hidden;
+    .ranking_position {
+        position: absolute;
+        left: 50%;
+        top: 123px;
+        background: #ffa62e;
+        color: #fff;
+        margin-left: 5px;
+        -webkit-transform: scale(0.9);
+        padding: 1px 8px;
     }
-    .content {
-        padding-top: 0;
-        padding-bottom: 64px;
-    }
-    .idol_desc {
-        color: #666666;
-        height: 347px;
-        overflow:hidden;
-        .ranking_position {
-            position: absolute;
-            left: 50%;
-            top: 123px;
-            background: #ffa62e;
-            color: #fff;
-            margin-left: 5px;
-            -webkit-transform:scale(0.9);
-            padding: 1px 8px;
-        }
-        .idol_desc_bg {
-            width: 100%;
-            margin-top: -40px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            min-height: 134px;
-            // filter: blur(12px);           
-        }
-        position: relative;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    .idol_desc_content {
+        position: absolute;
+        left: 0;
+        top: 0;
         width: 100%;
+        height: 309px;
+        background-color: rgba(0, 0, 0, 0.4);
         overflow: hidden;
-        .idol_desc_content {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 347px;
-            padding-top: 95px; 
-            background-color: rgba(0,0,0,0.4);
-            overflow: hidden;
-            text-align: center;
-            box-sizing: border-box;
-            padding-top: 94px;
-            >div {
-                background: #fff;
-                height: 347px;
-                box-sizing: border-box;
-                padding: 0 12px 12px;
-            }
-            .avatar {
-                width: 90px;
-                height: 90px;
-                position: absolute;
-                left: 50%;
-                top: 50px;
-                margin-right: 0;
-                margin-left: -47px;
-                border: 2px solid #fff;
-                overflow: hidden;
-                img {
-                    width: 90px;
-                    min-height: 90px;
-                }
-            }
-            .idol_name {
-                color: #333;
-                font-size: 18px;
-                text-align: center;
-                display: block;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-                padding-top: 50px;
-            }
-            .idol_org {
-                text-align: center;
-                display: block;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-                margin-bottom: 6px;
-            }
-            .idol_support {
-                overflow: hidden;
-                text-align: center;
-                line-height: 20px;
-                display: inline-block;
-                height: 20px;
-                span {
-                    em {
-                        font-size: 14px;
-                    }
-                    img {
-                        width: 15px;
-                        margin-right: 5px;
-                    }
-                }
-                span:not(:first-child) {
-                    margin-left: 30px;
-                }
-            }
-            .attention {
-                margin-bottom: 16px;
-                margin-top: 5px;
-                a {
-                    line-height: 30px;
-                    border-radius: 37.5px;
-                    font-size: 14px;
-                    padding: 0 15px;
-                    display: inline-block;
-                    img {
-                        width: 25px;
-                        vertical-align: middle;
-                    }
-                }
-                a:first-child {
-                    border: 1px solid #F5A623;
-                    color: #F5A623;
-                    margin-right: 12px;
-                }
-                a:last-child {
-                    border: 1px solid #FC4083;
-                    color: #FC4083;
-                }
-
-            }
-            .idol_fans_ranking {
-                text-align: left;
-                overflow: hidden;
-                display: block;
-                line-height: 25px;
-                color: #666666;
-                i:first-child {
-                    float: left;
-                }
-                >img:last-child {
-                    float: right;
-                    width: 7px;
-                    margin-top: 6.5px;
-                }
-                div {
-                    overflow: hidden;
-                    margin-left: 12px;
-                    float: left;
-                    img {
-                        float: left;
-                        margin-left: 8px;
-                        display: block;
-                        width: 25px;
-                        height: 25px;
-                        border-radius: 50%;
-                    }
-                }
-                .no_fans {
-                    font-size: 10px;
-                    -webkit-transform: scale(0.8);
-                    display: inline-block;
-                }
-            }
-            .ativity {
-                text-align: left;
-                margin-top: 20px;
-                a {
-                    font-size: 14px;
-                    color: #00B4BB;
-                    margin-left: 8.5px;
-                    margin-right: 3px;
-                }
-            }
-        }
-    }
-    .detailPages {
-        border-top: 10px solid #eee;
-        width: 100%;
-        background: #fff;
-        height: 50px;
-        line-height: 40px;
-        display: flex;
-        padding: 0 12px;
         text-align: center;
         box-sizing: border-box;
-        .tabs {
-            flex: 1;
-            box-sizing: border-box;
-            margin: 0 12px;
-            font-size: 14px;
-            font-weight: 200;
-        }
-        .tabs.active {
-            border-bottom: 3px solid #FC4083;
-            color: #FC4083;
-            font-weight: 600;
-        }
-    }
-    .share_content {
-        position: relative;
-        overflow: hidden;
-        .userinfo .avatar {
-            width: 40px;
-            height: 40px;
-            img {
-                width: 40px;
-                min-height: 40px;
-            }
-        }
-        .video_desc p {
-            font-size: 10px;
-            -webkit-transform: scale(0.8);
-            margin-left: -28px;
-        }
-    }
-    .public_show {
-        position: relative;
-        overflow: hidden;
-    }
-    .featuremask {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 56px;
-    }
-    .Masked {
-        position: absolute;
-        left: 0 ;
-        top: 0;
-        width: 120vw;
-        margin-left: -20px;
-        margin-top: -20px;
-        height: calc(100vw * 502/355);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        filter: blur(12px);
-        overflow: hidden;
-        background-image: url(http://videodebugoutput.oss-cn-hongkong.aliyuncs.com/Act-Snapshot/04183d8a5fd54c47aec133494326072a/1000.jpg);
-
-    }
-    .Masked2 {
-        background-color: rgba(0,0,0,0.4);
-        width: 100%;
-        height: calc(100vw * 502/375);
-        position: absolute;
-        left: 0 ;
-        top: 0;
-        text-align: center;
-        color: #fff;
-        img {
-            width: 34px;
-            display: block;
-            margin: 60px auto 12px;
-        }
-        p {
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-        a {
-            width: 140px;
-            height: 45px;
-            display: block;
-            line-height: 45px;
-            border-radius: 26px;
-            background: #00B4BC;
-            font-size: 18px;
-            margin: 0 auto;
-            color: #fff;
-        }
-    }
-    .gift_content {
-        position: absolute;
-        right: 20px;
-        bottom: 50px;
-        text-align: center;
-        a {
-            display: block;
-            width: 45px;
-            margin: 0 auto;
-            color: #fff;
-        }
-        a:last-child {
-            width: 64px;
-        }
-        img {
-            display: block;
-            width: 100%;
-        }
-    }
-    .play_times {
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        color: #fff;
-        img {
-            width: 14px;
-            margin-right: 5px;
-        }
-    }
-    .video_option {
-        overflow: hidden;
-        display: block;
-        padding: 5px 12px 0;
-        // border-bottom: 1px solid #eee;
-        span {
-            float: left;
-            box-sizing: border-box;
-            margin-top: 5px;
-            img {
-                width: 15px;
-                margin-right: 3px;
-                float: left;
-                margin-top: 2px;
-            }
-        }
-        span:first-child {
-            margin-right: 28px;
-        }
+        padding-top: 94px;
         >div {
-            float: right;
-            overflow: hidden;
-            >img {
-                width: 25px;
-                vertical-align: middle;
-                margin-right: 3px;
-            }
-        }   
-    }
-    .comment_total {
-        overflow: hidden;
-        padding: 0 12px 3px;
-        line-height: 20px;
-        color: #bbb;
-        color: #999;
-        font-size: 14px;
-        span:first-child {
-            display: block;
-            float: left;
-            img:first-child {
-                width: 18px;
-                float: left;
-                margin-right: 5.5px;
-            }
-            i {
-                float: left;
-            }
-            img:last-child {
-                width: 7px;
-                margin-left: 5.5px;
-                float: left;
-                margin-top: 3px;
-            }
+            background: #fff;
+            height: 215px;
+            box-sizing: border-box;
+            padding: 0 12px 12px;
         }
-        div:last-child {
-            float: right;
-            display: block;
-            border: 1px solid #999999;
-            border-radius: 27.5px;
+        .avatar {
             width: 90px;
-            height: 32px;
-            line-height: 32px;
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-        }
-    }
-    .comment_list {
-        border-bottom: solid 8px #eee;
-    }
-    .page_defalt {
-        height: auto;
-        opacity: 0.8;
-        overflow: hidden;
-        transition: all 0.3s;
-    }
-    .page_defalt_none {
-        height: 0;
-        padding:0;
-        opacity: 0;
-        border: none;
-    }
-    .defalt_msg {
-         z-index: -1;
-        .userinfo {
-            span {
-                width: 50px;
-                height: 14px;
-                background: #eee;
-                margin-top:8px;
-            }
-        }
-        .comment_content {
-            >* {
-
-                margin-top:10px;
-                background: #eee;
-                height: 14px;
-            }
-        }
-    }
-    .bullet_box {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: 3;
-        background: rgba(0,0,0,0.2);
-        .bullet_box_content {
-            position: relative;
-            width: 260px;
-            margin: calc(50vh - 158px) auto;
-            opacity: 0;
-            transition: all 0.3s;
-            transform: scale(0);
-        }
-        .box_bg {
-            width: 100%;
-            display: block;
-        }
-        .box_content {
+            height: 90px;
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
+            left: 50%;
+            top: 50px;
+            margin-right: 0;
+            margin-left: -47px;
+            border: 2px solid #fff;
+            overflow: hidden;
+            img {
+                width: 90px;
+                min-height: 90px;
+            }
+        }
+        .idol_name {
+            color: #333;
+            font-size: 18px;
             text-align: center;
-            .close {
-                width: 22px;
-                padding: 12px;
-                display: block;
-            }
-            .groupy {
-                width: 60px;
-                display: block;
-                margin: 20px auto 15px;
-            }
-            .tips {
-                color: #fff;
-                font-size: 16px;
-                font-weight: 100;
-                margin-bottom: 67px;
-            }
-            .tips2 {
-                color: #666666;
-            }
-            .appstore {
-                width: 145px;
-                display: block;
-                margin: 8px auto 0;
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            padding-top: 50px;
+        }
+        .idol_name.none {
+            line-height: 35px;
+        }
+        .idol_org {
+            text-align: center;
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+        .idol_support {
+            overflow: hidden;
+            text-align: center;
+            line-height: 20px;
+            display: inline-block;
+            height: 20px;
+            span {
+                em {
+                    font-size: 14px;
+                }
                 img {
-                    width: 100%;
+                    width: 15px;
+                    margin-right: 5px;
                 }
             }
+            span:not(:first-child) {
+                margin-left: 30px;
+            }
+        }
+        .attention {
+            margin-bottom: 16px;
+            margin-top: 5px;
+            a {
+                line-height: 30px;
+                border-radius: 37.5px;
+                font-size: 14px;
+                padding: 0 15px;
+                display: inline-block;
+                img {
+                    width: 25px;
+                    float: left;
+                    margin-top: 2px;
+                }
+            }
+            a:first-child {
+                border: 1px solid #F5A623;
+                color: #F5A623;
+                margin-right: 12px;
+            }
+            a:last-child {
+                border: 1px solid #FC4083;
+                color: #FC4083;
+            }
+        }
+        .idol_fans_ranking {
+            text-align: left;
+            overflow: hidden;
+            display: block;
+            line-height: 25px;
+            color: #666666;
+            i:first-child {
+                float: left;
+            }
+            >img:last-child {
+                float: right;
+                width: 7px;
+                margin-top: 6.5px;
+            }
+            div {
+                overflow: hidden;
+                margin-left: 12px;
+                float: left;
+                img {
+                    float: left;
+                    margin-left: 8px;
+                    display: block;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                }
+            }
+            .no_fans {
+                font-size: 10px;
+                -webkit-transform: scale(0.8);
+                display: inline-block;
+            }
+        }
+        .ativity {
+            text-align: left;
+            margin-top: 20px;
+            a {
+                font-size: 14px;
+                color: #00B4BB;
+                margin-left: 8.5px;
+                margin-right: 3px;
+            }
         }
     }
-    .bigImg {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        max-width: 500px;
-        height: 100vh;
-        z-index: 5;
-        background: #000;
-        vertical-align: middle;
-        line-height: 100vh;
-        opacity: 0;
-        transition: all 0.3s;
-        transform: scale(0);
-        img {
-            width: 100%;
-            height: auto;
-            vertical-align: middle;
-        }
+}
 
+.detailPages {
+    border-top: 10px solid #eee;
+    width: 100%;
+    background: #fff;
+    height: 50px;
+    line-height: 40px;
+    display: flex;
+    padding: 0 12px;
+    top: 64px;
+    z-index: 2;
+    text-align: center;
+    box-sizing: border-box;
+    .tabs {
+        flex: 1;
+        box-sizing: border-box;
+        margin: 0 15%;
+        font-size: 14px;
+        font-weight: 200;
     }
-    @media screen and (min-width: 500px) {
-        .bigImg {
-            left: 50% !important;
-            margin-left: -250px !important;
+    .tabs.active {
+        border-bottom: 3px solid #FC4083;
+        color: #FC4083;
+        font-weight: 600;
+    }
+}
+
+.share_content {
+    position: relative;
+    overflow: hidden;
+    .userinfo .avatar {
+        width: 40px;
+        height: 40px;
+        img {
+            width: 40px;
+            min-height: 40px;
         }
     }
-    .bullet_box_show {
-        opacity: 1 !important;
-        transform: scale(1) !important;
+    .video_desc p {
+        font-size: 10px;
+        -webkit-transform: scale(0.8);
+        margin-left: -28px;
     }
-    .vjs_video_417-dimensions {
-        min-width: 80%;
-        max-width: 100%;
-        max-height: 80vh;
-        min-height: 31.6vh;
-        video {
-            position: inherit !important;
-            min-width: 80%;
-            max-width: 100%;
-            max-height: 80vh;
-            min-height: 31.6vh;
-            background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%) !important;
+}
+.page_defalt {
+    height: auto;
+    opacity: 0.8;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.page_defalt_none {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    border: none;
+}
+
+.defalt_msg {
+    z-index: -1;
+    .userinfo {
+        span {
+            width: 50px;
+            height: 14px;
+            background: #eee;
+            margin-top: 8px;
         }
     }
-    .vjs_video_3-dimensions,.vjs_video_364-dimensions,.video-js {
-        // height: auto !important;
-        min-width: 80%;
-        max-width: 100%;
-        max-height: 80vh;
-        min-height: 31.6vh;
+    .comment_content {
+        >* {
+
+            margin-top: 10px;
+            background: #eee;
+            height: 14px;
+        }
     }
-    .vjs_video_375-dimensions,.vjs_video_388-dimensions {
-        min-width: 80%;
-        max-width: 100%;
-        max-height: 80vh;
-        min-height: 31.6vh;
-    }
-    .video-js .vjs-tech {
-        position: inherit !important;
-        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%) !important;
-        min-width: 80%;
-        max-width: 100%;
-        max-height: 80vh;
-        min-height: 31.6vh;
-        background-color: rgba(0,0,0,0.2);
-    }
-    .vjs-playback-rate-value {
-        display: none;
-    }
-    .video-js.vjs-custom-skin .vjs-control-bar .vjs-fullscreen-control  {
-        display: none;
-    }
-    .video-player .video-js.vjs-custom-skin .vjs-big-play-button {
-        width: 41px !important;
-        height: 41px !important;
-        line-height: 41px !important;
-        border-radius: 50%;
-        border: 1px solid #fff;
-        margin-left: -20.5px;
-        margin-top: -20.5px !important;
-    }
-    .public_show >p {
-        font-size: 16px;
-        padding: 0 12px 7.5px;
-    }
-    .video_bg {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+}
+.bigImg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    z-index: 5;
+    background: #000;
+    vertical-align: middle;
+    line-height: 100vh;
+    opacity: 0;
+    transition: all 0.3s;
+    transform: scale(0);
+    img {
         width: 100%;
-        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%);
-        height: 155px;
+        height: auto;
+        vertical-align: middle;
     }
-    // .swiper-slide {
-    //     height: calc(100vh - 124px);
-    // }
+}
+
+@media screen and (min-width: 500px) {
+    .bigImg {
+        left: 50% !important;
+        margin-left: -250px !important;
+    }
+}
+
+.bullet_box_show {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+.video_bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.66) 100%);
+    height: 155px;
+}
+
+.feature-title {
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    color: #FC4083;
+    font-weight: 600;
+    margin: 15px 0 7px;
+    span {
+        position: absolute;
+        background: #FC4083;
+        width: 24px;
+        height: 1.5px;
+        left: 50%;
+        top: 11px;
+    }
+    .left {
+        margin-left: -85px;
+    }
+    .right {
+        margin-left: 60px;
+    }
+}
+
+.video-list {
+    overflow: hidden;
+    li {
+        float: left;
+        a {
+            display: block;
+            position: relative;
+        }
+        margin-left:0.4vw;
+        margin-top: 0.8vw;
+    }
+    .poster {
+        object-fit: fill;
+        width: 32.8vw;
+        height: 49.06667vw;
+        max-width: 164px;
+        max-height: 245.33335px;
+        background-image: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+    .video_play {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 25px;
+        height: 25px;
+        margin-left: -12.5px;
+        margin-top: -12.5px;
+    }
+}
+@media screen and (min-width: 500px) {
+  .comment_list {
+    max-height: 740px;
+  }
+}

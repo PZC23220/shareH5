@@ -41,7 +41,7 @@
                     left: 0;
                     color: #fff;
                 }
-            } 
+            }
             .name {
                 float: none;
                 text-align: center;
@@ -92,14 +92,6 @@
                 }
             }
         }
-    .header {
-        bottom: 0;
-        top: auto;
-    }
-    .content {
-        padding-top: 0;
-        padding-bottom: 84px;
-    }
     .banner {
         width: 100%;
     }
@@ -188,7 +180,7 @@
     .share_content {
         position: relative;
         overflow: hidden;
-        border-top: 8px solid #eee;
+        // border-top: 8px solid #eee;
         margin-top: 12px;
         .userinfo >span {
             width: 40px;
@@ -207,6 +199,16 @@
     .public_show {
         position: relative;
         overflow: hidden;
+    }
+    .no-ranking {
+        display: block;
+        margin: 0 auto;
+        width: 53.5px;
+    }
+    .no-ranking-tips {
+        text-align: center;
+        color: #999;
+        line-height: 24px;
     }
     .Masked {
         position: absolute;
@@ -257,16 +259,13 @@
     .gift_content {
         position: absolute;
         right: 20px;
-        bottom: 50px;
+        bottom: 16px;
         text-align: center;
         a {
             display: block;
             width: 45px;
             margin: 0 auto;
             color: #fff;
-        }
-        a:last-child {
-            width: 64px;
         }
         img {
             display: block;
@@ -310,11 +309,11 @@
                 vertical-align: middle;
                 margin-right: 3px;
             }
-        }   
+        }
     }
     .comment_total {
         overflow: hidden;
-        padding: 0 12px 3px;
+        padding: 0 12px 10px;
         line-height: 20px;
         color: #bbb;
         color: #999;
@@ -350,8 +349,8 @@
             font-size: 14px;
         }
     }
-    .comment_list {
-        border-bottom: solid 8px #eee;
+    .activity-video_content {
+        border-top: solid 8px #eee;
     }
     .page_defalt {
         height: auto;
@@ -402,6 +401,7 @@
         position: inherit !important;
         background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%) !important;
         height: auto !important;
+        // max-height: 666.66667px;
         background-color: rgba(0,0,0,0.2);
     }
     .vjs-playback-rate-value {

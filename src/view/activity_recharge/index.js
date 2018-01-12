@@ -6,13 +6,13 @@ import routes  from './router.js'
 // import VideoPlayer from 'vue-video-player';
 // import VueScroller from 'vue-scroller'
 import VueLazyload from 'vue-lazyload'
-// import VueAwesomeSwiper from 'vue-awesome-swiper';
+import VueAwesomeSwiper from 'vue-awesome-swiper';
 import main from './main.vue'
 
-// Vue.use(VueResource);
+require('swiper/dist/css/swiper.css')
 Vue.use(VueRouter);
 // Vue.use(VideoPlayer);
-// Vue.use(VueAwesomeSwiper);
+Vue.use(VueAwesomeSwiper);
 // Vue.use(VueScroller)
 Vue.use(VueLazyload, {
         preLoad: 1,

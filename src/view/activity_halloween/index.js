@@ -8,7 +8,7 @@ import VueLazyload from 'vue-lazyload'
 
 import main from './main.vue'
 
-// Vue.use(VueResource);
+require('swiper/dist/css/swiper.css')
 Vue.use(VueRouter);
 Vue.use(VueAwesomeSwiper);
 Vue.use(VueLazyload, {

@@ -45,5 +45,6 @@ module.exports = {
         activity_spokesman: './src/view/activity_spokesman',
         live: './src/view/live',
         activity_entertainmentWeekly: './src/view/activity_entertainmentWeekly',
+        activity_spokesman2: './src/view/activity_spokesman2',
     },
 };

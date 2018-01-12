@@ -1,19 +1,46 @@
 <template>
     <div class="main">
         <div class="header">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
-            <p>{{msg_text.download}}</p>
-            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">{{msg_text.downTips}}</a>
+            <swiper :options="swiperOption2" ref="mySwiper2">
+                <swiper-slide id="swiper2" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <span>Groupy</span>
+                            <em>{{hederText.text2}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper1" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text4}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper3" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text1}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <swiper-slide id="swiper4" class="header-swiper">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <p class="swiper-tips">
+                            <em>{{hederText.text3}}</em>
+                        </p>
+                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                </swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+            </swiper>
         </div>
         <div class="content">
-            <div class="idol_desc">
-                <!-- <div class="idol_desc_bg" :style="groupInfo.bgImg?'background-image: url('+ idol.bgImg +');':'background-image: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png);'"></div> -->
-                <img class="idol_desc_bg" :src="groupInfo.bgImg?groupInfo.bgImg:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/bg.png'" alt="">
+            <div class="idol_desc" :style="'background-image:url('+ groupInfo.bgImg +');'">
                 <div class="idol_desc_content">
                     <div>
-                        <a :href="hrefs" class="cursor" target="_blank"><span class="avatar"><img v-lazy="idol.avatar"></span></a>
+                        <a @click="p_log('pageshare_idol_info')" :href="hrefs" class="cursor" target="_blank"><span class="avatar" :style="'background-image:url('+ idol.avatar +');'"></span></a>
                         <span class="ranking_position">{{idol.rankingPosition?idol.rankingPosition:0}}位</span>
-                        <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
+                        <span class="idol_name" :class="{'none':!organization.name}">{{idol.nickname?idol.nickname:'...'}}</span>
                         <span class="idol_org" v-if="organization.name">@{{organization.name}}</span>
                         <div class="idol_support">
                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow_1.png" alt=""><em>{{totalFollowed?Number(totalFollowed).toLocaleString():0}}</em></span>
@@ -21,67 +48,37 @@
                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes_1.png" alt=""><em>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}</em></span>
                         </div>
                         <div class="attention">
-                            <a class="cursor" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
-                            <a class="cursor" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip.png"><i>{{msg_text.protector}}</i></a>
+                            <a class="cursor" @click="p_log('pageshare_idol_follow')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
+                            <a class="cursor" @click="p_log('pageshare_idol_follow')" :href="hrefs" target="_blank"><img style="margin-top: 4px;" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip.png"><i>{{msg_text.protector}}</i></a>
                         </div>
-                        <a class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
-                        <div class="ativity" v-if="activities.length > 0">{{msg_text.shows}}<a v-for="activity in activities" class="cursor" target="_blank" :href="hrefs">#{{activity.tag}}#</a></div>
+                        <a @click="p_log('pageshare_idol_info')" class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
                     </div>
                 </div>
             </div>
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">{{msg_text.video}}</a>
                 <a class="tabs" @click="changePages(1)">{{msg_text.comment}}</a>
-                <a class="tabs" :href="hrefs" target="_blank">{{msg_text.msg}}</a>
-                <a class="tabs" :href="hrefs" target="_blank">{{msg_text.shop}}</a>
+                <!-- <a class="tabs" :href="hrefs" target="_blank">{{msg_text.msg}}</a> -->
+                <!-- <a class="tabs" :href="hrefs" target="_blank">{{msg_text.shop}}</a> -->
             </div>
             <div class="share_content">
                 <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                     <!-- slides -->
                     <swiper-slide id="swiper1">
-                        <div class="video_content" v-for="(hot,key) in hotList" v-if="key < 5">
-                            <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                                <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                <div class="video_desc">
-                                    <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
-                                    <p>{{formatTime(hot.data.publishTime)}}</p>
-                                </div>
-                            </div>
-                            <div class="public_show">
-                                <video-player  ref="videoPlayer" :options="hot.data.videoItemList[2]?getSrc(hot.data.videoItemList[2],hot.data.thumbnail):{}"></video-player>
-                                <div class="Masked" v-if="hot.data.publicType == 1"></div>
-                                <div class="gift_content">
-                                    <a :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
-                                </div>
-                                <img :src="msg_text.hot" alt="" class="featuremask" v-if="hot.data.featureMask == 3">
-                                <img :src="msg_text.recommend" alt="" class="featuremask" v-if="hot.data.featureMask == 4">
-                                <img :src="msg_text.good" alt="" class="featuremask" v-if="hot.data.featureMask == 2">
-                                <!-- <span class="play_times"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.data.readCount}}</span> -->
-                                <div class="Masked2" v-if="hot.data.publicType == 1">
-                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_vip.png">
-                                    <p>{{msg_text.videoTips}}</p>
-                                    <a :href="hrefs" target="_blank">{{msg_text.vip}}</a>
-                                </div>
-                            </div>
-                            <div class="video_desc_content">
-                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_comment.png">{{msg_text.write}}</div></a>
-                                <p class="video_text"><span style="color: #00B4BB" v-if="hot.data.activity">#{{hot.data.activity.tag}}#</span>{{hot.data.title}}</p>
-                                <ul class="comment_list" style="background: #fff;">
-                                    <div class="comment_total"><span><i>{{msg_text.commentTips}}{{hot.data.postCount}}{{msg_text.total}}</i></span></div>
-                                    <li v-for="comment in hot.data.postList" style="border: none;padding: 0 12px 3px;">
-                                       <div class="comment_content"><span>{{comment.nickname?comment.nickname:'...'}}</span>{{comment.content}}</div>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="feature-video">
+                            <ul class="video-list">
+                                <li v-for="video in videos">
+                                    <router-link @click="p_log('pageshare_video_play')" :to="'/video?videoId='+video.id">
+                                        <div class="poster" :style="'background-image:url('+ video.thumbnail +');'"></div>
+                                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
+                                    </router-link>
+                                </li>
+                            </ul>
+                            <div class="bottom-line"><span></span><em>{{msg_text.videomore}}</em><span></span></div>
                         </div>
-                        <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">{{msg_text.download_2}}</a>
                     </swiper-slide>
                     <swiper-slide id="swiper2">
                         <ul class="comment_list dynamic">
-                        <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                            <p>{{msg_text.load}}</p>
-                            <span></span>
-                        </div> -->
                         <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                             <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                                 <div class="userinfo">
@@ -130,16 +127,17 @@
                         </div>
                         <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
-                                <img v-lazy="comment.avatar" class="avatar">
-                                <span>{{comment.nickname?comment.nickname:'...'}}</span>
+                                <span class="avatar" :style="'background-image:url('+ comment.avatar +');'"></span>
+                                <span class="nickname">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
-                                <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_1.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                <!-- <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt=""> -->
                                 <i v-html="formatTime(comment.createTime)"></i>
                             </div>
                             <div class="comment_content">
                                 <p>{{comment.content}}</p>
                                 <div class="comment_img" v-if="comment.imgs?comment.imgs.length > 0:false">
-                                    <span :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="img in JSON.parse(comment.imgs)"><img :src="img" alt="" class="autoHeight" @click="showBigImg(img)"></span>
+                                    <span @click="showBigImg(img)" :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="img in JSON.parse(comment.imgs)" :style="'background-image:url('+ img +');'"></span>
                                 </div>
                             </div>
                         </li>
@@ -148,26 +146,24 @@
                             <p v-html="msg_text.noneComment"></p>
                         </div>
                     </ul>
-                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 20px;">{{msg_text.download_2}}</a>
+                    <div class="bottom-line"><span></span><em>{{msg_text.commentmore}}</em><span></span></div>
                     </swiper-slide>
                 </swiper>
             </div>
         </div>
-        <!-- <div class="bullet_box" v-show="boxShow">
-            <div class="bullet_box_content" :class="{'bullet_box_show':boxShow}">
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/box.png" class="box_bg">
-                <div class="box_content">
-                    <img src="/img/icon_cancel_2.png" class="close" @click="boxShow = false">
-                    <img src="/img/icon_groupy_120.png" class="groupy">
-                    <p class="tips">请下载Groupy查看更多内容</p>
-                    <span class="tips2">前往下载</span>
-                    <a :href="hrefs" class="appstore"><img src="/img/btn_appstore.png"></a>
-                </div>
+        <div class="groupy-footer">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
+            <div class="groupy-content">
+                <p>{{hederText.dream}}</p>
+                <a @click="p_log('pageshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.supportdownload}}</a>
             </div>
-        </div> -->
+        </div>
         <div class="bigImg" @click="bigImgShow = false" :class="{'bullet_box_show':bigImgShow}"><img :src="Imgsrc"><span></span></div>
     </div>
 </template>
+<style lang="scss" scoped>
+ @import "../../../css/idol.scss";
+</style>
 <script>
     import VideoPlayer from 'vue-video-player';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
@@ -177,16 +173,19 @@
     export default {
         data() {
           return {
+            swiperOption2: {
+                  setWrapperSize :true,
+                  pagination : '.swiper-pagination',
+                  grabCursor: true,
+                  paginationClickable: true,
+                  autoplayDisableOnInteraction: false,
+                  loop : true,
+                  autoplay: 3000
+            },
             swiperOption: {
                   notNextTick: true,
-                  // grabCursor : true,
                   setWrapperSize :true,
-                  // autoHeight: true,
-                  pagination : '.swiper-pagination',
-                  paginationClickable :true,
-                  //loop : true,
                   observeParents:true,
-                  debugger: true,
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
@@ -213,7 +212,7 @@
             video: {},
             videos:[],
             idol: {},
-            activities: [],
+            // activities: [],
             totalFollowed: 0,
             groupInfo: {},
             organization: {},
@@ -240,7 +239,6 @@
                 shop: 'ストア',
                 msg: '個チャ',
                 videoTips: 'この動画は会員のみ視聴可能です',
-                vip: '会員登録へ',
                 write: 'コメントする',
                 total: '件すべてを表示',
                 commentTips: 'コメント',
@@ -248,7 +246,21 @@
                 download_2: 'Groupyをダウンロードしてもっと見よう',
                 good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
                 hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
-                recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png'
+                recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png',
+                videomore: 'Groupyで動画をもっと入手しよう',
+                commentmore: 'Groupyで推しメンにメッセージしよう'
+            },
+            hederText: {
+                text1: '今日は浴衣だけど、どう？似合う...かな？',
+                text2: '推しメンの新たな一面を発見しよう！',
+                text3: '明日には握手会あるんだ、これを着れば良い？(/ω＼*)迷ったなぁ',
+                text4: '初めてのメイド服動画、ヾ(*´∀｀*)ﾉ絶対見てね...',
+                download: 'ダウンロード',
+                videomore: 'プライベート動画が盛りだくさん！',
+                commentmore: 'Groupyで推しメンにメッセージしよう',
+                videodownload: 'ダウンロードして入手する',
+                supportdownload: 'ダウンロードして応援する',
+                dream: '推しメンの夢を見守ってあげよう'
             },
             hotList:[],
             idol: {},
@@ -301,7 +313,7 @@
             },
             getIdolInfo() {
                 var self = this;
-                http.get('http://api.groupy.cn:8080/group/idolHomeAsFans',{
+                http.get('/share/idolHome',{
                     params: {
                         idolId: getParams('idolId')
                     }
@@ -314,10 +326,7 @@
                         self.groupInfo = res.data.groupInfo;
                     }
                     if(res.data.hotList) {
-                        self.hotList = res.data.hotList;
-                        for(var i=0;i<res.data.hotList.length;i++) {
-
-                        }
+                        self.videos = res.data.hotList;
                     }
                     if(res.data.totalFollowed) {
                         self.totalFollowed = res.data.totalFollowed;
@@ -328,23 +337,6 @@
                 }).catch(function(){
 
                 });
-            },
-            getActivity() {
-                var self = this;
-                http.get('/groupyuser/profile',{
-                    params: {
-                        id: getParams('idolId'),
-                        type: 'idol'
-                    }
-                }).then(function(res){
-                    console.log(res);
-                    if(res.data.activities) {
-                        self.activities = res.data.activities;
-                    }
-                    if(res.data.organization) {
-                        self.organization = res.data.organization;
-                    }
-                })
             },
             getComments() {
                 let self = this;
@@ -387,6 +379,14 @@
             }
         },
         mounted() {
+            window.onscroll = function (e) {
+              // 当页面的滚动条滚动时,会执行这里的代码
+              if(window.pageYOffset >= 309){
+                $('.detailPages').css({'position':'fixed'})
+              }else {
+                $('.detailPages').css({'position':'static'})
+              }
+            }
         },
         computed: {
             player() {
@@ -394,13 +394,15 @@
             },
             swiper() {
                 return this.$refs.mySwiper.swiper
+            },
+            swiper2() {
+                return this.$refs.mySwiper2.swiper
             }
         },
         created() {
             this.getIdolInfo();
-            this.getActivity();
             this.getComments();
-            this.p_log('idol_shareIdolHome_h5_open');
+            this.p_log('pageshare_idol_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
@@ -434,7 +436,21 @@
                     download_2: '下载groupy查看更多视频',
                     good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good_cn.png',
                     hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot_cn.png',
-                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend_cn.png'
+                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend_cn.png',
+                    videomore: 'Groupyで動画をもっと入手しよう',
+                    commentmore: 'Groupyで推しメンにメッセージしよう'
+                }
+                this.hederText = {
+                    text1: '心动：她穿和服的样子很可爱？！',
+                    text2: '守护爱豆的梦想，为她应援',
+                    text3: '今天有握手会，选哪件衣服比较合适？帮她选择...',
+                    text4: '首次尝试女仆装，竟然异常适合她',
+                    download: '打开应用',
+                    videomore: '更多视频，尽在Groupy',
+                    commentmore: '更多留言，尽在Groupy',
+                    videodownload: '下载Groupy，查看更多视频',
+                    supportdownload: '下载Groupy，为她应援',
+                    dream: '她的梦想 由你守护'
                 }
                 $('.htmlTilte').html('Groupy');
                 $('.metaTitle').attr('content','Groupy')
@@ -463,7 +479,21 @@
                     download_2: 'Groupyをダウンロードしてもっと見よう',
                     good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
                     hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
-                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png'
+                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png',
+                    videomore: '更多视频，尽在Groupy',
+                    commentmore: '更多留言，尽在Groupy'
+                }
+                this.hederText = {
+                    text1: '今日は浴衣だけど、どう？似合う...かな？',
+                    text2: '推しメンの新たな一面を発見しよう！',
+                    text3: '明日には握手会あるんだ、これを着れば良い？(/ω＼*)迷ったなぁ',
+                    text4: '初めてのメイド服動画、ヾ(*´∀｀*)ﾉ絶対見てね...',
+                    download: 'ダウンロード',
+                    videomore: 'プライベート動画が盛りだくさん！',
+                    commentmore: 'Groupyで推しメンにメッセージしよう',
+                    videodownload: 'ダウンロードして入手する',
+                    supportdownload: 'ダウンロードして応援する',
+                    dream: '推しメンの夢を見守ってあげよう'
                 }
               }
         }

@@ -8,23 +8,10 @@ import VueLazyload from 'vue-lazyload'
 
 import main from './main.vue'
 
-// Vue.use(VueResource);
+require('swiper/dist/css/swiper.css')
 Vue.use(VueRouter);
 Vue.use(VueAwesomeSwiper);
-Vue.use(VueLazyload, {
-    preLoad: 1,
-    error: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
-    loading: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
-    attempt: 1
-})
 import VideoPlayer from 'vue-video-player';
-// console.log(VideoPlayer)
-// VideoPlayer.config({
-//   youtube: true,
-//   switcher: true,
-//   hls: true
-// })
-
 Vue.use(VideoPlayer)
 // 1. 开启debug模式
 Vue.config.debug = true
