@@ -437,8 +437,8 @@
                     good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good_cn.png',
                     hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot_cn.png',
                     recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend_cn.png',
-                    videomore: 'Groupyで動画をもっと入手しよう',
-                    commentmore: 'Groupyで推しメンにメッセージしよう'
+                    videomore: '更多视频，尽在Groupy',
+                    commentmore: '更多留言，尽在Groupy'
                 }
                 this.hederText = {
                     text1: '心动：她穿和服的样子很可爱？！',
@@ -480,8 +480,8 @@
                     good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
                     hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
                     recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png',
-                    videomore: '更多视频，尽在Groupy',
-                    commentmore: '更多留言，尽在Groupy'
+                    videomore: 'Groupyで動画をもっと入手しよう',
+                    commentmore: 'Groupyで推しメンにメッセージしよう'
                 }
                 this.hederText = {
                     text1: '今日は浴衣だけど、どう？似合う...かな？',

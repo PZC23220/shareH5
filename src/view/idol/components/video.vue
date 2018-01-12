@@ -154,14 +154,14 @@
 					downTips: 'インストール',
 					waiting: 'Groupyで待ってまーす。',
 					videoTips: 'この動画は会員のみ視聴可能です',
-					vip: '守護者のみ',
+					vip: '応援する',
 					write: 'コメントする',
 					total: '件すべてを表示',
 					commentTips: 'コメント',
 					download_2: 'Groupyをダウンロードしてもっと見よう',
 					support: '応援',
-					featured: '今日精选视频',
-					again: '重播'
+					featured: '今日のおすすめ',
+					again: 'もう一回見る'
 				},
 				hederText: {
 					text1: '今日は浴衣だけど、どう？似合う...かな？',
@@ -416,15 +416,15 @@
 					downTips: 'インストール',
 					waiting: 'Groupyで待ってまーす。',
 					videoTips: '会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう',
-					vip: '守護者',
+					vip: '応援する',
 					write: 'コメントする',
 					total: '件すべてを表示',
 					commentTips: 'コメント',
 					download_2: 'Groupyをダウンロードしてもっと見よう',
-					recommend: 'おすすめ',
+					recommend: '今日のおすすめ',
 					support: '応援',
-					featured: 'おすすめ',
-					again: 'リプレイ'
+					featured: '今日のおすすめ',
+					again: 'もう一回見る'
 				}
 				this.hederText = {
                     text1: '今日は浴衣だけど、どう？似合う...かな？',
