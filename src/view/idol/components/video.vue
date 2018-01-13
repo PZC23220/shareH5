@@ -35,7 +35,7 @@
             </swiper>
         </div>
 		<div class="content">
-			<div class="video_content" id="idol-video-content" v-if="!vipShow">
+			<div class="video_content" id="idol-video-content" v-show="!vipShow">
 		      <div class="video-poster" id="idol-video-poster" :style="'background-image:url('+ videoPoster +');'"></div>
 		      <video :src="videoSrc"
 		      :poster="videoPoster"
@@ -62,7 +62,7 @@
 		      </div>
 		      <div class="video-end-content" v-show="videoEnd">
 			      <div class="vip_download">
-			      	<div>
+			      	<div class="vip_download_content">
 			        	<ul class="end-list">
 			        		<li class="end-videos" v-for="video in videos">
 			        			<a @click="p_log('videoshare_video_related')" :href="hrefs" :style="'background-image:url('+ video.thumbnail +');'" target="_blank">
@@ -79,7 +79,7 @@
 		        </div>
 		      </div>
 		    </div>
-		    <div class="video_content" v-else>
+		    <div class="video_content" v-show="vipShow">
 		      <div class="video_bg">
 		      	<div class="video-poster" :style="'background-image:url('+ videoPoster +');'"></div>
 		      </div>
@@ -271,12 +271,12 @@
 								$('.video-end-content').height(windowInfo);
 								$('#idolVideo').width(videoWidth);
 								$('.video-poster').css({'height':(windowInfo+20) + 'px','max-height':VideoMaxHeight + 'px'})
-								$('.vip_download').css({'height':windowInfo,'max-height':VideoMaxHeight + 'px'})
+								$('.vip_download').css({'height':windowInfo,'max-height':VideoMaxHeight + 'px','padding-top': videoHeight/2})
 							}else {
 								$('#idol-video-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
 								$('.video-poster').css({'height':(videoHeight + 20) + px,'max-height':VideoMaxHeight + 'px'})
 								$('.video-end-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
-								$('.vip_download').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
+								$('.vip_download').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px','padding-top': videoHeight/2})
 								$('#idolVideo').css({'margin-top':diffHeight,'width': window.innerWidth});
 							}
 							videoItem.forEach(function(item){
@@ -310,10 +310,10 @@
 											})
 									}
 							})
-							if(videoitem.hd) {
-									self.videoSrc = videoitem.hd
-							}else if(videoitem.ld) {
+							if(videoitem.ld) {
 									self.videoSrc = videoitem.ld
+							}else if(videoitem.hd) {
+									self.videoSrc = videoitem.hd
 							}else {
 									self.videoSrc = videoitem.sd
 							}

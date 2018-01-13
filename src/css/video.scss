@@ -41,7 +41,7 @@
   width: calc(100vw + 20px);
   max-width: 520px;
   height: calc(89.2vw + 20px);
-  max-height: 486px;
+  max-height: 466px;
   background-image:url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -221,9 +221,20 @@ video::-webkit-media-controls-start-playback-button {
   background: rgba(0,0,0,0.4);
   .vip_download {
     background: none;
+    padding-top: 0;
+    position: static;
     >div {
       padding: 0 12px 0;
+      position: relative;
+      top: 50%;
+      left: 0;
+      margin-top: calc(-33.33333vw - 32px);
     }
+  }
+}
+@media screen and (min-width: 500px) {
+  .video-end-content .vip_download >div {
+     margin-top: -198.66667px;
   }
 }
 .end-list {

@@ -63,7 +63,7 @@
                 <a @click="p_log('activityshare_idol_support')" target="_blank" :href="hrefs" class="download" style="width: 150px;">Groupyへ応援する</a>
             </div>
             <div class="share_content">
-                <div class="video_content" v-for="(hot,key) in videos" v-if="key < 10">
+                <div class="activity-video_content" v-for="(hot,key) in videos" v-if="key < 10">
                     <div class="userinfo con_left" :class="{'left_show':idolShow}" v-if="hot.idol">
                         <span><img v-lazy="hot.idol.avatar" alt=""></span>
                         <div class="video_desc">
