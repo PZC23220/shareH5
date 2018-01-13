@@ -76,9 +76,8 @@
                         <img :src="hot.thumbnail?hot.thumbnail:hot.firstFrame" v-else></img>
                         <div class="Masked" v-if="hot.publicType == 1"></div>
                         <div class="gift_content">
-                            <a @click="p_log('activityshare_idol_support')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
+                            <a @click="p_log('activityshare_idol_support')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor"></a>
                         </div>
-                        <span class="play_times"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.readCount}}</span>
                         <div class="Masked2" v-if="hot.publicType == 1">
                             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_vip.png">
                             <p>この動画は守護者のみ視聴可能です</p>

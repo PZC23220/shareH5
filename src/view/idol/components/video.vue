@@ -35,7 +35,7 @@
             </swiper>
         </div>
 		<div class="content">
-			<div class="video_content" id="idol-video-content" v-show="!vipShow">
+			<div class="video_content" id="idol-video-content" v-if="!vipShow">
 		      <div class="video-poster" id="idol-video-poster" :style="'background-image:url('+ videoPoster +');'"></div>
 		      <video :src="videoSrc"
 		      :poster="videoPoster"
@@ -56,13 +56,13 @@
 		      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-if="videoPlay" @click="videoPlayed()">
 		      <a @click="p_log('videoshare_video_like')" v-show="!videoEnd" class="video_likes" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
 		      <div v-show="!videoEnd" class="idol-content">
-		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" :src="idol.avatar?idol.avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'"></a>
+		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" v-lazy="idol.avatar"></a>
 		      	<a class="idol-info" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
 		      	<a class="video_guard" @click="p_log('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
 		      </div>
 		      <div class="video-end-content" v-show="videoEnd">
 			      <div class="vip_download">
-			      	<div class="vip_download_content">
+			      	<div>
 			        	<ul class="end-list">
 			        		<li class="end-videos" v-for="video in videos">
 			        			<a @click="p_log('videoshare_video_related')" :href="hrefs" :style="'background-image:url('+ video.thumbnail +');'" target="_blank">
@@ -79,7 +79,7 @@
 		        </div>
 		      </div>
 		    </div>
-		    <div class="video_content" v-show="vipShow">
+		    <div class="video_content" v-else>
 		      <div class="video_bg">
 		      	<div class="video-poster" :style="'background-image:url('+ videoPoster +');'"></div>
 		      </div>
@@ -271,12 +271,12 @@
 								$('.video-end-content').height(windowInfo);
 								$('#idolVideo').width(videoWidth);
 								$('.video-poster').css({'height':(windowInfo+20) + 'px','max-height':VideoMaxHeight + 'px'})
-								$('.vip_download').css({'height':windowInfo,'max-height':VideoMaxHeight + 'px','padding-top': videoHeight/2})
+								$('.vip_download').css({'height':windowInfo,'max-height':VideoMaxHeight + 'px'})
 							}else {
 								$('#idol-video-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
 								$('.video-poster').css({'height':(videoHeight + 20) + px,'max-height':VideoMaxHeight + 'px'})
 								$('.video-end-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
-								$('.vip_download').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px','padding-top': videoHeight/2})
+								$('.vip_download').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
 								$('#idolVideo').css({'margin-top':diffHeight,'width': window.innerWidth});
 							}
 							videoItem.forEach(function(item){
@@ -310,10 +310,10 @@
 											})
 									}
 							})
-							if(videoitem.ld) {
-									self.videoSrc = videoitem.ld
-							}else if(videoitem.hd) {
+							if(videoitem.hd) {
 									self.videoSrc = videoitem.hd
+							}else if(videoitem.ld) {
+									self.videoSrc = videoitem.ld
 							}else {
 									self.videoSrc = videoitem.sd
 							}
