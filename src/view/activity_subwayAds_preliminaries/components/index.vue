@@ -49,7 +49,7 @@
                 <p class="no-ranking-tips" v-if="ranking.length <= 0">ランキング集計中...</p>
                 <a v-if="ranking.length > 0" @click="p_log('activityshare_activity_ranking')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
             </div>
-            <div class="share_content">
+            <div class="activity-video_content">
                 <div class="video_content" v-for="(hot,key) in videos" v-if="key < 10">
                     <div class="userinfo con_left" :class="{'left_show':idolShow}" v-if="hot.idol">
                         <span><img v-lazy="hot.idol.avatar" alt=""></span>
