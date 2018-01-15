@@ -43,9 +43,9 @@
                         <span class="idol_name" :class="{'none':!organization.name}">{{idol.nickname?idol.nickname:'...'}}</span>
                         <span class="idol_org" v-if="organization.name">@{{organization.name}}</span>
                         <div class="idol_support">
-                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow_1.png" alt=""><em>{{totalFollowed?Number(totalFollowed).toLocaleString():0}}</em></span>
-                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip_1.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}</em></span>
-                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes_1.png" alt=""><em>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow_1.png" alt=""><em>{{totalFollower?Number(totalFollower).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip_1.png" alt=""><em>{{totalGuardian?Number(totalGuardian).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes_1.png" alt=""><em>{{totalPopularity?Number(totalPopularity).toLocaleString():0}}</em></span>
                         </div>
                         <div class="attention">
                             <a class="cursor" @click="p_log('pageshare_idol_follow')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
@@ -67,11 +67,9 @@
                     <swiper-slide id="swiper1">
                         <div class="feature-video">
                             <ul class="video-list">
-                                <li v-for="video in videos">
-                                    <router-link @click="p_log('pageshare_video_play')" :to="'/video?videoId='+video.id">
-                                        <div class="poster" :style="'background-image:url('+ video.thumbnail +');'"></div>
-                                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
-                                    </router-link>
+                                <li v-for="video in videos" @click="openVideo(video.id)">
+                                    <div class="poster" :style="'background-image:url('+ video.thumbnail +');'"></div>
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
                                 </li>
                             </ul>
                             <div class="bottom-line"><span></span><em>{{msg_text.videomore}}</em><span></span></div>
@@ -213,7 +211,9 @@
             videos:[],
             idol: {},
             // activities: [],
-            totalFollowed: 0,
+            totalFollower: 0,
+            totalGuardian: 0,
+            totalPopularity: 0,
             groupInfo: {},
             organization: {},
             pageNone: true,
@@ -271,6 +271,15 @@
           }
         },
         methods: {
+            openVideo(id) {
+                this.p_log('pageshare_video_play')
+                if(sessionStorage.getItem('openVideo')) {
+                    window.location.assign(this.hrefs);
+                }else {
+                    window.open(`${location.href}video?videoId=${id}`,'_self');
+                }
+                sessionStorage.setItem('openVideo', 'groupy');
+            },
             getSrc(obj,poster) {
                let playerOptions= {
 
@@ -328,8 +337,14 @@
                     if(res.data.hotList) {
                         self.videos = res.data.hotList;
                     }
-                    if(res.data.totalFollowed) {
-                        self.totalFollowed = res.data.totalFollowed;
+                    if(res.data.totalFollower) {
+                        self.totalFollower = res.data.totalFollower;
+                    }
+                    if(res.data.totalGuardian) {
+                        self.totalGuardian = res.data.totalGuardian;
+                    }
+                    if(res.data.totalPopularity) {
+                        self.totalPopularity = res.data.totalPopularity;
                     }
                     if(res.data.fansList) {
                         self.fansList = res.data.fansList;
