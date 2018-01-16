@@ -35,11 +35,11 @@
             </swiper>
         </div>
         <div class="content">
-            <div class="idol_desc" :style="'background-image:url('+ groupInfo.bgImg +');'">
+            <div class="idol_desc" :style="groupInfo.bgImg?'background-image:url('+ groupInfo.bgImg +');':''">
                 <div class="idol_desc_content">
                     <div>
-                        <a @click="p_log('pageshare_idol_info')" :href="hrefs" class="cursor" target="_blank"><span class="avatar" :style="'background-image:url('+ idol.avatar +');'"></span></a>
-                        <span class="ranking_position">{{idol.rankingPosition?idol.rankingPosition:0}}位</span>
+                        <a @click="p_log('pageshare_idol_info')" :href="hrefs" class="cursor" target="_blank"><span class="avatar" :style="idol.avatar?'background-image:url('+ idol.avatar +');':''"></span></a>
+                        <span class="ranking_position">{{monthlyRanking?monthlyRanking:0}}位</span>
                         <span class="idol_name" :class="{'none':!organization.name}">{{idol.nickname?idol.nickname:'...'}}</span>
                         <span class="idol_org" v-if="organization.name">@{{organization.name}}</span>
                         <div class="idol_support">
@@ -68,7 +68,7 @@
                         <div class="feature-video">
                             <ul class="video-list">
                                 <li v-for="video in videos" @click="openVideo(video.id)">
-                                    <div class="poster" :style="'background-image:url('+ video.thumbnail +');'"></div>
+                                    <div class="poster" :style="video.thumbnail?'background-image:url('+ video.thumbnail +');':''"></div>
                                     <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
                                 </li>
                             </ul>
@@ -125,7 +125,7 @@
                         </div>
                         <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
-                                <span class="avatar" :style="'background-image:url('+ comment.avatar +');'"></span>
+                                <span class="avatar" :style="comment.avatar?'background-image:url('+ comment.avatar +');':''"></span>
                                 <span class="nickname">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
                                 <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_1.png'" v-if="comment.medal&&comment.medal>0" alt="">
@@ -135,7 +135,7 @@
                             <div class="comment_content">
                                 <p>{{comment.content}}</p>
                                 <div class="comment_img" v-if="comment.imgs?comment.imgs.length > 0:false">
-                                    <span @click="showBigImg(img)" :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="img in JSON.parse(comment.imgs)" :style="'background-image:url('+ img +');'"></span>
+                                    <span @click="showBigImg(img)" :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="img in JSON.parse(comment.imgs)" :style="img?'background-image:url('+ img +');':''"></span>
                                 </div>
                             </div>
                         </li>
@@ -214,6 +214,7 @@
             totalFollower: 0,
             totalGuardian: 0,
             totalPopularity: 0,
+            monthlyRanking: 0,
             groupInfo: {},
             organization: {},
             pageNone: true,
@@ -274,7 +275,7 @@
             openVideo(id) {
                 this.p_log('pageshare_video_play')
                 if(sessionStorage.getItem('openVideo')) {
-                    window.location.assign(this.hrefs);
+                    window.open(this.hrefs,'_self');
                 }else {
                     window.open(`${location.href}video?videoId=${id}`,'_self');
                 }
@@ -348,6 +349,9 @@
                     }
                     if(res.data.fansList) {
                         self.fansList = res.data.fansList;
+                    }
+                    if(res.data.monthlyRanking) {
+                        self.monthlyRanking = res.data.monthlyRanking;
                     }
                 }).catch(function(){
 

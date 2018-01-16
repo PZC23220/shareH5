@@ -36,10 +36,12 @@
         </div>
 		<div class="content">
 			<div class="video_content" id="idol-video-content" v-if="!vipShow">
-		      <div class="video-poster" id="idol-video-poster" :style="'background-image:url('+ videoPoster +');'"></div>
+		      <div class="video-poster" id="idol-video-poster" :style="videoPoster?'background-image:url('+ videoPoster +');':''">
+		      </div>
+	      	  <p v-show="!videoError" class="error-tips"><span v-html="msg_text.error"></span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/error.jpg"></p>
 		      <video :src="videoSrc"
 		      :poster="videoPoster"
-		      @click="videoPaused()"
+		      @click="videoPaused"
 		      :muted="dMuted"
 		      @ended='onPlayerEnded()'
 		      webkit-playsinline="true"
@@ -49,14 +51,15 @@
 		      x5-video-orientation="portraint"
 		      controls="false"
 		      id="idolVideo"
-		      v-show="!videoEnd"
+		      ref="idolVideo"
+		      v-show="!videoEnd && videoError"
 		      preload>
 		      お使いのブラウザは<br>html5版プレーヤー非対応です。
 		      </video>
-		      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-if="videoPlay" @click="videoPlayed()">
+		      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-show="videoPlay" @click="videoPlayed()">
 		      <a @click="p_log('videoshare_video_like')" v-show="!videoEnd" class="video_likes" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
 		      <div v-show="!videoEnd" class="idol-content">
-		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span class="avatar" :style="'background-image: url('+ idol.avatar +')'"></span></a>
+		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span class="avatar" :style="idol.avatar?'background-image: url('+ idol.avatar +')':''"></span></a>
 		      	<a class="idol-info" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
 		      	<a class="video_guard" @click="p_log('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
 		      </div>
@@ -64,8 +67,8 @@
 			      <div class="vip_download">
 			      	<div>
 			        	<ul class="end-list">
-			        		<li class="end-videos" v-for="(video,key) in videos" v-if="key < 4">
-			        			<a @click="p_log('videoshare_video_related')" :href="hrefs" :style="'background-image:url('+ video.thumbnail +');'" target="_blank">
+			        		<li class="end-videos" v-for="(video,key2) in endVideoList" v-if="key2 < 4">
+			        			<a @click="p_log('videoshare_video_related')" :href="hrefs" :style="video.thumbnail?'background-image:url('+ video.thumbnail +');':''" target="_blank">
 					    				<img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
 					    			</a>
 					    			<div class="progress"><span class="progress_span"></span></div>
@@ -81,7 +84,7 @@
 		    </div>
 		    <div class="video_content" v-else>
 		      <div class="video_bg">
-		      	<div class="video-poster" :style="'background-image:url('+ videoPoster +');'"></div>
+		      	<div class="video-poster" :style="videoPoster?'background-image:url('+ videoPoster +');':''"></div>
 		      </div>
 	        <div class="vip_download">
 	          <p v-html="msg_text.videoTips"></p>
@@ -89,7 +92,7 @@
 	        </div>
 		      <a class="video_likes" @click="p_log('videoshare_video_like')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
 		      <div class="idol-content">
-		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" :src="idol.avatar?idol.avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'"></a>
+		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span class="avatar" :style="idol.avatar?'background-image: url('+ idol.avatar +')':''"></span></a>
 		      	<a class="idol-info" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
 		      	<a class="video_guard" @click="p_log('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
 		      </div>
@@ -99,7 +102,7 @@
 		    	<ul class="video-list">
 		    		<li v-for="video in videos">
 		    			<a @click="p_log('videoshare_recommend')":href="hrefs" target="_blank">
-		    				<div class="poster" :style="'background-image:url('+ video.thumbnail +');'"></div>
+		    				<div class="poster" :style="video.thumbnail?'background-image:url('+ video.thumbnail +');':''"></div>
 		    				<img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
 		    			</a>
 		    		</li>
@@ -134,8 +137,10 @@
                   autoplay: 3000
             	},
 				vipShow: false,
+				videoError: true,
 				video: {},
 				videos:[],
+				endVideoList: [],
 				dMuted: false,
 				idol: {},
 				isMuted: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png',
@@ -161,7 +166,8 @@
 					download_2: 'Groupyをダウンロードしてもっと見よう',
 					support: '応援',
 					featured: '今日のおすすめ',
-					again: 'もう一回見る'
+					again: 'もう一回見る',
+					error:'再生エラーです (´дﾟ｀ll)<br>アプリで動画を見よう'
 				},
 				hederText: {
 					text1: '今日は浴衣だけど、どう？似合う...かな？',
@@ -191,96 +197,92 @@
 			this.videoPlay = true;
 			},
 			videoPlayed() {
-			$('#idolVideo')[0].play();
-			this.videoEnd = false;
-			this.posterSee = false;
-			this.videoPlay = false;
-			this.p_log('videoshare_video_play')
+				let self = this;
+				let myVid=document.getElementById("idolVideo");
+				myVid.play();
+				this.p_log('videoshare_video_play')
 			},
 			onPlayerEnded() {
-			this.videoEnd = true;
-			this.countDown();
+				this.videoEnd = true;
+				this.countDown();
+			},
+			onError() {
+				alert('error');
 			},
 			countDown() {
-			let self = this;
-			let timer;
-			$('.progress_span').addClass('over');
-			// clearTimeout(timer)
-			// timer = setTimeout(() => {
-			// 	self.videos.sort(function(a,b){ return Math.random()>.5 ? -1 : 1;});
-			// },4000);
-			clearTimeout(timer)
-			timer = setInterval(() => {
-				self.videos.sort(function(a,b){ return Math.random()>.5 ? -1 : 1;});
-			},4000)
+				let self = this;
+				let timer;
+				$('.progress_span').addClass('over');
+				clearInterval(timer)
+				timer = setInterval(() => {
+					self.endVideoList.sort(function(a,b){ return Math.random()>.5 ? -1 : 1;});
+				},3000)
 			},
 			getVideo() {
-			var self = this;
-			http.get('/video/get',{
-			params: {
-			videoId: getParams('videoId')
-			}
-			}).then(function(res){
-			console.log(res);
-			if(res) {
-			if(res.data.related) {
-			self.videos = res.data.related;
-			}
+				var self = this;
+				http.get('/video/get',{
+					params: {
+						videoId: getParams('videoId')
+					}
+				}).then(function(res){
+					console.log(res);
+					if(res) {
+						if(res.data.related) {
+						self.videos = res.data.related;
+						}
 
-			if(res.data.idol) {
-			self.idolShow = true;
-			self.idol = res.data.idol;
-			}
-			if(res.data.video) {
-			self.video = res.data.video;
-			if(res.data.video.active == 1) {
-					self.pageNone = false;
-					self.pageNone2 = false;
-					if(res.data.video.publicType == 1) {
-							self.vipShow = true;
-					}else {
-							self.vipShow = false;
-							self.videoPoster = res.data.video.thumbnail;
-							let videoItem = res.data.video.videoItemList;
-							let videoitem = {
-									hd: '',
-									ld: '',
-									sd: ''
-							};
-							let videoInfo = res.data.video.videoHeight/res.data.video.videoWidth;
-							let VideoMaxHeight= 500*videoInfo;
-							let diffHeight,diffWidth,windowInfo,videoHeight;
-							if(self.hrefs == 'https://itunes.apple.com/app/id1270083927') {
-								windowInfo = 500;
-								videoHeight = 500*videoInfo;
-							}else {
-								windowInfo = window.innerWidth*1.33333;
-								videoHeight = window.innerWidth*videoInfo;
-							}
+						if(res.data.idol) {
+							self.idolShow = true;
+							self.idol = res.data.idol;
+						}
+						if(res.data.video) {
+							self.video = res.data.video;
+							if(res.data.video.active == 1) {
+								if(res.data.video.publicType == 1) {
+										self.vipShow = true;
+								}else {
+									self.vipShow = false;
+									self.videoPoster = res.data.video.thumbnail;
+									let videoItem = res.data.video.videoItemList;
+									let videoitem = {
+										hd: '',
+										ld: '',
+										sd: ''
+									};
+									let videoInfo = res.data.video.videoHeight/res.data.video.videoWidth;
+									let VideoMaxHeight= 500*videoInfo;
+									let diffHeight,diffWidth,windowInfo,videoHeight;
+									if(self.hrefs == 'https://itunes.apple.com/app/id1270083927') {
+										windowInfo = 500;
+										videoHeight = 500*videoInfo;
+									}else {
+										windowInfo = window.innerWidth*1.33333;
+										videoHeight = window.innerWidth*videoInfo;
+									}
 
-							if(videoInfo <= 0.892) {
-								console.log(videoInfo)
-								diffHeight = (videoHeight/2) * (-1);
-								$('#idolVideo').css('margin-top',diffHeight);
-							}else if(videoInfo >= 1) {
-								let videoWidth = windowInfo/videoInfo;
-								diffHeight = (windowInfo/2) * (-1);
-								diffWidth = (videoWidth/2) * (-1);
-								$('#idolVideo').css({'margin-top':diffHeight,'margin-left':diffWidth});
-								$('#idolVideo').height(windowInfo);
-								$('.video-end-content').height(windowInfo);
-								$('#idolVideo').width(videoWidth);
-								$('.video-poster').css({'height':(windowInfo+20) + 'px','max-height':VideoMaxHeight + 'px'})
-								$('.vip_download').css({'height':windowInfo,'max-height':VideoMaxHeight + 'px'})
-							}else {
-								$('#idol-video-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
-								$('.video-poster').css({'height':(videoHeight + 20) + px,'max-height':VideoMaxHeight + 'px'})
-								$('.video-end-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
-								$('.vip_download').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
-								$('#idolVideo').css({'margin-top':diffHeight,'width': window.innerWidth});
-							}
-							videoItem.forEach(function(item){
-									if(item.resolution == 'sd') {
+									if(videoInfo <= 0.892) {
+										console.log(videoInfo)
+										diffHeight = (videoHeight/2) * (-1);
+										$('#idolVideo').css('margin-top',diffHeight);
+									}else if(videoInfo >= 1) {
+										let videoWidth = windowInfo/videoInfo;
+										diffHeight = (windowInfo/2) * (-1);
+										diffWidth = (videoWidth/2) * (-1);
+										$('#idolVideo').css({'margin-top':diffHeight,'margin-left':diffWidth});
+										$('#idolVideo').height(windowInfo);
+										$('.video-end-content').height(windowInfo);
+										$('#idolVideo').width(videoWidth);
+										$('.video-poster').css({'height':(windowInfo+20) + 'px','max-height':VideoMaxHeight + 'px'})
+										$('.vip_download').css({'height':windowInfo,'max-height':VideoMaxHeight + 'px'})
+									}else {
+										$('#idol-video-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
+										$('.video-poster').css({'height':(videoHeight + 20) + px,'max-height':VideoMaxHeight + 'px'})
+										$('.video-end-content').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
+										$('.vip_download').css({'height':videoHeight + 'px','max-height':VideoMaxHeight + 'px'})
+										$('#idolVideo').css({'margin-top':diffHeight,'width': window.innerWidth});
+									}
+									videoItem.forEach(function(item){
+										if(item.resolution == 'sd') {
 											$.ajax({
 													url: item.url,
 													type: 'head',
@@ -289,8 +291,8 @@
 															videoitem.sd = item.url;
 													}
 											})
-									}
-									else if(item.resolution == 'ld') {
+										}
+										else if(item.resolution == 'ld') {
 											$.ajax({
 													url: item.url,
 													type: 'head',
@@ -299,7 +301,7 @@
 															videoitem.ld = item.url;
 													}
 											})
-									}else {
+										}else {
 											$.ajax({
 													url: item.url,
 													type: 'head',
@@ -308,32 +310,26 @@
 															videoitem.hd = item.url;
 													}
 											})
+										}
+									})
+									if(videoitem.ld) {
+										self.videoSrc = videoitem.ld
+									}else if(videoitem.hd) {
+										self.videoSrc = videoitem.hd
+									}else {
+										self.videoSrc = videoitem.sd
 									}
-							})
-							if(videoitem.hd) {
-									self.videoSrc = videoitem.hd
-							}else if(videoitem.ld) {
-									self.videoSrc = videoitem.ld
-							}else {
-									self.videoSrc = videoitem.sd
+								}
+							} else {
+								self.vipShow = true;
 							}
-
+						}else {
+							self.vipShow = true;
+						}
+					}else {
+						self.vipShow = false;
 					}
-			} else {
-				self.pageNone = true;
-				self.pageNone2 = true;
-			}
-
-			}else {
-			self.pageNone = true;
-			self.pageNone2 = true;
-			}
-			}else {
-			self.pageNone = true;
-			self.pageNone2 = true;
-			self.vipShow = false;
-			}
-			})
+				})
 			},
 			p_log(val) {
 				var _data = {
@@ -352,25 +348,48 @@
 				}).catch(function(){
 
 				})
+			},
+			getEndVideoList(){
+				let self = this;
+				http.get('/share/relatedVideo',{
+					params: {
+						videoId: getParams('videoId')
+					}
+				}).then(res => {
+					if(res.data){
+						self.endVideoList = res.data;
+					}
+				});
 			}
 		},
 		mounted() {
-		// console.log('this is current player instance object', this.player)
+			let self = this;
+			let ua = navigator.userAgent.toLowerCase();
+			let myVid=document.getElementById("idolVideo");
+			myVid.addEventListener('play', function(event) {
+				self.videoEnd = false;
+				self.videoPlay = false;
+				myVid.addEventListener('error', function(event) {
+					self.videoError = false;
+				}, true);
+				self.p_log('videoshare_video_play')
+			}, true);
 		},
 		computed: {
 			player() {
-			return this.$refs.videoPlayer.player
+				return this.$refs.idolVideo
 			},
 			swiper() {
-			return this.$refs.mySwiper.swiper
+				return this.$refs.mySwiper.swiper
 			}
 		},
 		created() {
 			this.getVideo();
+			this.getEndVideoList();
 			this.p_log('pageshare_video_open');
 			var ua = navigator.userAgent.toLowerCase();
 			if (/iphone|ipad|ipod/.test(ua)) {
-			this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+				this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
 			}else if(/android/.test(ua)) {
 			this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
 			}else {
@@ -392,7 +411,8 @@
 					recommend: '相关视频',
 					support: '应援',
 					featured: '今日精选视频',
-					again: '重播'
+					again: '重播',
+					error:'( ˘•ω•˘ )视频酱走丢了<br>来Groupy找她吧'
 				}
 				this.hederText = {
                     text1: '心动：她穿和服的样子很可爱？！',
@@ -404,7 +424,8 @@
                     commentmore: '更多留言，尽在Groupy',
                     videodownload: '下载Groupy，查看更多视频',
                     supportdownload: '下载Groupy，为她应援',
-                    dream: '她的梦想 由你守护'
+                    dream: '她的梦想 由你守护',
+                    error:'再生エラーです (´дﾟ｀ll)<br>アプリで動画を見よう'
                 }
 				$('.htmlTilte').html('Groupy');
 				$('.metaTitle').attr('content','Groupy')

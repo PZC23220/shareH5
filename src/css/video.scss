@@ -9,6 +9,7 @@
     // width: 100%;
     max-height:133.33333vw;
     width: 100vw;
+    height: 100vw;
     max-width: 500px;
     object-fit:fill;
     display: block;margin: 0 auto;
@@ -289,7 +290,8 @@ video::-webkit-media-controls-start-playback-button {
     height: 4px;
   }
   .progress_span.over {
-    animation: changeWidth 4s linear infinite;
+    transform: translate3d(0, 0, 0);
+    animation: changeWidth 3s linear infinite;
   }
 }
   @keyframes changeWidth{
@@ -319,5 +321,17 @@ video::-webkit-media-controls-start-playback-button {
     font-weight: 500;
     display: inline-block;
     background-image: linear-gradient(150deg, #FF8550 0%, #FF2E79 100%);
+  }
+}
+.error-tips {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 40px;
+  span {
+    padding-top: 30px;
+  }
+  img {
+    width: 66.5px;
   }
 }
