@@ -59,7 +59,7 @@
 		      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-show="videoPlay" @click="videoPlayed()">
 		      <a @click="p_log('videoshare_video_like')" v-show="!videoEnd" class="video_likes" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
 		      <div v-show="!videoEnd" class="idol-content">
-		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span class="avatar" :style="idol.avatar?'background-image: url('+ idol.avatar +')':''"></span></a>
+		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" v-lazy="idol.avatar"></a>
 		      	<a class="idol-info" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
 		      	<a class="video_guard" @click="p_log('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
 		      </div>
@@ -92,7 +92,7 @@
 	        </div>
 		      <a class="video_likes" @click="p_log('videoshare_video_like')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
 		      <div class="idol-content">
-		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span class="avatar" :style="idol.avatar?'background-image: url('+ idol.avatar +')':''"></span></a>
+		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" v-lazy="idol.avatar"></a>
 		      	<a class="idol-info" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
 		      	<a class="video_guard" @click="p_log('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
 		      </div>
@@ -216,7 +216,7 @@
 				clearInterval(timer)
 				timer = setInterval(() => {
 					self.endVideoList.sort(function(a,b){ return Math.random()>.5 ? -1 : 1;});
-				},3000)
+				},3100)
 			},
 			getVideo() {
 				var self = this;

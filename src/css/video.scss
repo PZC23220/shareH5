@@ -291,7 +291,7 @@ video::-webkit-media-controls-start-playback-button {
   }
   .progress_span.over {
     transform: translate3d(0, 0, 0);
-    animation: changeWidth 3s linear infinite;
+    animation: changeWidth 3.1s linear infinite;
   }
 }
   @keyframes changeWidth{
@@ -333,5 +333,18 @@ video::-webkit-media-controls-start-playback-button {
   }
   img {
     width: 66.5px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .video_content,.vip_download,.video-end-content {
+    min-height: 446px;
+    max-height: 666.66667px;
+  }
+  .video-end-content .vip_download {
+    margin-top: -181.66667px;
+    top: 50%;
+    padding-top: 0;
+    height: 446px;
   }
 }

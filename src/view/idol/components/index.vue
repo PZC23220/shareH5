@@ -353,9 +353,7 @@
                     if(res.data.monthlyRanking) {
                         self.monthlyRanking = res.data.monthlyRanking;
                     }
-                }).catch(function(){
-
-                });
+                })
             },
             getComments() {
                 let self = this;
@@ -471,9 +469,6 @@
                     supportdownload: '下载Groupy，为她应援',
                     dream: '她的梦想 由你守护'
                 }
-                $('.htmlTilte').html('Groupy');
-                $('.metaTitle').attr('content','Groupy')
-                $('.metaDesc').attr('content','快来Groupy跟偶像亲密互动吧')
               } else {
                 this.msg_text = {
                     noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
