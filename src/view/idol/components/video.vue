@@ -264,6 +264,7 @@
 										console.log(videoInfo)
 										diffHeight = (videoHeight/2) * (-1);
 										$('#idolVideo').css('margin-top',diffHeight);
+										$('#idolVideo').height('auto');
 									}else if(videoInfo >= 1) {
 										let videoWidth = windowInfo/videoInfo;
 										diffHeight = (windowInfo/2) * (-1);
