@@ -428,9 +428,6 @@
                     dream: '她的梦想 由你守护',
                     error:'再生エラーです (´дﾟ｀ll)<br>アプリで動画を見よう'
                 }
-				$('.htmlTilte').html('Groupy');
-				$('.metaTitle').attr('content','Groupy')
-				$('.metaDesc').attr('content','快来Groupy跟偶像亲密互动吧')
 			} else {
 				this.msg_text = {
 					noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',

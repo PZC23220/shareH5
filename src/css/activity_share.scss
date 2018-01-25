@@ -97,7 +97,7 @@
     }
     .activity_title {
         color: #f4ba4b;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
         box-sizing: border-box;
         padding: 12px;
@@ -441,6 +441,52 @@
     }
     .vjs-control-bar {
         display: none !important;
+    }
+    .countDown-content {
+        text-align: center;
+    }
+    .countDown {
+        color: #FC4083;
+        margin-bottom: 6px;
+        height: 22px;
+        line-height: 22px;
+        >*,em {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        em {
+            width: 22.5px;
+            height: 22px;
+            background-image: url('http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/bg_time.jpg');
+            background-size: 100%;
+            color: #fff;
+            font-size: 16px;
+            margin: 0 5px;
+            font-weight: 400;
+        }
+    }
+    .goal {
+        font-size: 16px;
+        color: #666;
+        font-weight: 600;
+    }
+    .twitter-content {
+        padding: 0 12px;
+    }
+    .twitter-title {
+        padding-left: 20px;
+        line-height: 12px;
+        margin-top: 8px;
+        color: #999999;
+    }
+    .activity_desc {
+        font-size: 14px;
+        padding: 12px;
+        font-weight: 600;
+        span {
+            color: #f4ba4b;
+        }
+
     }
 @media screen and (min-width: 500px) {
   .video-js .vjs-tech,.public_show >img {

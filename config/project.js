@@ -46,5 +46,6 @@ module.exports = {
         live: './src/view/live',
         activity_entertainmentWeekly: './src/view/activity_entertainmentWeekly',
         activity_spokesman2: './src/view/activity_spokesman2',
+        activity_twitter: './src/view/activity_twitter',
     },
 };
