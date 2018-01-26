@@ -321,7 +321,7 @@
                 this.getActivityInfo();
             }
 
-            // this.p_log('shareActivity_spokesman2_open');
+            this.p_log('shareActivity_twitter_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
