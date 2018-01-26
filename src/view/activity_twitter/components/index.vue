@@ -43,7 +43,7 @@
                 <div class="goal">対象：{{activityInfo.goal}}</div>
             </div>
             <div class="ranking-twitter">
-                <h5 class="twitter-title">Twitter@GGroupyyy にて公開</h5>
+                <h5 class="twitter-title">ランキングは公式Twitterにて公開</h5>
                 <div class="twitter-content" v-html='activityInfo.twitterWidgetCodeSnippet'>
 
                 </div>
