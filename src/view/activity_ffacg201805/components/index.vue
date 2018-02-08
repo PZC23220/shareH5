@@ -35,8 +35,8 @@
             </swiper>
         </div>
         <div class="content">
-            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201805-over.png" class="banner">
-            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201805.png" class="banner">
+            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201805-over.jpg" class="banner">
+            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201805.jpg" class="banner">
             <h2 class="activity_title">上位1名のアイドルは、中国広州で開催予定の来場者数20万人超えの18th FFACGに、Groupyの広告モデルとして特大看板に登場できます！</h2>
             <div class="idol-ranking" v-if="!idol.idol_id">
                 <div class="ranking-two">
