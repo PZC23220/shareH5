@@ -50,5 +50,6 @@ module.exports = {
         meeting_raiders: './src/view/meeting_raiders',
         meeting_shows: './src/view/meeting_shows',
         meeting: './src/view/meeting',
+        activity_ffacg201805: './src/view/activity_ffacg201805',
     },
 };
