@@ -8,28 +8,28 @@
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
@@ -38,7 +38,7 @@
             <div class="idol_desc" :style="groupInfo.bgImg?'background-image:url('+ groupInfo.bgImg +');':''">
                 <div class="idol_desc_content">
                     <div>
-                        <a @click="p_log('pageshare_idol_info')" :href="hrefs" class="cursor" target="_blank"><span class="avatar" :style="idol.avatar?'background-image:url('+ idol.avatar +');':''"></span></a>
+                        <a @click="get_app('pageshare_idol_info')" :href="hrefs" class="cursor" target="_blank"><span class="avatar" :style="idol.avatar?'background-image:url('+ idol.avatar +');':''"></span></a>
                         <span class="ranking_position">{{monthlyRanking?monthlyRanking:0}}位</span>
                         <span class="idol_name" :class="{'none':!organization.name}">{{idol.nickname?idol.nickname:'...'}}</span>
                         <span class="idol_org" v-if="organization.name">@{{organization.name}}</span>
@@ -48,10 +48,10 @@
                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes_1.png" alt=""><em>{{totalPopularity?Number(totalPopularity).toLocaleString():0}}</em></span>
                         </div>
                         <div class="attention">
-                            <a class="cursor" @click="p_log('pageshare_idol_follow')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
-                            <a class="cursor" @click="p_log('pageshare_idol_follow')" :href="hrefs" target="_blank"><img style="margin-top: 4px;" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip.png"><i>{{msg_text.protector}}</i></a>
+                            <a class="cursor" @click="get_app('pageshare_idol_follow')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
+                            <a class="cursor" @click="get_app('pageshare_idol_follow')" :href="hrefs" target="_blank"><img style="margin-top: 4px;" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip.png"><i>{{msg_text.protector}}</i></a>
                         </div>
-                        <a @click="p_log('pageshare_idol_info')" class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
+                        <a @click="get_app('pageshare_idol_info')" class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
             <div class="groupy-content">
                 <p>{{hederText.dream}}</p>
-                <a @click="p_log('pageshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.supportdownload}}</a>
+                <a @click="get_app('pageshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.supportdownload}}</a>
             </div>
         </div>
         <div class="bigImg" @click="bigImgShow = false" :class="{'bullet_box_show':bigImgShow}"><img :src="Imgsrc"><span></span></div>
@@ -275,9 +275,9 @@
             openVideo(id) {
                 this.p_log('pageshare_video_play')
                 if(sessionStorage.getItem('openVideo')) {
-                    window.open(this.hrefs,'_self');
+                    window.open(this.hrefs,'_blank');
                 }else {
-                    window.open(`${location.href}video?videoId=${id}`,'_self');
+                    window.open(`${location.href}video?videoId=${id}`,'_blank');
                 }
                 sessionStorage.setItem('openVideo', 'groupy');
             },
@@ -376,6 +376,14 @@
                     }
                 })
             },
+            get_app(val) {
+                this.p_log(val);
+                var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+                if (ua.match(/WeiBo/i) == "weibo") {
+                    //在新浪微博客户端打开
+                    alert('请用浏览器打开此页面，查看更多视频');
+                }
+            },
             p_log(val) {
                 var _data = {
 
@@ -421,15 +429,13 @@
             this.getComments();
             this.p_log('pageshare_idol_open');
             var ua = navigator.userAgent.toLowerCase();
-            if (/iphone|ipad|ipod/.test(ua)) {
-                this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
-            }else if(/android/.test(ua)) {
-                this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
-            }else {
-                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
-            }
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
+                if(/android/.test(ua)) {
+                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                }else {
+                    this.hrefs = 'https://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
+                }
                 this.msg_text = {
                     noneComment: '还没有留言<br>去发布留言，让粉丝来互动吧！',
                     download: '会员独有的私密状态查看，一键应援，共同守护爱豆的成长!',
@@ -470,6 +476,11 @@
                     dream: '她的梦想 由你守护'
                 }
               } else {
+                if(/android/.test(ua)) {
+                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                }else {
+                    this.hrefs = 'https://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
+                }
                 this.msg_text = {
                     noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
                     download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',

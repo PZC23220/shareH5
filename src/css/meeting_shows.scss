@@ -1,0 +1,152 @@
+body {
+    min-height: 100vh;
+    background: #eee;
+}
+.content {
+    background: #eee;
+}
+// 波浪背景
+.live_bg {
+    background: #eee;
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+}
+.meeting_content {
+    background: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/share/bg_1.jpg);
+    background-size: 100%;
+    padding: 12px;
+    overflow: hidden;
+}
+.title {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    >* {
+        display: inline-block;
+        vertical-align: center;
+    }
+    >em {
+        padding: 0 6.5px;
+    }
+    p {
+        width: 50px;
+        height: 4px;
+        border-top: 0.5px solid #fff;
+        border-bottom: 0.5px solid #fff;
+    }
+}
+.meeting_times {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 12px;
+    >* {
+        display: inline-block;
+        vertical-align: center;
+    }
+}
+.meeting_begin {
+    font-size: 12px;
+    font-weight: 400;
+    color: #00B4BB;
+    padding: 0 3px;
+    background: #fff;
+    margin-right: 8px;
+    border-radius: 2px;
+    height: 16px;
+    line-height: 16px;
+}
+.meeting_day {
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: 8px;
+}
+.arrow_left {
+    display: block;
+    width: 25px;
+}
+.arrow_right {
+    float: right;
+    width: 25px;
+
+}
+.meeting_see {
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+.meeting_tips {
+    padding: 0 18px 9px;
+    font-size: 14px;
+    color: #fff;
+}
+.avatar {
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    float: none;
+    margin-top: 20px;
+}
+.idolName {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 4.5px;
+}
+.meeting_desc {
+    margin: 8px 4px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.17);
+    border-radius: 4px;
+    padding-top: 8px;
+}
+.how {
+    font-size: 18px;
+    padding: 8px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #eee;
+}
+.how_desc {
+    padding: 10px 8px 5px;
+    color: #666666;
+}
+.how_tips {
+    color: #999999;
+    padding: 0 8px 8px;
+}
+.meeting-footer {
+    font-size: 16px;
+    font-weight: 600;
+    background-image: linear-gradient(150deg, #FF8550 0%, #FF2E79 100%);
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    a {
+        color: #FFFFFF;
+    }
+}
+@media screen and (min-width: 500px) {
+    .meeting-footer {
+        left: 50% !important;
+        width: 500px !important;
+        margin-left: -250px !important;
+    }
+    .header {
+        margin-left: -250px !important;
+    }
+}

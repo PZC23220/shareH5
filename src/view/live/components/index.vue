@@ -9,7 +9,7 @@
     <div class="more_video">
       <h3>{{msg_text.recommend}}</h3>
       <ul>
-          <li class="con_left" :class="{'left_show':videos.length>0}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
+          <li class="con_left" :class="{'left_show':videos.length>0}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
                   <img :src="videos.length>0?videos[0].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
@@ -20,7 +20,7 @@
               </div>
               <p class="video_content">{{videos.length>0?videos[0].title:msg_text.waiting}}</p>
           </a></li>
-          <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
+          <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
                   <img :src="videos.length>2?videos[2].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
@@ -33,7 +33,7 @@
           </a></li>
       </ul>
       <ul>
-          <li class="con_left" :class="{'left_show':videos.length>1}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
+          <li class="con_left" :class="{'left_show':videos.length>1}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
                   <img :src="videos.length>1?videos[1].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
@@ -44,7 +44,7 @@
               </div>
               <p class="video_content">{{videos.length>1?videos[1].title:msg_text.waiting}}</p>
           </a></li>
-          <li class="con_left" :class="{'left_show':videos.length>3}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
+          <li class="con_left" :class="{'left_show':videos.length>3}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
                   <img :src="videos.length>3?videos[3].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
@@ -105,6 +105,14 @@
 
         });
       },
+      get_app(val) {
+          this.p_log(val);
+          var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+          if (ua.match(/WeiBo/i) == "weibo") {
+              //在新浪微博客户端打开
+              alert('请用浏览器打开此页面，查看更多视频');
+          }
+      },
       p_log(val) {
         var _data = {
 
@@ -129,15 +137,21 @@
     },
     created: function() {
       let self = this;
-      var ua = navigator.userAgent.toLowerCase();
       this.p_log('shareh5_live_open');
-      if (/iphone|ipad|ipod/.test(ua)) {
-        // window.open('groupy-thirdparty://');
-        this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
-      }else if(/android/.test(ua)) {
-          this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
-      }else {
-          this.hrefs = 'https://itunes.apple.com/app/id1270083927';
+      let ua = navigator.userAgent.toLowerCase();
+      let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+       if(_lan === 'zh-cn') {
+          if(/android/.test(ua)) {
+              this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+          }else {
+              this.hrefs = 'https://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
+          }
+      } else {
+          if(/android/.test(ua)) {
+              this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+          }else {
+              this.hrefs = 'https://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
+          }
       }
       this.getVideo();
     }

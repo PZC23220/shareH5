@@ -8,28 +8,28 @@
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('videoshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
@@ -57,18 +57,18 @@
 		      お使いのブラウザは<br>html5版プレーヤー非対応です。
 		      </video>
 		      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-show="videoPlay" @click="videoPlayed()">
-		      <a @click="p_log('videoshare_video_like')" v-show="!videoEnd" class="video_likes" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
+		      <a @click="get_app('videoshare_video_like')" v-show="!videoEnd" class="video_likes" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
 		      <div v-show="!videoEnd" class="idol-content">
-		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" v-lazy="idol.avatar"></a>
-		      	<a class="idol-info" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
-		      	<a class="video_guard" @click="p_log('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
+		      	<a class="idol-avatar" @click="get_app('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" :src="idol.avatar"></a>
+		      	<a class="idol-info" @click="get_app('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
+		      	<a class="video_guard" @click="get_app('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
 		      </div>
 		      <div class="video-end-content" v-show="videoEnd">
 			      <div class="vip_download">
 			      	<div>
 			        	<ul class="end-list">
 			        		<li class="end-videos" v-for="(video,key2) in endVideoList" v-if="key2 < 4">
-			        			<a @click="p_log('videoshare_video_related')" :href="hrefs" :style="video.thumbnail?'background-image:url('+ video.thumbnail +');':''" target="_blank">
+			        			<a @click="get_app('videoshare_video_related')" :href="hrefs" :style="video.thumbnail?'background-image:url('+ video.thumbnail +');':''" target="_blank">
 					    				<img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
 					    			</a>
 					    			<div class="progress"><span class="progress_span"></span></div>
@@ -76,7 +76,7 @@
 			        	</ul>
 			        	<div class="video-opt">
 			        		<span @click="videoPlayed()">{{msg_text.again}}</span>
-			        		<a @click="p_log('videoshare_video_like')" :href="hrefs" target="_blank">{{msg_text.support}}</a>
+			        		<a @click="get_app('videoshare_video_like')" :href="hrefs" target="_blank">{{msg_text.support}}</a>
 			        	</div>
 			      	</div>
 		        </div>
@@ -88,20 +88,20 @@
 		      </div>
 	        <div class="vip_download">
 	          <p v-html="msg_text.videoTips"></p>
-	          <a @click="p_log('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">{{msg_text.vip}}</a>
+	          <a @click="get_app('Video_Bottom_Download_Click')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">{{msg_text.vip}}</a>
 	        </div>
-		      <a class="video_likes" @click="p_log('videoshare_video_like')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
+		      <a class="video_likes" @click="get_app('videoshare_video_like')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" alt=""></a>
 		      <div class="idol-content">
-		      	<a class="idol-avatar" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" v-lazy="idol.avatar"></a>
-		      	<a class="idol-info" @click="p_log('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
-		      	<a class="video_guard" @click="p_log('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
+		      	<a class="idol-avatar" @click="get_app('videoshare_video_idol')" :href="hrefs" target="_blank"><img class="avatar" :src="idol.avatar"></a>
+		      	<a class="idol-info" @click="get_app('videoshare_video_idol')" :href="hrefs" target="_blank"><span :class="{'none-org':!idol.organization}">{{idol.nickname?idol.nickname: '...'}}</span><em v-if="idol.organization">@{{idol.organization}}</em><main></main></a>
+		      	<a class="video_guard" @click="get_app('videoshare_video_follow')" :href="hrefs" target="_blank"><span>{{msg_text.vip}}</span></a>
 		      </div>
 		    </div>
 		    <div class="feature-video">
 		    	<h2 class="feature-title"><span class="left"></span>{{msg_text.featured}}<span class="right"></span></h2>
 		    	<ul class="video-list">
 		    		<li v-for="video in videos">
-		    			<a @click="p_log('videoshare_recommend')":href="hrefs" target="_blank">
+		    			<a @click="get_app('videoshare_recommend')":href="hrefs" target="_blank">
 		    				<div class="poster" :style="video.thumbnail?'background-image:url('+ video.thumbnail +');':''"></div>
 		    				<img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
 		    			</a>
@@ -113,11 +113,14 @@
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
             <div class="groupy-content">
                 <p>{{hederText.dream}}</p>
-                <a @click="p_log('videoshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.supportdownload}}</a>
+                <a @click="get_app('videoshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.supportdownload}}</a>
             </div>
         </div>
 	</div>
 </template>
+<style scoped lang="scss">
+	@import "src/css/video.scss";
+</style>
 <script>
 	import { swiper, swiperSlide } from 'vue-awesome-swiper';
 	import VideoPlayer from 'vue-video-player';
@@ -252,7 +255,8 @@
 									let videoInfo = res.data.video.videoHeight/res.data.video.videoWidth;
 									let VideoMaxHeight= 500*videoInfo;
 									let diffHeight,diffWidth,windowInfo,videoHeight;
-									if(self.hrefs == 'https://itunes.apple.com/app/id1270083927') {
+									let ua = navigator.userAgent.toLowerCase();
+									if (!(/iphone|ipad|ipod|android/.test(ua))) {
 										windowInfo = 500;
 										videoHeight = 500*videoInfo;
 									}else {
@@ -332,6 +336,14 @@
 					}
 				})
 			},
+			get_app(val) {
+                this.p_log(val);
+                var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+                if (ua.match(/WeiBo/i) == "weibo") {
+                    //在新浪微博客户端打开
+                    alert('请用浏览器打开此页面，查看更多视频');
+                }
+            },
 			p_log(val) {
 				var _data = {
 
@@ -389,15 +401,13 @@
 			this.getEndVideoList();
 			this.p_log('pageshare_video_open');
 			var ua = navigator.userAgent.toLowerCase();
-			if (/iphone|ipad|ipod/.test(ua)) {
-				this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
-			}else if(/android/.test(ua)) {
-			this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
-			}else {
-			this.hrefs = 'https://itunes.apple.com/app/id1270083927';
-			}
 			let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
 			if(_lan === 'zh-cn') {
+				if(/android/.test(ua)) {
+                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                }else {
+                    this.hrefs = 'https://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
+                }
 				this.msg_text = {
 					noneComment: '还没有收到粉丝的评论<br>分享视频能让更多粉丝关注',
 					download: '会员独有的私密状态查看，一键应援，共同守护爱豆的成长!',
@@ -432,6 +442,11 @@
 				$('.metaTitle').attr('content','Groupy')
 				$('.metaDesc').attr('content','快来Groupy跟偶像亲密互动吧')
 			} else {
+				if(/android/.test(ua)) {
+                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                }else {
+                    this.hrefs = 'https://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
+                }
 				this.msg_text = {
 					noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',
 					download: 'アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!',
@@ -465,6 +480,3 @@
 	}
 </script>
 
-<style scoped lang="scss">
-	@import "src/css/video.scss";
-</style>

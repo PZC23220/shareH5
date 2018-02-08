@@ -8,28 +8,28 @@
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
-                        <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
+                        <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <div class="swiper-pagination"  slot="pagination"></div>
             </swiper>
@@ -44,7 +44,7 @@
                 </div>
                 <img class="no-ranking" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20ranking.jpg" v-if="ranking.length <= 0">
                 <p class="no-ranking-tips" v-if="ranking.length <= 0">ランキング集計中...</p>
-                <a v-if="ranking.length > 0" @click="p_log('activityshare_activity_ranking')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
+                <a v-if="ranking.length > 0" @click="get_app('activityshare_activity_ranking')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
             </div>
             <div class="share_content">
                 <div class="activity-video_content" v-for="(hot,key) in videos" v-if="key < 10">
@@ -60,12 +60,12 @@
                         <img :src="hot.thumbnail?hot.thumbnail:hot.firstFrame" v-else></img>
                         <div class="Masked" v-if="hot.publicType == 1"></div>
                         <div class="gift_content">
-                            <a @click="p_log('activityshare_idol_support')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor"></a>
+                            <a @click="get_app('activityshare_idol_support')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor"></a>
                         </div>
                         <div class="Masked2" v-if="hot.publicType == 1">
                             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/idol/icon_vip.png">
                             <p>この動画は守護者のみ視聴可能です</p>
-                            <a @click="p_log('activityshare_idol_support')" :href="hrefs" target="_blank">守護者のみ</a>
+                            <a @click="get_app('activityshare_idol_support')" :href="hrefs" target="_blank">守護者のみ</a>
                         </div>
                     </div>
                     <div class="video_desc_content">
@@ -78,14 +78,14 @@
                         </ul>
                     </div>
                 </div>
-                <!-- <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a> -->
+                <!-- <a @click="get_app('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a> -->
             </div>
         </div>
         <div class="groupy-footer">
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
             <div class="groupy-content">
                 <p>{{hederText.videomore}}</p>
-                <a @click="p_log('activityshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.videodownload}}</a>
+                <a @click="get_app('activityshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.videodownload}}</a>
             </div>
         </div>
     </div>
@@ -227,6 +227,14 @@
 
                 });
             },
+            get_app(val) {
+                this.p_log(val);
+                var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+                if (ua.match(/WeiBo/i) == "weibo") {
+                    //在新浪微博客户端打开
+                    alert('请用浏览器打开此页面，查看更多视频');
+                }
+            },
             p_log(val) {
                 var _data = {
 
@@ -258,13 +266,20 @@
             this.getVideoList();
 
             this.p_log('shareActivity_subwayAdsFinals_open');
-            var ua = navigator.userAgent.toLowerCase();
-            if (/iphone|ipad|ipod/.test(ua)) {
-                this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
-            }else if(/android/.test(ua)) {
-                this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
-            }else {
-                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
+            let ua = navigator.userAgent.toLowerCase();
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                if(/android/.test(ua)) {
+                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                }else {
+                    this.hrefs = 'https://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
+                }
+            } else {
+                if(/android/.test(ua)) {
+                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                }else {
+                    this.hrefs = 'https://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
+                }
             }
         }
       }

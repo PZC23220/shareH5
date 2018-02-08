@@ -47,5 +47,8 @@ module.exports = {
         activity_entertainmentWeekly: './src/view/activity_entertainmentWeekly',
         activity_spokesman2: './src/view/activity_spokesman2',
         activity_twitter: './src/view/activity_twitter',
+        meeting_raiders: './src/view/meeting_raiders',
+        meeting_shows: './src/view/meeting_shows',
+        meeting: './src/view/meeting',
     },
 };
