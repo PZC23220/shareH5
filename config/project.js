@@ -51,5 +51,6 @@ module.exports = {
         meeting_shows: './src/view/meeting_shows',
         meeting: './src/view/meeting',
         activity_ffacg201805: './src/view/activity_ffacg201805',
+        activity_maimeng: './src/view/activity_maimeng',
     },
 };

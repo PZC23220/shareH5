@@ -35,9 +35,9 @@
             </swiper>
         </div>
         <div class="content">
-            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201805-over.jpg" class="banner">
-            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201805.jpg" class="banner">
-            <h2 class="activity_title">上位1名のアイドルは、中国広州で開催予定の来場者数20万人超えの18th FFACGに、Groupyの広告モデルとして特大看板に登場できます！</h2>
+            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-maimeng-over.jpg" class="banner">
+            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-maimeng.jpg" class="banner">
+            <h2 class="activity_title">1位のアイドルは中国最大級アフレコアプリ「麦萌対手戏」に声で出演！ぜひご参加ください～♪</h2>
             <div class="idol-ranking" v-if="!idol.idol_id">
                 <div class="ranking-two">
                     <div class="ranking-idol"  v-for="(idol , key) in ranking" v-if="key < 3"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'"><span><img v-lazy="idol.avatar"></span></p><p class="idolName-content"><span>{{idol.nickname?idol.nickname:'...'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
@@ -294,7 +294,7 @@
                 this.getActivityInfo();
             }
 
-            this.p_log('shareActivity_ffacg201805_open');
+            this.p_log('shareActivity_maimeng_open');
             let ua = navigator.userAgent.toLowerCase();
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
