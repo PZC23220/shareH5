@@ -42,9 +42,9 @@
                 <p class="meeting_see">{{meeting_text.tips}}</p>
                 <p class="meeting_tips">{{meeting_text.tips_small}}</p>
                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/share/pic_2.png" class="arrow_right">
-                <!-- <span class="avatar" :style="idol.avatar?'background-image:url('+ idol.avatar +');':''"></span> -->
-                <span class="avatar"></span>
-                <div class="idolName">Wi-Fi-5 トミコ•クレア</div>
+                <span class="avatar" :style="avatar?'background-image:url('+ avatar +');':''"></span>
+                <!-- <span class="avatar"></span> -->
+                <div class="idolName">{{idolName}}</div>
             </div>
             <div class="meeting_desc">
                 <h2 class="how">{{meeting_text.how}}</h2>
@@ -64,6 +64,8 @@
     export default {
         data() {
             return {
+                idolName: '',
+                avatar: '',
                 swiperOption2: {
                       setWrapperSize :true,
                       pagination : '.swiper-pagination',
@@ -126,6 +128,8 @@
         },
         created() {
             var self = this;
+            self.idolName = decodeURIComponent(getParams('idolName'));
+            self.avatar = decodeURIComponent(getParams('avatar'));
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             let ua = navigator.userAgent.toLowerCase();
              if(_lan === 'zh-cn') {
