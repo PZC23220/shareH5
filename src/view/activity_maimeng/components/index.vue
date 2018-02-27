@@ -37,7 +37,7 @@
         <div class="content">
             <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-maimeng-over.jpg" class="banner">
             <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-maimeng.jpg" class="banner">
-            <h2 class="activity_title">1位のアイドルは中国最大級アフレコアプリ「麦萌対手戏」に声で出演！ぜひご参加ください～♪</h2>
+            <h2 class="activity_title">「麦萌对手戏」にて、Groupyアイドル特別コラム開設決定！<br>1位のアイドルはGroupyアイドル特別コラムの第一回に出演いただきます！ぜひご参加ください～♪</h2>
             <div class="idol-ranking" v-if="!idol.idol_id">
                 <div class="ranking-two">
                     <div class="ranking-idol"  v-for="(idol , key) in ranking" v-if="key < 3"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'"><span><img v-lazy="idol.avatar"></span></p><p class="idolName-content"><span>{{idol.nickname?idol.nickname:'...'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
