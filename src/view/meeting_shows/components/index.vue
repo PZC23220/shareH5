@@ -37,7 +37,7 @@
         <div class="content">
             <div class="meeting_content">
                 <h2 class="title"><p></p><em>{{meeting_text.meeting}}</em><p></p></h2>
-                <div class="meeting_times"><span class="meeting_begin">2018</span><i class="meeting_dates">01.24</i><em class="meeting_day">（土）</em><span class="meeting_begin">2018</span><i class="meeting_dates">01.24</i></div>
+                <div class="meeting_times"><span class="meeting_begin">{{time.getFullYear()}}</span><i class="meeting_dates">{{((time.getMonth()+1)>9)?(time.getMonth()+1):'0'+(time.getMonth()+1)}}.{{time.getDate()>9?time.getDate():'0'+time.getDate()}}</i><em class="meeting_day">（{{getday}}）</em><span class="meeting_begin">{{meeting_text.start}}</span><i class="meeting_dates">{{time.getHours()>9?time.getHours():'0'+time.getHours()}}:{{time.getMinutes()>9?time.getMinutes():'0'+time.getMinutes()}}</i></div>
                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/share/pic_1.png" class="arrow_left">
                 <p class="meeting_see">{{meeting_text.tips}}</p>
                 <p class="meeting_tips">{{meeting_text.tips_small}}</p>
@@ -66,6 +66,8 @@
             return {
                 idolName: '',
                 avatar: '',
+                time:'',
+                getday:'',
                 swiperOption2: {
                       setWrapperSize :true,
                       pagination : '.swiper-pagination',
@@ -101,6 +103,60 @@
             }
         },
         methods: {
+            formatDay(key) {
+                let timer = key.getDay();
+                let self = this;
+                if(getParams('language') == 'cn') {
+                    switch (timer) {
+                        case 0 :
+                                self.getday = "周日";
+                                break;
+                        case 1 :
+                                self.getday = "周一";
+                                break;
+                        case 2 :
+                                self.getday = "周二";
+                                break;
+                        case 3 :
+                                self.getday = "周三";
+                                break;
+                        case 4 :
+                                self.getday = "周四";
+                                break;
+                        case 5 :
+                                self.getday = "周五";
+                                break;
+                        case 6 :
+                                self.getday = "周六";
+                                break;
+                    }
+                }else {
+                    switch (timer) {
+                        case 0 :
+                                self.getday = "日";
+                                break;
+                        case 1 :
+                                self.getday = "月";
+                                break;
+                        case 2 :
+                                self.getday = "火";
+                                break;
+                        case 3 :
+                                self.getday = "水";
+                                break;
+                        case 4 :
+                                self.getday = "木";
+                                break;
+                        case 5 :
+                                self.getday = "金";
+                                break;
+                        case 6 :
+                                self.getday = "土";
+                                break;
+                    }
+                }
+                return  self.getday;
+            },
             get_app(val) {
                 this.p_log(val);
                 var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
@@ -130,6 +186,8 @@
             var self = this;
             self.idolName = decodeURIComponent(getParams('idolName'));
             self.avatar = decodeURIComponent(getParams('avatar'));
+            self.time = new Date(decodeURIComponent(getParams('time'))*1000);
+            self.formatDay(self.time);
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             let ua = navigator.userAgent.toLowerCase();
              if(_lan === 'zh-cn') {
