@@ -55,5 +55,6 @@ module.exports = {
         activity_interview: './src/view/activity_interview',
         activity_spokesman3: './src/view/activity_spokesman3',
         activity_ffacg201807: './src/view/activity_ffacg201807',
+        activity_ffacg201807_preliminaries: './src/view/activity_ffacg201807_preliminaries',
     },
 };
