@@ -35,12 +35,13 @@
             </swiper>
         </div>
         <div class="content">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807_preliminaries.jpg" class="banner">
-            <div class="activity_rule" style="padding: 12px;font-size:14px;">
+            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807_preliminaries-over.jpg" class="banner">
+            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807_preliminaries.jpg" class="banner">
+            <div class="activity_rule box" style="padding: 12px;font-size:14px;">
                 <p>上位1名のグループはGroupy Idol Festival July 2018~in広州~に出演して頂きます！！ぜひご参加ください～♪</p>
                 <p>排名第一的团体即可获得Groupy偶像祭 July 2018~in广州~出演权！一定要踊跃参加哦。</p>
             </div>
-            <div class="idol-ranking">
+            <div class="idol-ranking box">
                 <div class="ranking-two">
                     <div class="ranking-idol" v-for="(idol , key) in ranking" v-if="key < 3"><p class="avatar-content"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'"><span><img v-lazy="idol.orgLogo?idol.orgLogo:idol.avatar"></span></p><p class="idolName-content"><span>{{idol.orgName?idol.orgName:idol.nickname}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i></span></p></div>
                 </div>
@@ -49,7 +50,7 @@
                 <a v-if="ranking.length > 0" @click="get_app('activityshare_activity_ranking')" target="_blank" :href="hrefs" class="download ranking-download">ランキング</a>
             </div>
             <div class="share_content">
-                <div class="activity-video_content" v-for="(hot,key) in videos" v-if="key < 10">
+                <div class="activity-video_content box" v-for="(hot,key) in videos" v-if="key < 10">
                     <div class="userinfo con_left" :class="{'left_show':idolShow}" v-if="hot.idol">
                         <span><img v-lazy="hot.idol.avatar" alt=""></span>
                         <div class="video_desc">
@@ -94,11 +95,13 @@
 <script>
     import VideoPlayer from 'vue-video-player';
     import http from '@api/js/http.js';
+    import scrollReveal from  'scrollreveal'
     require('@api/js/common.js')
     import $ from 'n-zepto';
     export default {
         data() {
           return {
+            scrollReveal:scrollReveal(),
             playerOptions: {
 
               // component options
@@ -256,6 +259,9 @@
             }
         },
         mounted() {
+          this.scrollReveal.reveal('.box', {
+            duration: 600,
+          });
         },
         computed: {
             player() {
