@@ -56,5 +56,6 @@ module.exports = {
         activity_spokesman3: './src/view/activity_spokesman3',
         activity_ffacg201807: './src/view/activity_ffacg201807',
         activity_ffacg201807_preliminaries: './src/view/activity_ffacg201807_preliminaries',
+        MayLiveImages: './src/view/MayLiveImages',
     },
 };
