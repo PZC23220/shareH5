@@ -427,7 +427,7 @@
         created() {
             this.getIdolInfo();
             this.getComments();
-            this.p_log('pageshare_idol_open');
+            // this.p_log('pageshare_idol_open');
             var ua = navigator.userAgent.toLowerCase();
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
