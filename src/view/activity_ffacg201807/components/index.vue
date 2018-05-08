@@ -3,7 +3,7 @@
         <div class="header">
             <swiper :options="swiperOption2" ref="mySwiper2">
                 <swiper-slide id="swiper2" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
                         <p class="swiper-tips">
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
@@ -11,21 +11,21 @@
                         <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
@@ -35,7 +35,7 @@
             </swiper>
         </div>
         <div class="content">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807.png" class="banner">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807.png" class="banner">
             <h2 class="box">{{activity.theme}}</h2>
             <div class="activity_rule box">
                 <p>Groupy Idol Festival July 2018~in広州~出演権争奪イベントに参加できるアイドルを募集中！興味のある方はお気軽に<i>wanted@groupy.vip</i>までご応募ください。</p>
@@ -58,8 +58,8 @@
                 <p v-html="activity.desc.p12"></p>
                 <p v-html="activity.desc.p13"></p>
                 <p v-html="activity.desc.p14"></p>
-                <img style="width:100%;padding: 12px;display: block;box-sizing: border-box;" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/ffacg1.jpg">
-                <img style="width:100%;padding: 0 12px;display: block;box-sizing: border-box;" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/ffacg2.jpg">
+                <img style="width:100%;padding: 12px;display: block;box-sizing: border-box;" src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/ffacg1.jpg">
+                <img style="width:100%;padding: 0 12px;display: block;box-sizing: border-box;" src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/ffacg2.jpg">
             </div>
             <div class="activity_time box">
                 <h4>{{activity.time}}（活动日程）</h4>
@@ -71,7 +71,7 @@
             <ul class="activity_reward box">
                 <h4>{{activity.award}}（活动奖品）</h4>
                 <li>
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/icon_1.png">
+                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/icon_1.png">
                     <div class="reward_desc">
                         <p><i style="font-weight: 600;">{{activity.rewards[0].p1}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p2}}</i></p>
@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="groupy-footer">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
             <div class="groupy-content">
                 <p>{{hederText.videomore}}</p>
                 <a @click="get_app('activityshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.videodownload}}</a>
@@ -165,7 +165,7 @@
                         p2: '・7月14日：第19回FFACGのメインステージに出演',
                         p3: '・7月15日：Groupy Live出演（場所：Mao Livehouse 広州、キャパ800人）',
                         p4: '・7月16日：ファン参加型広州観光ツアー',
-                        p5: '<i>※FFACGとは、毎回来場者が20万人超の中国華南地区において最大級のアニメゲームイベントFirefly ACG Festivalです。（公式HP：<a href="http://www.fireflyacg.com</a>" target="_blank">http://www.fireflyacg.com）</i>',
+                        p5: '<i>※FFACGとは、毎回来場者が20万人超の中国華南地区において最大級のアニメゲームイベントFirefly ACG Festivalです。（公式HP：<a href="https://www.fireflyacg.com</a>" target="_blank">https://www.fireflyacg.com）</i>',
                         p6: '出演アイドルは３組を予定し、その中の1枠をイベントで決めます。Groupyアプリ内の出演権争奪イベント上位１名のグループは出演していただきます！ ',
                         p7: '中国の超大人気な舞台に輝き、多くの人に知ってもらチャンス！ぜひふるってご応募ください。',
                         p15: 'Groupy偶像祭 July 2018~in广州~是什么？',
@@ -173,7 +173,7 @@
                         p9: '・7月14日：第19届萤火虫游戏嘉年华',
                         p10: '・7月15日：主场Live（场地：Mao Livehouse 广州，可容纳800人）',
                         p11: '・7月16日：粉丝同游',
-                        p12: '<i>※萤火虫游戏嘉年华是中国华南地区最大型的动漫游戏展览,每届到场人数高达20万。（官网：<a href="http://www.fireflyacg.com" target="_blank">http://www.fireflyacg.com</a>）</i>',
+                        p12: '<i>※萤火虫游戏嘉年华是中国华南地区最大型的动漫游戏展览,每届到场人数高达20万。（官网：<a href="https://www.fireflyacg.com" target="_blank">https://www.fireflyacg.com</a>）</i>',
                         p13: '届时表演嘉宾预计为3组，其中1组将在本次活动中决定。在争夺战中获得第一名的参赛团体，将获得Groupy偶像祭 July 2018~in广州~出演权！一定要来参加哦。',
                         p14: '第一回「Groupy New Year Festival~in広州~」開催の模様（Groupy New Year Live精彩回顾）：'
                     },
@@ -251,7 +251,7 @@
                     result: "success",
                     activityId: getParams('activityId')
                 }
-                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                http.post('https://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
                 }).catch(function(){
 

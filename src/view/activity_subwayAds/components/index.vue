@@ -3,7 +3,7 @@
         <div class="header">
             <swiper :options="swiperOption2" ref="mySwiper2">
                 <swiper-slide id="swiper2" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
                         <p class="swiper-tips">
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
@@ -11,21 +11,21 @@
                         <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
@@ -35,7 +35,7 @@
             </swiper>
         </div>
         <div class="content">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAdsApply.png" class="banner">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-subwayAdsApply.png" class="banner">
             <h2>{{activity.theme}}</h2>
             <div class="activity_rule">
                 <p>決勝上位3名のグループは、中国・広州の中心地にある広州塔駅で大型看板に1ヶ月ジャック！1日40万人が通過するところにあなたのグループの写真が掲載されちゃいます！応募は<i>wanted@groupy.vip‍</i> までイベント参加の旨をお伝えください。</p>
@@ -78,14 +78,14 @@
             <ul class="activity_reward">
                 <h4>{{activity.award}}</h4>
                 <li>
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/icon_1.png">
+                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/icon_1.png">
                     <div class="reward_desc">
                         <p><span></span><i style="font-weight: 600;">{{activity.rewards[0].p1}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p2}}</i></p>
                     </div>
                 </li>
                 <li>
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/icon_1.png">
+                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/activity/icon_1.png">
                     <div class="reward_desc">
                         <p><span></span><i style="font-weight: 600;">{{activity.rewards[1].p1}}</i></p>
                         <p><span></span><i>{{activity.rewards[1].p2}}</i></p>
@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="groupy-footer">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
             <div class="groupy-content">
                 <p>{{hederText.videomore}}</p>
                 <a @click="get_app('activityshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.videodownload}}</a>
@@ -234,7 +234,7 @@
                     result: "success",
                     activityId: getParams('activityId')
                 }
-                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                http.post('https://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
                 }).catch(function(){
 

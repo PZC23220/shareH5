@@ -3,7 +3,7 @@
         <div class="header">
             <swiper :options="swiperOption2" ref="mySwiper2">
                 <swiper-slide id="swiper2" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
                         <p class="swiper-tips">
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
@@ -11,21 +11,21 @@
                         <a class="swiper-download" @click="get_app('ticketshare_header_download')" target="_blank" :data-url="hrefs" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('ticketshare_header_download')" target="_blank" :data-url="hrefs" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('ticketshare_header_download')" target="_blank" :data-url="hrefs" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
@@ -38,10 +38,10 @@
             <div class="meeting_content">
                 <h2 class="title"><p></p><em>{{meeting_text.meeting}}</em><p></p></h2>
                 <div class="meeting_times"><span class="meeting_begin">{{time.getFullYear()}}</span><i class="meeting_dates">{{((time.getMonth()+1)>9)?(time.getMonth()+1):'0'+(time.getMonth()+1)}}.{{time.getDate()>9?time.getDate():'0'+time.getDate()}}</i><em class="meeting_day">（{{getday}}）</em><span class="meeting_begin">{{meeting_text.start}}</span><i class="meeting_dates">{{time.getHours()>9?time.getHours():'0'+time.getHours()}}:{{time.getMinutes()>9?time.getMinutes():'0'+time.getMinutes()}}</i></div>
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/share/pic_1.png" class="arrow_left">
+                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/share/pic_1.png" class="arrow_left">
                 <p class="meeting_see">{{meeting_text.tips}}</p>
                 <p class="meeting_tips">{{meeting_text.tips_small}}</p>
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/share/pic_2.png" class="arrow_right">
+                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/share/pic_2.png" class="arrow_right">
                 <span class="avatar" :style="avatar?'background-image:url('+ avatar +');':''"></span>
                 <!-- <span class="avatar"></span> -->
                 <div class="idolName">{{idolName}}</div>
@@ -50,7 +50,7 @@
                 <h2 class="how">{{meeting_text.how}}</h2>
                 <p class="how_desc">在Groupy {{meeting_text.tips2}}</p>
                 <p class="how_tips">{{meeting_text.ios}}</p>
-                <img class="live_bg" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_1.jpg">
+                <img class="live_bg" src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_1.jpg">
             </div>
         </div>
         <div class="meeting-footer"><a target="_blank" :data-url="hrefs" :href="hrefs" @click="get_app('ticketshare_bottom_download')">{{meeting_text.invite}}</a></div>
@@ -177,7 +177,7 @@
                     result: "success",
                     idolId: getParams('idolId')
                 }
-                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                http.post('https://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
                 })
             }

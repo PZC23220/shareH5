@@ -3,14 +3,14 @@
          <div class="header">
             <swiper :options="swiperOption2" ref="mySwiper2">
                 <swiper-slide id="swiper1" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
                         <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper2" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
                         <p class="swiper-tips">
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
@@ -18,14 +18,14 @@
                         <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
                         <a class="swiper-download" @click="p_log('activityshare_top_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
@@ -37,7 +37,7 @@
         <div class="content" :class="{'bottom':applyInfo.id}">
             <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                 <div class="idolInfo eBorder">
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
+                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
                     <p>
                         <span><i class="idol_name">...</i>  {{showstext.pub}}</span>
                         <span>@Groupy</span>
@@ -46,7 +46,7 @@
                 <ul class="shows_detail">
                     <li>
                         <p class="shows_name">@Groupy</p>
-                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">{{showstext.start}}--:--/{{showstext.shows}}--:--</span></p>
+                        <p class="shows_time"><span>--.-- --</span><span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">{{showstext.start}}--:--/{{showstext.shows}}--:--</span></p>
                     </li>
                     <li>
                         <h5 class="li_title">{{showstext.performer}}</h5>
@@ -82,17 +82,17 @@
                     <span><i>{{applyInfo.nums}}</i>{{showstext.nums}} | {{applyInfo.email}}</span>
                     <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">{{showstext.download_2}}</a></div>
                 </div>
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/bg_booked.png">
+                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/bg_booked.png">
             </div>
             <div class="default_page" v-show="pageNone && loadingBig == false">
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/default_noactivity.png" alt="">
+                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/default_noactivity.png" alt="">
                 <p>該当イベント情報はありません</p>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">{{showstext.download_2}}</a>
             </div>
             <ul class="shows_detail" v-if="loadingBig == false && pageNone == false">
                 <li style="border-bottom: 1px solid #eee;">
                     <p class="shows_name">{{showsInfo.title}}</p>
-                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">{{showstext.start}}{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/{{showstext.shows}}{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
+                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_time.png">{{showstext.start}}{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/{{showstext.shows}}{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                     <div class="win_info" v-if="!applyInfo.id" @click="platform()">{{showstext.nows}}</div>
                 </li>
                 <li v-if="showsInfo.groups">
@@ -134,18 +134,18 @@
         <!-- 预约弹窗 -->
         <div class="reservation" v-if="reservationShow">
             <div class="r_header">
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_cancel_2.png" @click="reservationShow = false">
+                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_cancel_2.png" @click="reservationShow = false">
                 {{showstext.nows}}
                 <span :class="{'active': canPush}" @click="pushOrder()">{{showstext.nows}}</span>
             </div>
             <div class="lin_k">{{showstext.contact}}</div>
             <div style="overflow: hidden;">
-                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_name.png"><i>{{showstext.name}}</i></p>
+                <p class="names"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_name.png"><i>{{showstext.name}}</i></p>
                 <p class="input_content" style="display: inline-block;width: 38%;float: left"><span>姓</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.lastName" :placeholder="showstext.pla"></p>
                 <p class="input_content" style="display: inline-block;width: 38%;float: right;margin-left: 0;"><span>名</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.firstName" :placeholder="showstext.pla"></p>
             </div>
             <div>
-                <p class="names"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_email.png"><i>{{showstext.email}}</i></p>
+                <p class="names"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/shows/icon_email.png"><i>{{showstext.email}}</i></p>
                 <p class="input_content"><input v-on:input="updateStyle()" type="email" name="" v-model="forms.email" :placeholder="showstext.pla"></p>
             </div>
             <div class="lin_k" style="background: #00B4BB;">{{showstext.showsNums}}</div>
@@ -157,7 +157,7 @@
         <div class="toast" :class="{'active':toastShow}">{{toastText}}</div>
     </div>
 </template>
-<script type="text/javascript" src="http://adodson.com/hello.js/dist/hello.all.js"></script>
+<script type="text/javascript" src="https://adodson.com/hello.js/dist/hello.all.js"></script>
 <script>
     import http from '@api/js/http.js';
     require('@api/js/common.js')
@@ -247,7 +247,7 @@
                     result: "success",
                     showsId: getParams('showsId')
                 }
-                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                http.post('https://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
                 }).catch(function(){
 
@@ -466,7 +466,7 @@
                      var js, fjs = d.getElementsByTagName(s)[0];
                      if (d.getElementById(id)) {return;}
                      js = d.createElement(s); js.id = id;
-                     js.src = "http://connect.facebook.net/en_US/sdk.js";
+                     js.src = "https://connect.facebook.net/en_US/sdk.js";
                      fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
             },
