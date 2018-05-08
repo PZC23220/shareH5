@@ -3,7 +3,7 @@
         <div class="header">
             <swiper :options="swiperOption2" ref="mySwiper2">
                 <swiper-slide id="swiper2" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
                         <p class="swiper-tips">
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
@@ -11,21 +11,21 @@
                         <a class="swiper-download" @click="get_app('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('pageshare_float_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
@@ -43,15 +43,15 @@
                         <span class="idol_name" :class="{'none':!organization.name}">{{idol.nickname?idol.nickname:'...'}}</span>
                         <span class="idol_org" v-if="organization.name">@{{organization.name}}</span>
                         <div class="idol_support">
-                            <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow_1.png" alt=""><em>{{totalFollower?Number(totalFollower).toLocaleString():0}}</em></span>
-                            <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip_1.png" alt=""><em>{{totalGuardian?Number(totalGuardian).toLocaleString():0}}</em></span>
-                            <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes_1.png" alt=""><em>{{totalPopularity?Number(totalPopularity).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow_1.png" alt=""><em>{{totalFollower?Number(totalFollower).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip_1.png" alt=""><em>{{totalGuardian?Number(totalGuardian).toLocaleString():0}}</em></span>
+                            <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes_1.png" alt=""><em>{{totalPopularity?Number(totalPopularity).toLocaleString():0}}</em></span>
                         </div>
                         <div class="attention">
-                            <a class="cursor" @click="get_app('pageshare_idol_follow')" :href="hrefs" target="_blank"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
-                            <a class="cursor" @click="get_app('pageshare_idol_follow')" :href="hrefs" target="_blank"><img style="margin-top: 4px;" src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip.png"><i>{{msg_text.protector}}</i></a>
+                            <a class="cursor" @click="get_app('pageshare_idol_follow')" :href="hrefs" target="_blank"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_follow.png"><i>{{msg_text.come}}</i></a>
+                            <a class="cursor" @click="get_app('pageshare_idol_follow')" :href="hrefs" target="_blank"><img style="margin-top: 4px;" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_vip.png"><i>{{msg_text.protector}}</i></a>
                         </div>
-                        <a @click="get_app('pageshare_idol_info')" class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
+                        <a @click="get_app('pageshare_idol_info')" class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>{{msg_text.fans}}</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                             <ul class="video-list">
                                 <li v-for="video in videos" @click="openVideo(video.id)">
                                     <div class="poster" :style="video.thumbnail?'background-image:url('+ video.thumbnail +');':''"></div>
-                                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play">
                                 </li>
                             </ul>
                             <div class="bottom-line"><span></span><em>{{msg_text.videomore}}</em><span></span></div>
@@ -80,7 +80,7 @@
                         <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                             <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                                 <div class="userinfo">
-                                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -91,7 +91,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -102,7 +102,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -113,7 +113,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -128,8 +128,8 @@
                                 <span class="avatar" :style="comment.avatar?'background-image:url('+ comment.avatar +');':''"></span>
                                 <span class="nickname">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
-                                <img class="medal_level" :src="'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_1.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                                <!-- <img class="medal_level" :src="'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt=""> -->
+                                <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_1.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                <!-- <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt=""> -->
                                 <i v-html="formatTime(comment.createTime)"></i>
                             </div>
                             <div class="comment_content">
@@ -140,7 +140,7 @@
                             </div>
                         </li>
                         <div class="default_page" v-show="commentList.length == 0 && idx!=0">
-                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
+                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
                             <p v-html="msg_text.noneComment"></p>
                         </div>
                     </ul>
@@ -150,7 +150,7 @@
             </div>
         </div>
         <div class="groupy-footer">
-            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
             <div class="groupy-content">
                 <p>{{hederText.dream}}</p>
                 <a @click="get_app('pageshare_bottom_download')" target="_blank" :href="hrefs">{{hederText.supportdownload}}</a>
@@ -245,9 +245,9 @@
                 commentTips: 'コメント',
                 shows: '参加中のイベント',
                 download_2: 'Groupyをダウンロードしてもっと見よう',
-                good: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
-                hot: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
-                recommend: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png',
+                good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
+                hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
+                recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png',
                 videomore: 'Groupyで動画をもっと入手しよう',
                 commentmore: 'Groupyで推しメンにメッセージしよう'
             },
@@ -267,7 +267,7 @@
             idol: {},
             fansList: [],
             hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
-            Imgsrc: 'https://upload.groupy.vip/post/D4AC388D-F977-4A9A-A973-E3CB18A76978.jpg',
+            Imgsrc: 'http://upload.groupy.vip/post/D4AC388D-F977-4A9A-A973-E3CB18A76978.jpg',
             bigImgShow: false
           }
         },
@@ -396,7 +396,7 @@
                     result: "success",
                     idolId: getParams('idolId')
                 }
-                http.post('https://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
                 }).catch(function(){
 
@@ -432,9 +432,9 @@
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
                 if(/android/.test(ua)) {
-                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                    this.hrefs = 'http://play.google.com/store/apps/details?id=com.groupy.app.fans';
                 }else {
-                    this.hrefs = 'https://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
+                    this.hrefs = 'http://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
                 }
                 this.msg_text = {
                     noneComment: '还没有留言<br>去发布留言，让粉丝来互动吧！',
@@ -457,9 +457,9 @@
                     commentTips: '共',
                     shows: '活动参加中',
                     download_2: '下载groupy查看更多视频',
-                    good: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good_cn.png',
-                    hot: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot_cn.png',
-                    recommend: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend_cn.png',
+                    good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good_cn.png',
+                    hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot_cn.png',
+                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend_cn.png',
                     videomore: '更多视频，尽在Groupy',
                     commentmore: '更多留言，尽在Groupy'
                 }
@@ -477,9 +477,9 @@
                 }
               } else {
                 if(/android/.test(ua)) {
-                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                    this.hrefs = 'http://play.google.com/store/apps/details?id=com.groupy.app.fans';
                 }else {
-                    this.hrefs = 'https://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
+                    this.hrefs = 'http://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
                 }
                 this.msg_text = {
                     noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
@@ -502,9 +502,9 @@
                     commentTips: 'コメント',
                     shows: '参加中のイベント',
                     download_2: 'Groupyをダウンロードしてもっと見よう',
-                    good: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
-                    hot: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
-                    recommend: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png',
+                    good: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_good.png',
+                    hot: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_hot.png',
+                    recommend: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_commend.png',
                     videomore: 'Groupyで動画をもっと入手しよう',
                     commentmore: 'Groupyで推しメンにメッセージしよう'
                 }

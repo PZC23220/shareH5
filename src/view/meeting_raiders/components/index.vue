@@ -3,7 +3,7 @@
         <div class="header">
             <swiper :options="swiperOption2" ref="mySwiper2">
                 <swiper-slide id="swiper2" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" class="swiper-img">
                         <p class="swiper-tips">
                             <span>Groupy</span>
                             <em>{{hederText.text2}}</em>
@@ -11,21 +11,21 @@
                         <a class="swiper-download" @click="get_app('meetingRaiders_header_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper1" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-1.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text4}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('meetingRaiders_header_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper3" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-2.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text1}}</em>
                         </p>
                         <a class="swiper-download" @click="get_app('meetingRaiders_header_download')" target="_blank" :href="hrefs">{{hederText.download}}</a>
                 </swiper-slide>
                 <swiper-slide id="swiper4" class="header-swiper">
-                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/header-3.png" class="swiper-img">
                         <p class="swiper-tips">
                             <em>{{hederText.text3}}</em>
                         </p>
@@ -41,17 +41,17 @@
             <p class="live_desc">{{meeting_text.what_desc}}</p>
             <h2 class="live_title">{{meeting_text.how}}</h2>
             <span class="live_border_bottom"></span>
-            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_1.png" class="live_step">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_1.png" class="live_step">
             <p class="live_desc">{{meeting_text.live}}</p>
-            <div class="live_process"><span class="process_tips">{{meeting_text.entrance}}</span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">{{meeting_text.tickets}}</span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips two" v-html="meeting_text.numbers"></span></div>
+            <div class="live_process"><span class="process_tips">{{meeting_text.entrance}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">{{meeting_text.tickets}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips two" v-html="meeting_text.numbers"></span></div>
             <div class="live_imgs"><img :src="meeting_text.img1"><img :src="meeting_text.img2"><img :src="meeting_text.img3"></div>
-            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_2.png" class="live_step">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_2.png" class="live_step">
             <p class="live_desc">{{meeting_text.videos}}</p>
-            <div class="live_process live_process_blue"><span class="process_tips" :class="{'two': meeting_text.coming != '进入'}" v-html="meeting_text.coming"></span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.waitng != '等候'}" v-html="meeting_text.waitng"></span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.meet != '见面'}" v-html="meeting_text.meet"></span></div>
+            <div class="live_process live_process_blue"><span class="process_tips" :class="{'two': meeting_text.coming != '进入'}" v-html="meeting_text.coming"></span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.waitng != '等候'}" v-html="meeting_text.waitng"></span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.meet != '见面'}" v-html="meeting_text.meet"></span></div>
             <div class="live_imgs"><img  :src="meeting_text.img4"><img  :src="meeting_text.img5"><img  :src="meeting_text.img6"></div>
         </div>
         <div class="groupy-footer">
-            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/bg_1.png" class="footer-image">
             <div class="groupy-content">
                 <p>{{hederText.dream}}</p>
                 <a @click="get_app('meetingRaiders_bottom_download')" target="_blank" :href="hrefs">{{hederText.supportdownload}}</a>
@@ -89,13 +89,13 @@
                     coming: '入室<br>する',
                     waitng: '順番を<br>待つ',
                     meet: '生配信<br>開始',
-                    banner: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
-                    img1: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
-                    img2: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
-                    img3: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
-                    img4: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
-                    img5: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
-                    img6: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
+                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
+                    img1: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
+                    img2: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
+                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
+                    img4: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
+                    img5: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
+                    img6: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
                 },
                 hederText: {
                     text1: '今日は浴衣だけど、どう？似合う...かな？',
@@ -130,7 +130,7 @@
                     action: val,
                     result: "success"
                 }
-                http.post('https://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
                 })
             }
@@ -141,9 +141,9 @@
             let ua = navigator.userAgent.toLowerCase();
              if(_lan === 'zh-cn') {
                 if(/android/.test(ua)) {
-                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                    this.hrefs = 'http://play.google.com/store/apps/details?id=com.groupy.app.fans';
                 }else {
-                    this.hrefs = 'https://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
+                    this.hrefs = 'http://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
                 }
                  self.meeting_text= {
                     what: '是什么',
@@ -157,13 +157,13 @@
                     coming: '进入',
                     waitng: '等候',
                     meet: '见面',
-                    banner: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_cn.jpg',
-                    img1: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/1.jpg',
-                    img2: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/2.jpg',
-                    img3: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/3.jpg',
-                    img4: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/4.jpg',
-                    img5: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/5.jpg',
-                    img6: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/6.jpg',
+                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_cn.jpg',
+                    img1: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/1.jpg',
+                    img2: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/2.jpg',
+                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/3.jpg',
+                    img4: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/4.jpg',
+                    img5: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/5.jpg',
+                    img6: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/6.jpg',
                 }
                 this.hederText = {
                     text1: '心动：她穿和服的样子很可爱？！',
@@ -179,9 +179,9 @@
                 }
             } else {
                 if(/android/.test(ua)) {
-                    this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+                    this.hrefs = 'http://play.google.com/store/apps/details?id=com.groupy.app.fans';
                 }else {
-                    this.hrefs = 'https://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
+                    this.hrefs = 'http://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
                 }
                 self.meeting_text= {
                     what: '1V1生配信とは？',
@@ -195,13 +195,13 @@
                     coming: '入室<br>する',
                     waitng: '順番を<br>待つ',
                     meet: '生配信<br>開始',
-                    banner: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
-                    img1: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
-                    img2: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
-                    img3: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
-                    img4: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
-                    img5: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
-                    img6: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
+                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
+                    img1: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
+                    img2: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
+                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
+                    img4: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
+                    img5: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
+                    img6: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
                 }
                 this.hederText = {
                     text1: '今日は浴衣だけど、どう？似合う...かな？',

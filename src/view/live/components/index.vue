@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="header">
-      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
+      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
       <p>{{msg_text.download}}</p>
       <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">{{msg_text.downTips}}</a>
     </div>
@@ -11,10 +11,10 @@
       <ul>
           <li class="con_left" :class="{'left_show':videos.length>0}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
-                  <img :src="videos.length>0?videos[0].thumbnail:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                  <img :src="videos.length>0?videos[0].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                       <span v-html="videos.length>0?formatTime(videos[0].duration):'00:00'"></span>
                   </div>
               </div>
@@ -22,10 +22,10 @@
           </a></li>
           <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
-                  <img :src="videos.length>2?videos[2].thumbnail:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                  <img :src="videos.length>2?videos[2].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                       <span v-html="videos.length>2?formatTime(videos[2].duration):'00:00'"></span>
                   </div>
               </div>
@@ -35,10 +35,10 @@
       <ul>
           <li class="con_left" :class="{'left_show':videos.length>1}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
-                  <img :src="videos.length>1?videos[1].thumbnail:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                  <img :src="videos.length>1?videos[1].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                       <span v-html="videos.length>1?formatTime(videos[1].duration):'00:00'"></span>
                   </div>
               </div>
@@ -46,10 +46,10 @@
           </a></li>
           <li class="con_left" :class="{'left_show':videos.length>3}"><a @click="get_app('share_h5_watch_more')" target="_blank" :href="hrefs" title="">
               <div class="video_bigImg">
-                  <img :src="videos.length>3?videos[3].thumbnail:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
+                  <img :src="videos.length>3?videos[3].thumbnail:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                   <div>
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                      <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
+                      <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                       <span v-html="videos.length>3?formatTime(videos[3].duration):'00:00'"></span>
                   </div>
               </div>
@@ -88,7 +88,7 @@
       },
       getVideo() {
         var self = this;
-        http.get('https://api.groupy.vip:8080/video/get',{
+        http.get('http://api.groupy.vip:8080/video/get',{
             params: {
                 videoId: 4
             }
@@ -123,7 +123,7 @@
             result: "success",
             videoId: getParams('videoId')
         }
-        http.post('https://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+        http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
             console.log('success');
         }).catch(function(){
 
@@ -140,15 +140,15 @@
       let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
        if(_lan === 'zh-cn') {
           if(/android/.test(ua)) {
-              this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+              this.hrefs = 'http://play.google.com/store/apps/details?id=com.groupy.app.fans';
           }else {
-              this.hrefs = 'https://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
+              this.hrefs = 'http://itunes.apple.com/cn/app/groupy-%E8%B6%85%E8%90%8C%E4%B8%89%E6%AC%A1%E5%85%83%E6%97%A5%E7%B3%BB%E7%88%B1%E8%B1%86%E7%9F%AD%E8%A7%86%E9%A2%91/id1270083927?mt=8';
           }
       } else {
           if(/android/.test(ua)) {
-              this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+              this.hrefs = 'http://play.google.com/store/apps/details?id=com.groupy.app.fans';
           }else {
-              this.hrefs = 'https://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
+              this.hrefs = 'http://itunes.apple.com/jp/app/groupy/id1270083927?mt=8';
           }
       }
       this.getVideo();

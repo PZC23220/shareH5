@@ -13,8 +13,8 @@ require('swiper/dist/css/swiper.css')
 Vue.use(VueRouter);
 Vue.use(VueLazyload, {
         preLoad: 1,
-	    error: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
-	    loading: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
+	    error: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
+	    loading: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
 	    attempt: 1
 })
 Vue.use(VideoPlayer);

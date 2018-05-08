@@ -17,8 +17,8 @@ Vue.use(VideoPlayer);
 Vue.use(VueAwesomeSwiper);
 Vue.use(VueLazyload, {
         preLoad: 1,
-	    error: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
-	    loading: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
+	    error: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
+	    loading: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
 	    attempt: 1
 })
 
