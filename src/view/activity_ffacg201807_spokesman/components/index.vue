@@ -35,8 +35,8 @@
             </swiper>
         </div>
         <div class="content">
-            <img v-if="isOver" src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807_spokesman-over.jpg" class="banner">
-            <img v-else src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807_spokesman.jpg" class="banner">
+            <img v-if="isOver" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807_spokesman-over.jpg" class="banner">
+            <img v-else src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/activity-ffacg201807_spokesman.jpg" class="banner">
             <h2 class="activity_title">アイドル必見！<br>上位1名のアイドルは、来場者数20万人超えの19th FFACGに、Groupyの広告モデルとして特大看板に登場できます！</h2>
             <h2 class="activity_title">爱豆必看！<br>第一名的爱豆将作为Groupy形象代言人，在华南地区最大型漫展萤火虫（人流量超20万）大曝光！</h2>
             <div class="idol-ranking" v-if="!idol.idol_id">
